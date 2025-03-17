@@ -1,4 +1,4 @@
-import { CSRApp } from 'app/app';
+import { CSRApp } from 'app/CSRapp';
 import type { AppProps } from 'next/app';
 import 'shared/styles/globals.scss';
 

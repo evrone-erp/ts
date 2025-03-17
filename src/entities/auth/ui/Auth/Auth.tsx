@@ -3,30 +3,34 @@ import queryString from 'query-string';
 import { FC, useEffect, useMemo } from 'react';
 import { appPaths } from 'shared/config/constants';
 import { useRouter } from 'next/router';
-import { LAST_LOGIN_STORAGE_KEY } from 'entities/auth/model/constants';
+import { TTrackerConfig } from 'entities/tracker/model/types';
 
 type TProps = {
   config: TConfigAuth;
+  tracker: TTrackerConfig;
 };
 
-export const Auth: FC<TProps> = ({ config }) => {
+export const Auth: FC<TProps> = ({ config, tracker }) => {
   const router = useRouter();
 
   const redirect_uri = useMemo(() => {
     const result = new URL(window.location.origin);
 
     result.pathname = appPaths.token;
-    result.search = queryString.stringify(router.query);
+    result.search = queryString.stringify({
+      redirect_path: router.pathname,
+      ...router.query,
+    });
 
     return result.href;
-  }, [router.query]);
+  }, [router.pathname, router.query]);
 
   const url = useMemo(() => {
     const result = new URL(config.url);
 
     let force_confirm = true;
     try {
-      force_confirm = !localStorage.getItem(LAST_LOGIN_STORAGE_KEY);
+      force_confirm = !tracker.lastLogin;
     } catch (e) {
       console.error(e);
     }
@@ -38,7 +42,7 @@ export const Auth: FC<TProps> = ({ config }) => {
     });
 
     return result.href;
-  }, [config.params, config.url, redirect_uri]);
+  }, [config.params, config.url, redirect_uri, tracker.lastLogin]);
 
   useEffect(() => {
     window.location.href = url;

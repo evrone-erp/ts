@@ -1,1 +1,0 @@
-export { IssuesSearch } from './IssuesSearch';

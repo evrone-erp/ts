@@ -1,0 +1,1 @@
+export { EmptyYandexOrganization } from './EmptyYandexOrganization';

@@ -3,9 +3,21 @@ import { FetchBaseQueryError, FetchBaseQueryMeta } from '@reduxjs/toolkit/query'
 import type { QueryReturnValue } from '@reduxjs/toolkit/src/query/baseQueryTypes';
 import { api } from './api';
 
-export function getTotalPages(response?: Response): number {
-  if (!response) return 1;
-  return parseInt(response.headers.get('X-Total-Pages') ?? '1', 10);
+export function getTotalPagesYandex<T>(result: QueryReturnValue<T, FetchBaseQueryError, FetchBaseQueryMeta>): number {
+  if (!result?.meta?.response) return 1;
+  return parseInt(result.meta.response.headers.get('X-Total-Pages') ?? '1', 10);
+}
+
+export function getTotalPagesJira<T extends { total: number; maxResults: number }>(
+  result: QueryReturnValue<T, FetchBaseQueryError, FetchBaseQueryMeta>,
+): number {
+  if (!result?.data) return 1;
+
+  const { total, maxResults } = result.data;
+
+  if (total === undefined || !maxResults === undefined) return 1;
+
+  return Math.ceil(total / maxResults);
 }
 
 export function useGlobalLoader() {
@@ -15,23 +27,33 @@ export function useGlobalLoader() {
   });
 }
 
-export type TFetchAllPagesBaseQueryResult<T> = Promise<QueryReturnValue<T[], FetchBaseQueryError, FetchBaseQueryMeta>>;
+export type TFetchAllPagesBaseQueryResult<T> = Promise<QueryReturnValue<T, FetchBaseQueryError, FetchBaseQueryMeta>>;
 
-export async function fetchAllPages<T>(fetcher: (page: number) => TFetchAllPagesBaseQueryResult<T>) {
-  const reqFetch = async (page: number): TFetchAllPagesBaseQueryResult<T> => {
+type TListAccessor<TPage, TResult> = (page: TPage) => TResult;
+
+type TPagesCountAccessor<TPage> = (result: QueryReturnValue<TPage, FetchBaseQueryError, FetchBaseQueryMeta>) => number;
+
+export async function fetchAllPages<TPage, TResult>(
+  fetcher: (page: number) => TFetchAllPagesBaseQueryResult<TPage>,
+  accessor: TListAccessor<TPage, TResult[]>,
+  getTotalPagesCount: TPagesCountAccessor<TPage> = getTotalPagesYandex,
+) {
+  const reqFetch = async (
+    page: number,
+  ): Promise<QueryReturnValue<TResult[], FetchBaseQueryError, FetchBaseQueryMeta>> => {
     const result = await fetcher(page);
     if (result.error) return { error: result.error };
-    const totalPages = getTotalPages(result.meta?.response);
+    const totalPages = getTotalPagesCount(result);
 
     if (page >= totalPages) {
-      return { data: result.data };
+      return { data: accessor(result.data) };
     }
 
     const reqResult = await reqFetch(page + 1);
 
     if (reqResult.error) return { error: reqResult.error };
 
-    return { data: result.data.concat(reqResult.data) };
+    return { data: accessor(result.data).concat(reqResult.data) };
   };
 
   const res = await reqFetch(1);

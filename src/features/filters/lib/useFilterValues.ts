@@ -9,7 +9,7 @@ import { useTimeOffsetFilter } from 'features/filters/lib/useTimeOffsetFilter';
 
 export const useFilterValues = () => {
   const utcOffsetInMinutes = useTimeOffsetFilter();
-  const { from, to } = useDateRangeFilter(utcOffsetInMinutes);
+  const { from, to, fromTimestamp, toTimestamp } = useDateRangeFilter(utcOffsetInMinutes);
   const userId = useUserIdFilter();
   const showWeekends = useShowWeekends();
   const issueStatus = useIssueStatusFilter();
@@ -20,6 +20,8 @@ export const useFilterValues = () => {
   return {
     from,
     to,
+    fromTimestamp,
+    toTimestamp,
     userId,
     showWeekends,
     issueStatus,

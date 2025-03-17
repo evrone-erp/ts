@@ -1,0 +1,22 @@
+.col {
+  position: sticky;
+  inset-inline-start: 0;
+  z-index: 1;
+}
+
+.col > div {
+  display: flex;
+  align-items: center;
+  color: var(--color-baltic-sea);
+  font-size: 14px;
+  line-height: 22px;
+  z-index: 1;
+}
+
+.form {
+  width: 100%;
+}
+
+.commentEditDisabled {
+  font-size: .8rem;
+}
