@@ -1,0 +1,60 @@
+name: Lint & Test
+
+on: [pull_request]
+
+jobs:
+
+  install_deps:
+    name: Install and cache dependencies
+    runs-on: ubuntu-latest
+    env:
+      GA_NPM_TOKEN: ${{ secrets.GA_PACKAGES_TOKEN_READ }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+          cache: 'npm'
+          cache-dependency-path: '**/package-lock.json'
+      - uses: actions/cache@v3
+        name: Cache node_modules for this run
+        with:
+          path: ./node_modules
+          key: ${{ runner.os }}-npm-${{ hashFiles('package-lock.json') }}-${{github.run_id}}
+        id: node_module_cache
+      - name: Install dependencies
+        if: steps.node_module_cache.outputs.cache-hit != 'true'
+        run: npm ci
+
+  lint_js:
+    needs: [install_deps]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: './.github/actions/setup-front-job'
+      - run: npm run lint
+
+  typechecking:
+    needs: [install_deps]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: './.github/actions/setup-front-job'
+      - run: npm run check-types
+
+  test_unit:
+    needs: [install_deps]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: './.github/actions/setup-front-job'
+      - run: npm run ci:test:unit
+
+  test_build:
+    needs: [ install_deps ]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: './.github/actions/setup-front-job'
+      - run: npm run build

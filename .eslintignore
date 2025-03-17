@@ -1,0 +1,4 @@
+/build/**
+/node_modules/**
+**/*.min.js
+jest.config.js

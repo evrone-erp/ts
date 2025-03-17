@@ -1,0 +1,24 @@
+services:
+  timesheet:
+    build:
+      context: .
+      target: development
+      dockerfile: Dockerfile
+      args:
+        - GA_NPM_TOKEN=$GA_NPM_TOKEN
+    container_name: timesheet
+    env_file:
+      - .env
+    networks:
+      - timesheet-net
+    ports:
+      - 3000:3000
+    restart: always
+    tty: true
+    stdin_open: true
+    volumes:
+      - ./:/app
+
+networks:
+  timesheet-net:
+    driver: bridge

@@ -1,0 +1,87 @@
+.statusCol {
+  text-align: center;
+  padding: 0 !important;
+  position: sticky;
+  inset-inline-start: calc(var(--th-col-width) + 30px + 1px);
+  background: var(--white);
+}
+
+.statusCol > div {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 1px 0 0 0 var(--color-soft-peach), -1px 0 0 0 var(--white);
+}
+
+.row {
+  position: relative;
+}
+
+.issueCol {
+  position: sticky;
+  inset-inline-start: 0;
+  background: var(--white);
+}
+
+.issueCol > div {
+  display: flex;
+  align-items: center;
+  width: var(--th-col-width);
+}
+
+.issueKeyRow {
+  display: flex;
+  align-items: center;
+}
+
+.issueKey {
+  color: var(--color-bright-blue);
+  text-decoration: underline;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 17px;
+}
+
+.pinIcon {
+  font-size: 16px;
+  line-height: 16px;
+  margin-left: 8px;
+  color: #555555;
+}
+
+.issueSummary {
+  margin-top: 2px;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 22px;
+  color: #606060;
+}
+
+.issueDescription {
+  line-height: 1;
+  display: inline-block;
+  margin-left: 5px;
+}
+
+.expandBtn {
+  margin-left: -10px;
+}
+
+.expandBtn[data-expanded='true'] svg {
+  transform: rotate(90deg);
+}
+
+.expandBtn svg path {
+  fill: var(--color-mountain-mist);
+}
+
+.newTrackRow {
+  padding: 0 0 0 15px !important;
+}
+
+.newTrackRow button {
+  position: sticky;
+  inset-inline-start: 16px;
+}

@@ -1,0 +1,23 @@
+.col {
+  text-align: center;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 17px;
+  color: var(--color-baltic-sea);
+}
+
+.button {
+  background: none;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 4px;
+  font-weight: inherit;
+}
+
+.button:hover {
+  background: var(--color-soft-peach);
+}
+
+.col_weekend {
+  background: var(--color-pale-yellow);
+}

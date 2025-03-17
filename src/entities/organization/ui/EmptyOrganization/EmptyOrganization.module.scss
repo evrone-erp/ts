@@ -1,0 +1,23 @@
+.container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.message {
+  color: var(--color-baltic-sea);
+  white-space: pre-line;
+  text-align: center;
+}
+
+.inputGroup {
+  width: 300px;
+}
+
+.input {
+  width: calc(100% - 100px) !important
+}

@@ -1,0 +1,21 @@
+.col {
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 17px;
+  color: var(--color-baltic-sea);
+  text-align: center;
+  position: sticky;
+  inset-inline-end: 0;
+  z-index: 1;
+  background: var(--color-white);
+  padding: 0 !important;
+}
+
+.col > div {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: -1px 0 0 0 var(--color-soft-peach), 1px 0 0 0 var(--white);
+}

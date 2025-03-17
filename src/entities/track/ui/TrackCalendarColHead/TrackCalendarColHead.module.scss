@@ -1,0 +1,18 @@
+.col[data-current='true'] {
+  position: relative;
+  color: var(--color-bright-blue);
+}
+
+.col[data-current='true']::after {
+  content: '';
+  position: absolute;
+  height: 2px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: currentColor;
+}
+
+.col_weekend {
+  background: var(--color-pale-yellow);
+}

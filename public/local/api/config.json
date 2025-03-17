@@ -1,0 +1,13 @@
+{
+  "auth": {
+    "params": {
+      "client_id": "client_id",
+      "response_type": "token"
+    },
+    "url": "https://oauth.yandex.ru/authorize"
+  },
+  "options": {
+    "headers": {}
+  },
+  "trackerUrl": "https://tracker.yandex.ru/"
+}

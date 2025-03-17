@@ -1,0 +1,1 @@
+export const YA_ROBOTS_IDS = new Set([780889736, 780890239, 780891246]);

@@ -1,0 +1,29 @@
+.badge {
+  --bg-color: var(--color-white-lilac);
+  --color: var(--color-mountain-mist);
+
+  color: var(--color);
+  background-color: var(--bg-color);
+  white-space: nowrap;
+  font-size: 12px;
+  line-height: 18px;
+  padding: 2px 8px;
+  justify-content: center;
+  border-radius: 100px;
+  display: inline-block;
+}
+
+.badge[data-key='closed'] {
+  --bg-color: var(--color-snowy-mint);
+  --color: var(--color-paris-green);
+}
+
+.badge[data-key='inReview'] {
+  --bg-color: var(--color-bleach-white);
+  --color: var(--color-cantaloupe);
+}
+
+.badge[data-key='inProgress'] {
+  --bg-color: var(--color-link-water);
+  --color: var(--color-bright-blue);
+}

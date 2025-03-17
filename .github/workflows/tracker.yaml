@@ -1,0 +1,38 @@
+name: YC Tracker
+on:
+  pull_request:
+    types:
+      - opened
+      - reopened
+      - synchronize
+      - closed
+jobs:
+  transit-task:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+
+      - name: Move Task When PR Opened
+        if: github.event.action != 'closed'
+        uses: evrone-erp/yandex-tracker-action@v1.1.0
+        with:
+          token: ${{secrets.GITHUB_TOKEN}}
+          yandex_org_id: ${{ secrets.YANDEX_ORG_ID }}
+          yandex_oauth2_token: ${{ secrets.YANDEX_OAUTH2_TOKEN }}
+          task_url: true
+          ignore: ERP-31,ERP-32
+          to: 'In Review'
+
+      - name: Move Task When PR Merged
+        if: github.event.pull_request.merged == true
+        uses: evrone-erp/yandex-tracker-action@v1.1.0
+        with:
+          token: ${{secrets.GITHUB_TOKEN}}
+          yandex_org_id: ${{ secrets.YANDEX_ORG_ID }}
+          yandex_oauth2_token: ${{ secrets.YANDEX_OAUTH2_TOKEN }}
+          task_url: true
+          ignore: ERP-31,ERP-32
+          to: 'Merged'

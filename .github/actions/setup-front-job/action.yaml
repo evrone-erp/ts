@@ -1,0 +1,19 @@
+name: 'Setup front job'
+description: Setup node and restore node_modules from cache
+outputs:
+  cache-hit:
+    description: node_modules cache hit
+    value: ${{ steps.node_modules_cache.outputs.cache-hit }}
+runs:
+  using: "composite"
+  steps:
+    - name: Setup Node
+      uses: actions/setup-node@v4
+      with:
+        node-version: 18
+    - name: Restore node_modules cache for this run
+      uses: actions/cache@v3
+      id: node_modules_cache
+      with:
+        path: ./node_modules
+        key: ${{ runner.os }}-npm-${{ hashFiles('package-lock.json') }}-${{github.run_id}}

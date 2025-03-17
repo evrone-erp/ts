@@ -1,0 +1,35 @@
+.input {
+  background: none;
+  border-radius: 4px;
+  padding: 10px 15px;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  color: var(--color-baltic-sea);
+  border-color: transparent;
+  border-width: 1px;
+  height: 100%;
+  text-align: center;
+}
+
+.input:hover,
+.input:focus {
+  border-color: var(--color-periwinkle);
+}
+
+.input:focus {
+  background-color: var(--color-white);
+  box-shadow: none;
+}
+
+.input::selection {
+  background-color: var(--color-periwinkle);
+  color: var(--color-baltic-sea);
+}
+
+.col {
+  padding: 5px 15px !important;
+  text-align: center;
+  font-size: 14px;
+  line-height: 17px;
+}

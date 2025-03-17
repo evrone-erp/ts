@@ -1,0 +1,239 @@
+import { Canvas, Meta, Story } from '@storybook/addon-docs';
+
+import { Text } from './Text';
+
+<Meta title="Text" component={Text} />
+
+# Используемые варианты
+### Обычный текст
+```css
+font-weight: 400;
+font-size: 14px;
+line-height: 22px;
+color: #262626;
+```
+### Код
+<Canvas>
+  <Story name="Обычный текст">
+    <Text lh="22">Пример текста</Text>
+  </Story>
+</Canvas>
+
+<hr/>
+
+### Ссылки на таски
+```css
+font-weight: 500;
+font-size: 14px;
+line-height: 17px;
+color: #0B68FF;
+text-decoration-line: underline;
+```
+
+### Код
+<Canvas>
+  <Story name="Ссылки на таски">
+    <Text underline color="#0B68FF" fw="500">Пример текста</Text>
+  </Story>
+</Canvas>
+
+<hr/>
+
+### Жирный (часы таблицы)
+```css
+font-weight: 700;
+font-size: 14px;
+line-height: 17px;
+color: #262626;
+```
+
+### Код
+<Canvas>
+  <Story name="Жирный (часы таблицы)">
+    <Text fw="700">Пример текста</Text>
+  </Story>
+</Canvas>
+
+<hr/>
+
+### Нежирные часы таблицы
+```css
+font-weight: 400;
+font-size: 14px;
+line-height: 17px;
+```
+
+### Код
+<Canvas>
+  <Story name="Нежирные часы таблицы">
+    <Text>Пример текста</Text>
+  </Story>
+</Canvas>
+
+<hr/>
+
+### Дата week
+```css
+font-weight: 500;
+font-size: 28px;
+line-height: 34px;
+color: #262626;
+```
+
+### Код
+<Canvas>
+  <Story name="Дата week">
+    <Text fw="500" fs="28" lh="34">Пример текста</Text>
+  </Story>
+</Canvas>
+
+<hr/>
+
+### Переключалка месяц/неделя
+```css
+font-weight: 400;
+font-size: 14px;
+line-height: 18px;
+```
+
+### Код
+<Canvas>
+  <Story name="Переключалка месяц/неделя">
+    <Text lh="18">Пример текста</Text>
+  </Story>
+</Canvas>
+
+<hr/>
+
+### Чекбокс
+```css
+font-weight: 400;
+font-size: 13px;
+line-height: 16px;
+```
+
+### Код
+<Canvas>
+  <Story name="Чекбокс">
+    <Text fs="13" lh="16">Пример текста</Text>
+  </Story>
+</Canvas>
+
+<hr/>
+
+### Текст инпута дейтпикера
+```css
+font-weight: 400;
+font-size: 14px;
+line-height: 16px;
+color: #262626;
+```
+
+### Код
+<Canvas>
+  <Story name="Текст инпута дейтпикера">
+    <Text lh="16">Пример текста</Text>
+  </Story>
+</Canvas>
+
+<hr/>
+
+### Чипсина в селекте сотрудника, тексты в селектах/поисках/чипсах
+```css
+font-weight: 400;
+font-size: 14px;
+line-height: 20px;
+color: #262626;
+```
+
+### Код
+<Canvas>
+  <Story name="Чипсина в селекте сотрудника, тексты в селектах/поисках/чипсах">
+    <Text lh="20">Пример текста</Text>
+  </Story>
+</Canvas>
+
+<hr/>
+
+### Текст в модалке
+```css
+font-weight: 500;
+font-size: 16px;
+line-height: 20px;
+color: #262626
+```
+
+### Код
+<Canvas>
+  <Story name="Текст в модалке">
+    <Text  fw="500" fs="16" lh="20">Пример текста</Text>
+  </Story>
+</Canvas>
+
+<hr/>
+
+### Заголовок модалки
+```css
+font-weight: 700;
+font-size: 16px;
+line-height: 19px;
+color: #262626
+```
+
+### Код
+<Canvas>
+  <Story name="Заголовок модалки">
+    <Text fw="700" fs="16" lh="19">Пример текста</Text>
+  </Story>
+</Canvas>
+
+<hr/>
+
+### Текст в кнопке модалки с плюсиком
+```css
+font-weight: 400;
+font-size: 14px;
+line-height: 17px;
+color: #0B68FF
+```
+
+### Код
+<Canvas>
+  <Story name="Текст в кнопке модалки с плюсиком">
+    <Text color="#0B68FF">Пример текста</Text>
+  </Story>
+</Canvas>
+
+<hr/>
+
+### Хедер таблицы
+```css
+font-weight: 700;
+font-size: 13px;
+line-height: 16px
+```
+
+### Код
+<Canvas>
+  <Story name="Хедер таблицы">
+    <Text fw="700" fs="13" lh="16">Пример текста</Text>
+  </Story>
+</Canvas>
+
+<hr/>
+
+### Текущая дата мелкая
+```css
+font-size: 14px;
+line-height: 17px;
+color: #262626
+```
+
+### Код
+<Canvas>
+  <Story name="Текущая дата мелкая">
+    <Text>Пример текста</Text>
+  </Story>
+</Canvas>
+
+<hr/>

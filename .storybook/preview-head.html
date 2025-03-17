@@ -1,0 +1,16 @@
+<link rel=”preload” href=”/fonts/Inter-VariableFont_slnt,wght.ttf” />
+
+<style>
+  /* Font is variable: see https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Fonts/Variable_Fonts_Guide */
+  @font-face {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    src: url('/fonts/Inter-VariableFont_slnt,wght.ttf') format('truetype-variations');
+  }
+
+  body {
+    /* Override globals.less from antd */
+    font-family: 'Inter', sans-serif !important;
+  }
+</style>

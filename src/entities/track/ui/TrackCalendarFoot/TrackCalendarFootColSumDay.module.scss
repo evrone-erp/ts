@@ -1,0 +1,24 @@
+.col {
+  position: relative;
+}
+
+.col > * {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  inset: 0;
+}
+
+.col[data-is-undertracked='true'] {
+  background: var(--color-bleach-white);
+}
+
+.col[data-is-exact-tracked='true'] {
+  background: var(--color-snowy-mint);
+}
+
+.col_weekend {
+  background: var(--color-pale-yellow);
+}
+

@@ -1,0 +1,24 @@
+.tfoot {
+  background: var(--color-periwinkle);
+  font-weight: 700;
+  font-size: 14px;
+  line-heigh: 17px;
+  z-index: 1;
+}
+
+.total {
+  color: var(--color-baltic-sea);
+  font-weight: 700;
+}
+
+.tfoot tr {
+  height: 40px;
+}
+
+.totalCol {
+  position: sticky;
+  inset-inline-start: 0;
+  z-index: 1;
+  background: var(--color-periwinkle);
+  box-shadow: 1px 0 0 0 var(--color-soft-peach);
+}

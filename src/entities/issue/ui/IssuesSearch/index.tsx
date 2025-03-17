@@ -1,0 +1,1 @@
+export { IssuesSearch } from './IssuesSearch';

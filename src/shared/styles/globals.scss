@@ -1,0 +1,54 @@
+@import '~antd/dist/reset.css';
+@import './theme.scss';
+
+/* Font is variable: see https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Fonts/Variable_Fonts_Guide */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400 700;
+  src: url('/public/fonts/Inter-VariableFont_slnt,wght.ttf') format('truetype-variations');
+}
+html {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+body,
+#root,
+#__next {
+  font-family: 'Inter', sans-serif;
+  min-width: 768px;
+}
+
+body {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #212529;
+  text-align: left;
+  background-color: #fff;
+}
+
+table th {
+  font-weight: normal;
+  text-align: inherit;
+  text-align: -webkit-match-parent;
+}
+
+svg {
+  overflow: hidden;
+  vertical-align: middle;
+}
+
+label {
+  margin-bottom: 0.5rem;
+}
+
+[type=button]:not(:disabled),
+[type=reset]:not(:disabled),
+[type=submit]:not(:disabled),
+button:not(:disabled) {
+  cursor: pointer
+}

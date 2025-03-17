@@ -1,0 +1,13 @@
+.button {
+  padding: 0;
+  border: none;
+  background: none;
+  color: var(--color-bright-blue);
+  display: grid;
+  grid-auto-flow: column;
+  align-items: center;
+  gap: 5px;
+  font-size: 13px;
+  line-height: 13px;
+  padding: 2px 0;
+}

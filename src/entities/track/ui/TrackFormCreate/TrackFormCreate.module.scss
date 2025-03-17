@@ -1,0 +1,17 @@
+.form {
+  min-width: 470px;
+  max-width: 690px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 16px;
+}
+
+.inputItem {
+  display: flex;
+  flex-direction: column;
+  row-gap: 6px;
+}
+
+.tracks {
+  margin-top: 50px;
+}
