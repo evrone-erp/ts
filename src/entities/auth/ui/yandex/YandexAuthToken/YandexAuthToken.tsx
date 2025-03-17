@@ -2,10 +2,10 @@ import { useRouter } from 'next/router';
 import { useEffect, useMemo } from 'react';
 import { useAppDispatch } from 'shared/lib/hooks';
 import { Loading } from 'shared/ui/Loading';
-import { actionSetTrackerToken } from 'entities/tracker/model/actions';
+import { actionSetYandexTrackerToken } from 'entities/tracker/model/actions';
 import { getTrackerIdFromQuery } from 'entities/tracker/lib/getTrackerIdFromQuery';
 
-export const AuthToken = () => {
+export const YandexAuthToken = () => {
   const router = useRouter();
   const dispatch = useAppDispatch();
 
@@ -25,7 +25,7 @@ export const AuthToken = () => {
 
       const trackerId = parameters.get('trackerId');
 
-      dispatch(actionSetTrackerToken(token, trackerId ? getTrackerIdFromQuery(trackerId) : undefined));
+      dispatch(actionSetYandexTrackerToken(token, trackerId ? getTrackerIdFromQuery(trackerId) : undefined));
 
       router.replace({
         pathname: pathToRedirect,

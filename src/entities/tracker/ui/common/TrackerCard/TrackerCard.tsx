@@ -4,6 +4,7 @@ import { DeleteOutlined, SettingOutlined } from '@ant-design/icons';
 import Link from 'next/link';
 import styles from 'entities/tracker/ui/common/TrackerCard/TrackerCard.module.scss';
 import { useMessage } from 'entities/locale/lib/hooks';
+import { appPaths } from 'shared/config/constants';
 
 export interface ITrackerCardProps {
   name: string;
@@ -43,7 +44,7 @@ export const TrackerCard = ({
     <Card
       className={styles.trackerCard}
       title={
-        <Link className={styles.title} href={`/sheet/${id}`} title={name}>
+        <Link className={styles.title} href={appPaths.tracker(id)} title={name}>
           {name}
         </Link>
       }

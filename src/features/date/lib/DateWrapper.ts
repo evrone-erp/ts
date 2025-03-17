@@ -15,6 +15,10 @@ export class DateWrapper {
     dayjs.locale(language);
   }
 
+  static now() {
+    return dayjs();
+  }
+
   // utcOffsetInMinutes type is not optional on purpose, so that in the future, when writing code, developers would pay attention and wouldn't
   // forget to include offset where it's necessary
   static getDate({ date, utcOffsetInMinutes }: { date?: string; utcOffsetInMinutes: number | undefined }): TDate {

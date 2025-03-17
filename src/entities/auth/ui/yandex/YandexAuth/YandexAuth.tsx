@@ -1,16 +1,16 @@
-import { TConfigAuth } from 'entities/config/model/types';
+import { TConfigAuth, TConfigYandexAuthParams } from 'entities/config/model/types';
 import queryString from 'query-string';
 import { FC, useEffect, useMemo } from 'react';
 import { appPaths } from 'shared/config/constants';
 import { useRouter } from 'next/router';
-import { TTrackerConfig } from 'entities/tracker/model/types';
+import { TYandexTrackerConfig } from 'entities/tracker/model/types';
 
 type TProps = {
-  config: TConfigAuth;
-  tracker: TTrackerConfig;
+  config: TConfigAuth<TConfigYandexAuthParams>;
+  tracker: TYandexTrackerConfig;
 };
 
-export const Auth: FC<TProps> = ({ config, tracker }) => {
+export const YandexAuth: FC<TProps> = ({ config, tracker }) => {
   const router = useRouter();
 
   const redirect_uri = useMemo(() => {

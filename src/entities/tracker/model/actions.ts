@@ -2,14 +2,17 @@ import { DateWrapper } from 'features/date/lib/DateWrapper';
 import { TAppDispatch } from 'shared/lib/types';
 import { trackers } from 'entities/tracker/model/reducers';
 
-export const actionSetTrackerToken = (token: string, trackerId: string | undefined) => (dispatch: TAppDispatch) => {
-  const lastLogin = DateWrapper.getDateFormat(DateWrapper.getDate({ utcOffsetInMinutes: undefined }));
+const getLastLogin = () => DateWrapper.getDateFormat(DateWrapper.getDate({ utcOffsetInMinutes: undefined }));
 
-  dispatch(
-    trackers.actions.setAuthToken({
-      token,
-      lastLogin,
-      id: trackerId,
-    }),
-  );
-};
+export const actionSetYandexTrackerToken =
+  (token: string, trackerId: string | undefined) => (dispatch: TAppDispatch) => {
+    const lastLogin = getLastLogin();
+
+    dispatch(
+      trackers.actions.setYandexAuthToken({
+        token,
+        lastLogin,
+        id: trackerId,
+      }),
+    );
+  };

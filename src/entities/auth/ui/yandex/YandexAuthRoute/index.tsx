@@ -1,0 +1,1 @@
+export { YandexAuthRoute } from './YandexAuthRoute';

@@ -3,19 +3,20 @@ import { getTrackerHeaders } from 'entities/tracker/lib/getTrackerHeaders';
 import { jiraUserEndpoints } from 'entities/user/jira/model/endpoints';
 import { JiraAccountType, TJiraUser } from 'entities/user/jira/model/types';
 import { TGetMyselfParams, TGetUserParams, TGetUsersParams } from 'entities/user/common/model/types';
+import { getTrackerUrl } from 'entities/tracker/lib/getTrackerUrl';
 
 export const jiraUserApi = api.injectEndpoints({
   overrideExisting: true,
   endpoints: (builder) => ({
     getMyselfJira: builder.query<TJiraUser, TGetMyselfParams>({
       query: ({ tracker }) => ({
-        url: jiraUserEndpoints.myself,
+        url: getTrackerUrl(jiraUserEndpoints.myself, tracker),
         headers: getTrackerHeaders(tracker),
       }),
     }),
     getJiraUser: builder.query<TJiraUser, TGetUserParams>({
       query: ({ userId, tracker }) => ({
-        url: jiraUserEndpoints.user,
+        url: getTrackerUrl(jiraUserEndpoints.user, tracker),
         headers: getTrackerHeaders(tracker),
         params: {
           accountId: userId,
@@ -24,7 +25,7 @@ export const jiraUserApi = api.injectEndpoints({
     }),
     getJiraUsersList: builder.query<TJiraUser[], TGetUsersParams>({
       query: ({ tracker }) => ({
-        url: jiraUserEndpoints.userSearch,
+        url: getTrackerUrl(jiraUserEndpoints.userSearch, tracker),
         headers: getTrackerHeaders(tracker),
         params: {
           query: '',

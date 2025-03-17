@@ -1,0 +1,1 @@
+export { YandexAuthToken } from './YandexAuthToken';

@@ -3,7 +3,7 @@ import { useMessage } from 'entities/locale/lib/hooks';
 import { useDispatch } from 'react-redux';
 import { trackers } from 'entities/tracker/model/reducers';
 import { isQueryErrorStatusInSet } from 'shared/lib/isQueryErrorStatusInSet';
-import { UnauthorizedTracker } from 'entities/auth/ui/UnauthorizedTracker/UnauthorizedTracker';
+import { UnauthorizedTracker } from 'entities/auth/ui/common/UnauthorizedTracker/UnauthorizedTracker';
 import { getQueryErrorStatus } from 'shared/lib/getQueryErrorStatus';
 import { Button } from 'antd';
 import { Message } from 'entities/locale/ui/Message';

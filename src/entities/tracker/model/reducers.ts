@@ -1,8 +1,13 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import {
-  TSetAuthTokenPayload,
+  isJiraTrackerCfg,
+  isYandexTrackerCfg,
+  TSetJiraTokenAndCloudIdByUrlsPayload,
+  TSetJiraTrackerTokens,
   TSetMainTrackerPayload,
   TSetUsernamePayload,
+  TSetUsernameState,
+  TSetYandexAuthTokenPayload,
   TTrackerConfig,
   TTrackerStore,
   TUpsertTrackerPayload,
@@ -12,6 +17,7 @@ const initialState: TTrackerStore = {
   trackers: {},
   ids: [],
   mainTrackerId: null,
+  userName2State: {},
 };
 
 export const trackers = createSlice({
@@ -60,32 +66,67 @@ export const trackers = createSlice({
 
       state.trackers[id].username = username;
     },
-    setAuthToken(state, { payload: { id, token, lastLogin } }: PayloadAction<TSetAuthTokenPayload>) {
+    setYandexAuthToken(state, { payload: { id, token, lastLogin } }: PayloadAction<TSetYandexAuthTokenPayload>) {
       const trackerId = id ?? state.mainTrackerId;
 
-      if (!trackerId || !state.trackers[trackerId]) {
+      if (!trackerId) {
+        return;
+      }
+
+      const tracker = state.trackers[trackerId];
+
+      if (!isYandexTrackerCfg(tracker)) {
         return;
       }
 
       // we need to remove lastLogin from other trackers so that user would get redirected to auth page as soon as they
       // open another tracker, without seeing 403 error page
       state.ids.forEach((tId) => {
-        delete state.trackers[tId].lastLogin;
+        const currentTracker = state.trackers[tId];
+        if (isYandexTrackerCfg(currentTracker)) {
+          delete currentTracker.lastLogin;
+        }
       });
 
       // set token and last login to the tracker
-      state.trackers[trackerId].authToken = token;
-      state.trackers[trackerId].lastLogin = lastLogin;
-      const { username } = state.trackers[trackerId];
+      tracker.authToken = token;
+      tracker.lastLogin = lastLogin;
+      const { username } = tracker;
 
       // we can also set the same token for every tracker with the same username, because it's the same account
       if (username)
         state.ids.forEach((tId) => {
-          if (state.trackers[tId].username === username) {
-            state.trackers[tId].authToken = token;
-            state.trackers[tId].lastLogin = lastLogin;
+          const currentTracker = state.trackers[tId];
+          if (isYandexTrackerCfg(currentTracker) && currentTracker.username === username) {
+            currentTracker.authToken = token;
+            currentTracker.lastLogin = lastLogin;
           }
         });
+    },
+    setJiraTokenAndCloudIdByUrls(
+      state,
+      {
+        payload: { token, refreshToken, tokenExpiryTimestamp, refreshTokenExpiryTimestamp, urls, url2CloudId },
+      }: PayloadAction<TSetJiraTokenAndCloudIdByUrlsPayload>,
+    ) {
+      state.ids.forEach((tId) => {
+        const tracker = state.trackers[tId];
+        if (!isJiraTrackerCfg(tracker)) {
+          return;
+        }
+
+        // normalize url
+        const url = new URL(tracker.url).href;
+        if (urls.includes(url)) {
+          tracker.authToken = token;
+          if (isJiraTrackerCfg(tracker)) {
+            tracker.refreshToken = refreshToken;
+            tracker.tokenExpiryTimestamp = tokenExpiryTimestamp;
+            tracker.refreshTokenExpiryTimestamp = refreshTokenExpiryTimestamp;
+            tracker.cloudId = url2CloudId[url];
+          }
+        }
+      });
     },
     logoutTracker(state, { payload: tracker }: PayloadAction<TTrackerConfig>) {
       const stateTracker = state.trackers[tracker.id];
@@ -94,11 +135,63 @@ export const trackers = createSlice({
       }
 
       state.ids.forEach((tId) => {
+        const currentTracker = state.trackers[tId];
         // only log out trackers of the same type
-        if (stateTracker.type === state.trackers[tId].type) {
-          delete state.trackers[tId].lastLogin;
+        if (stateTracker.type !== currentTracker.type) {
+          return;
+        }
+        if (isYandexTrackerCfg(currentTracker)) {
+          delete currentTracker.lastLogin;
+        } else if (isJiraTrackerCfg(currentTracker)) {
+          delete currentTracker.authToken;
+          delete currentTracker.refreshToken;
+          delete currentTracker.tokenExpiryTimestamp;
+          delete currentTracker.refreshTokenExpiryTimestamp;
         }
       });
+    },
+    setUsernameJiraState(state, { payload: { username, jiraState } }: PayloadAction<TSetUsernameState>) {
+      state.userName2State[username] = jiraState;
+    },
+    setJiraTokens(
+      state,
+      { payload: { token, trackerId, refreshToken, tokenExpiryTimestamp } }: PayloadAction<TSetJiraTrackerTokens>,
+    ) {
+      const tracker = state.trackers[trackerId];
+
+      if (!isJiraTrackerCfg(tracker)) {
+        return;
+      }
+
+      const { username } = tracker;
+
+      // we need to remove tokens from other trackers so that user would get redirected to auth page as soon as they
+      // open another tracker, without seeing 403 error page
+      state.ids.forEach((tId) => {
+        const currentTracker = state.trackers[tId];
+        if (!isJiraTrackerCfg(currentTracker)) {
+          return;
+        }
+        delete currentTracker.authToken;
+        delete currentTracker.refreshToken;
+        delete currentTracker.tokenExpiryTimestamp;
+        delete currentTracker.refreshTokenExpiryTimestamp;
+      });
+
+      tracker.authToken = token;
+      tracker.refreshToken = refreshToken;
+      tracker.tokenExpiryTimestamp = tokenExpiryTimestamp;
+
+      // we can also set the same token for every tracker with the same username, because it's the same account
+      if (username)
+        state.ids.forEach((tId) => {
+          const currentTracker = state.trackers[tId];
+          if (isJiraTrackerCfg(currentTracker) && currentTracker.username === username) {
+            currentTracker.authToken = token;
+            currentTracker.refreshToken = refreshToken;
+            currentTracker.tokenExpiryTimestamp = tokenExpiryTimestamp;
+          }
+        });
     },
   },
 });

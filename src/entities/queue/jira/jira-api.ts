@@ -3,6 +3,7 @@ import { TGetQueuesParams, TQueue } from 'entities/queue/common/model/types';
 import { getTrackerHeaders } from 'entities/tracker/lib/getTrackerHeaders';
 import { jiraProjectsEndpoints } from 'entities/queue/jira/endpoints';
 import { TJiraProjectsResponse } from 'entities/queue/jira/types';
+import { getTrackerUrl } from 'entities/tracker/lib/getTrackerUrl';
 
 export const jiraProjectApi = api.injectEndpoints({
   overrideExisting: true,
@@ -12,7 +13,7 @@ export const jiraProjectApi = api.injectEndpoints({
         const allProjects = await fetchAllPages(
           (page) =>
             fetchWithBQ({
-              url: jiraProjectsEndpoints.projectSearch,
+              url: getTrackerUrl(jiraProjectsEndpoints.projectSearch, tracker),
               headers: getTrackerHeaders(tracker),
               params: {
                 startAt: (page - 1) * 100,

@@ -81,6 +81,8 @@
   "unauthorizedTracker.changeAccount": "Сменить аккаунт",
   "unauthorizedTracker.changeOrgId": "Указать другой ID",
   "unauthorizedTracker.changeConfig": "Редактировать конфигурацию трекера",
+  "unauthorizedTracker.tokenError": "Ошибка при аутентификации",
+  "unauthorizedTracker.authenticateAgain": "Войти снова",
   "form.invalid.format": "Неверный формат",
   "form.invalid.empty": "Поле не должно быть пустым",
   "filter.status.placeholder": "Статус задачи",

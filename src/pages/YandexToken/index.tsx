@@ -1,0 +1,1 @@
+export { YandexTokenPage } from './YandexTokenPage';

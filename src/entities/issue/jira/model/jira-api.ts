@@ -14,13 +14,14 @@ import {
   transformJiraIssueToCommonIssue,
 } from 'entities/issue/jira/lib/transformJiraIssuesToCommonIssues';
 import { jiraIssueEndpoints } from 'entities/issue/jira/model/endpoints';
+import { getTrackerUrl } from 'entities/tracker/lib/getTrackerUrl';
 
 export const jiraIssueApi = api.injectEndpoints({
   overrideExisting: true,
   endpoints: (build) => ({
     getJiraIssue: build.query<TIssue, TGetIssueParams>({
       query: ({ issueIdOrKey, tracker }) => ({
-        url: jiraIssueEndpoints.issue(issueIdOrKey),
+        url: getTrackerUrl(jiraIssueEndpoints.issue(issueIdOrKey), tracker),
         headers: getTrackerHeaders(tracker),
       }),
       transformResponse: (data: TJiraIssue) => transformJiraIssueToCommonIssue(data),
@@ -30,7 +31,7 @@ export const jiraIssueApi = api.injectEndpoints({
         const allIssues = await fetchAllPages(
           (page) =>
             fetchWithBQ({
-              url: jiraIssueEndpoints.issues,
+              url: getTrackerUrl(jiraIssueEndpoints.issues, arg.tracker),
               method: 'POST',
               body: {
                 jql: createJiraIssueRequest(arg),
@@ -52,7 +53,7 @@ export const jiraIssueApi = api.injectEndpoints({
     }),
     getJiraStatuses: build.query<TIssueStatusDescription[], TGetIssuesStatusesQuery>({
       query: ({ tracker }) => ({
-        url: jiraIssueEndpoints.statuses,
+        url: getTrackerUrl(jiraIssueEndpoints.statuses, tracker),
         headers: getTrackerHeaders(tracker),
       }),
       transformResponse: ({ values }: TJiraIssueStatusDescriptionsResponse) => values,
