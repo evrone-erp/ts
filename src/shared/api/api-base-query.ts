@@ -1,7 +1,8 @@
 import { fetchBaseQuery, retry } from '@reduxjs/toolkit/query';
 
-const getOrgHeader = () => {
-  if (process.env.NEXT_PUBLIC_IS_CLOUD_ORG === 'true') {
+const getOrgHeader = (currentOrgId: string) => {
+  const yandex360Regex = /^\d+$/;
+  if (!yandex360Regex.test(currentOrgId)) {
     return 'X-Cloud-Org-ID';
   }
   return 'X-Org-ID';
@@ -15,7 +16,7 @@ class HeadersService {
   }
 
   setCurrentOrgId(currentOrgId: string) {
-    this.headers.set(getOrgHeader(), currentOrgId);
+    this.headers.set(getOrgHeader(currentOrgId), currentOrgId);
   }
 
   removeCurrentOrgId() {
