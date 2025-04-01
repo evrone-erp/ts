@@ -84,8 +84,7 @@ npm error 401 Unauthorized - GET https://npm.pkg.github.com/download/... - unaut
   docker run -ti -e CLIENT_ID=XXX -p 3000:3000 timesheet
   ```
 
-При первом запуске приложения необходимо прописать ID организации. Его можно найти по ссылке https://tracker.yandex.com/admin/orgs 
-На данный момент поддерживаются только организации Yandex 360. Поддержка Yandex Cloud планируется в будущем.
+При первом запуске приложения необходимо прописать ID организации. Его можно найти по ссылке https://tracker.yandex.com/admin/orgs
 
 ![start-page.png](start-page.png)
 
