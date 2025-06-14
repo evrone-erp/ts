@@ -22,7 +22,7 @@
     "clsx": "^2.0.0",
     "dayjs": "^1.11.3",
     "final-form": "^4.20.7",
-    "next": "^14.0.4",
+    "next": "^14.2.30",
     "parse-duration": "^1.0.2",
     "query-string": "^8.1.0",
     "react": "^18.2.0",
