@@ -43,6 +43,7 @@ export const yandexIssueApi = api.injectEndpoints({
         // this API is undocumented it Yandex Tracker docs
         // it sends English titles only if Accept-language header is provided
         url: yandexIssueEndpoints.statuses,
+        params: {perPage: 300},
         headers: getTrackerHeaders(tracker, {
           'Accept-language': language,
         }),

@@ -1,1 +1,25 @@
-<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 1600 1600"><path fill="#F53" d="M0 0h1600v1600H0z"/><path fill="#fff" fill-rule="evenodd" d="M812 320c-263 0-456 190-456 475 0 267 163 485 460 485 233 0 373-140 416-293h-181c-39 87-111 140-242 140-146 0-250-104-270-276h703c21-299-146-531-430-531Zm-2 145c-139 0-241 72-266 247h515c-5-136-103-247-249-247Z" clip-rule="evenodd"/></svg>
+<?xml version="1.0" encoding="utf-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400px" height="400px">
+  <defs>
+    <clipPath id="round-corner">
+      <rect x="0" y="0" width="400" height="122" rx="22" ry="22"/>
+    </clipPath>
+  </defs>
+  <rect x="0" y="0" width="400" height="400" rx="22" ry="22" style="fill: rgb(216, 216, 216);"/>
+  <rect x="225" y="190" width="37" height="30" style="fill: rgb(196, 196, 196);"/>
+  <rect x="300" y="190" width="37" height="30" style="fill: rgb(196, 196, 196);"/>
+  <circle style="fill: rgb(216, 216, 216); stroke-width: 25px; stroke: rgb(222, 188, 58);" cx="295" cy="295" r="92"/>
+  <polyline style="fill: rgb(216, 216, 216); stroke-width: 25px; stroke: rgb(14, 16, 67);" points="290 228 290 310 345 310"/>
+  <rect x="0" y="0" width="400" height="100" clip-path="url(#round-corner)" style="fill: rgb(78, 164, 240);"/>
+  <circle style="fill: rgb(222, 188, 58); stroke: rgb(0, 0, 0); stroke-width: 0px;" cx="125" cy="50" r="15"/>
+  <circle style="fill: rgb(222, 188, 58); stroke: rgb(0, 0, 0); stroke-width: 0px;" cx="275" cy="50" r="15"/>
+  <rect x="150" y="125" width="37" height="30" style="fill: rgb(196, 196, 196);"/>
+  <rect x="225" y="125" width="37" height="30" style="fill: rgb(196, 196, 196);"/>
+  <rect x="300" y="125" width="37" height="30" style="fill: rgb(196, 196, 196);"/>
+  <rect x="150" y="190" width="37" height="30" style="fill: rgb(196, 196, 196);"/>
+  <rect x="75" y="190" width="37" height="30" style="fill: rgb(196, 196, 196);"/>
+  <rect x="150" y="255" width="37" height="30" style="fill: rgb(196, 196, 196);"/>
+  <rect x="150" y="320" width="37" height="30" style="fill: rgb(196, 196, 196);"/>
+  <rect x="75" y="255" width="37" height="30" style="fill: rgb(196, 196, 196);"/>
+  <rect x="75" y="320" width="37" height="30" style="fill: rgb(196, 196, 196);"/>
+</svg>
