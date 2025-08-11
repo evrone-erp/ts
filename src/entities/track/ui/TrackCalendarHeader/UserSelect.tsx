@@ -32,8 +32,8 @@ export const UserSelect = memo(({ userId }: IUserSelectProps) => {
 
   return (
     <Select
-      onDropdownVisibleChange={setIsUsersLoad}
-      bordered={false}
+      onOpenChange={setIsUsersLoad}
+      variant="borderless"
       allowClear={!!userId}
       options={userOptions}
       value={user?.uid ? String(user?.uid) : undefined}

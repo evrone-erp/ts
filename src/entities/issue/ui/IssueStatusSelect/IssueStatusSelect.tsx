@@ -38,7 +38,7 @@ export const IssueStatusSelect = ({ onChange, value }: IIssueStatusSelectProps) 
       mode="multiple"
       onChange={onChange}
       value={value}
-      bordered={false}
+      variant="borderless"
       filterOption={filterOption}
       allowClear
       placeholder={message('filter.status.placeholder')}

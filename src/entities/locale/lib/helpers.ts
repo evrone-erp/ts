@@ -10,6 +10,9 @@ export const getOptions: TGetOptions = (id: string) => ({ defaultMessage: '\u00A
 
 export type TGetMessage = (intl: IntlShape) => TMessage;
 
-export const getMessage: TGetMessage = (intl) => (id, values) => intl.formatMessage(getOptions(id), values) as string;
+export const getMessage: TGetMessage = (intl) => (id, values) => {
+  const formatted = intl.formatMessage(getOptions(id), values);
+  return Array.isArray(formatted) ? formatted.join('') : (formatted as string);
+};
 
 export const isRuLocale = (locale: TLocale | null) => locale === 'ru';
