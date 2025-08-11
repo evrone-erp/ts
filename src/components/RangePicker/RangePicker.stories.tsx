@@ -1,5 +1,4 @@
-import React from 'react';
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react';
 
 import { RangePicker } from './index';
 
@@ -7,7 +6,7 @@ import { RangePicker } from './index';
 // Maybe convert to mdx
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
-export default {
+const meta: Meta<typeof RangePicker> = {
   title: 'Example/RangePicker',
   component: RangePicker,
   // More on argTypes: https://storybook.js.org/docs/react/api/argtypes
@@ -18,13 +17,15 @@ export default {
   args: {
     children: 'RangePicker label',
   },
-} as ComponentMeta<typeof RangePicker>;
+};
+
+export default meta;
+type TStory = StoryObj<typeof meta>;
 
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
-const Template: ComponentStory<typeof RangePicker> = (args) => <RangePicker {...args} />;
-
-export const Primary = Template.bind({});
-// More on args: https://storybook.js.org/docs/react/writing-stories/args
-// Primary.args = {
-//   type: 'primary',
-// };
+export const Primary: TStory = {
+  args: {
+    // More on args: https://storybook.js.org/docs/react/writing-stories/args
+    // type: 'primary',
+  },
+};
