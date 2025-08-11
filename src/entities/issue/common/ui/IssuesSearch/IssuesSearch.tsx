@@ -36,7 +36,7 @@ export const IssuesSearch = ({
       value={value || undefined}
       optionFilterProp="label"
       onSelect={handleSelect}
-      dropdownRender={(menu) => <Spin spinning={isFetchingIssues}>{menu}</Spin>}
+      popupRender={(menu) => <Spin spinning={isFetchingIssues}>{menu}</Spin>}
     />
   );
 };

@@ -15,7 +15,7 @@ export const usePinnedIssues = (key: string) => {
     }
   }, [key, pinnedIssues, setPinnedIssues]);
 
-  const pinnedIssuesByOrg = useMemo(() => (key ? pinnedIssues[key] ?? [] : []), [key, pinnedIssues]);
+  const pinnedIssuesByOrg = useMemo(() => (key ? (pinnedIssues[key] ?? []) : []), [key, pinnedIssues]);
 
   const handleAddPinnedIssue = useCallback(
     (issueKey: string) => {

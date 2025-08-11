@@ -39,5 +39,5 @@ export function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: `${apiPrefix}/:path*`,
+  matcher: '/jira/:path*',
 };

@@ -33,8 +33,8 @@ export const MainTrackerSelector = () => {
     return res;
   }, [trackersState]);
 
-  const onChange = (_: unknown, option: TOption | TOption[]) => {
-    if (!Array.isArray(option)) {
+  const onChange = (_: unknown, option?: TOption | TOption[]) => {
+    if (option && !Array.isArray(option)) {
       dispatch(
         trackers.actions.setMainTracker({
           id: option.value,
