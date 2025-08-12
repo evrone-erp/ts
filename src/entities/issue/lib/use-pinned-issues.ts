@@ -19,7 +19,7 @@ export const usePinnedIssues = () => {
   }, [currentOrgId, pinnedIssues, setPinnedIssues]);
 
   const pinnedIssuesByOrg = useMemo(
-    () => (currentOrgId ? pinnedIssues[currentOrgId] ?? [] : []),
+    () => (currentOrgId ? (pinnedIssues[currentOrgId] ?? []) : []),
     [currentOrgId, pinnedIssues],
   );
 

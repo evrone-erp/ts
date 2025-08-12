@@ -27,7 +27,7 @@ export const IssuesSearch: FC<TIssuesSearchProps> = ({ onChange, value, ...autoC
       value={value || undefined}
       optionFilterProp="label"
       onSelect={handleSelect}
-      dropdownRender={(menu) => <Spin spinning={isFetching}>{menu}</Spin>}
+      popupRender={(menu) => <Spin spinning={isFetching}>{menu}</Spin>}
     />
   );
 };

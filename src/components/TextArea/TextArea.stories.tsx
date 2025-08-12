@@ -1,18 +1,23 @@
-import React from 'react';
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react';
 
 import { TextArea } from './index';
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
-export default {
+const meta: Meta<typeof TextArea> = {
   title: 'Example/TextArea',
   component: TextArea,
-  args: {
-    placeholder: 'TextArea placeholder',
+  argTypes: {
+    placeholder: { control: 'text' },
   },
-} as ComponentMeta<typeof TextArea>;
+};
+
+export default meta;
+type TStory = StoryObj<typeof meta>;
 
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
-const Template: ComponentStory<typeof TextArea> = (args) => <TextArea {...args} />;
-
-export const Primary = Template.bind({});
+export const Primary: TStory = {
+  args: {
+    primary: true,
+    label: 'TextArea',
+  },
+};

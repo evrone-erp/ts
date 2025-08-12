@@ -24,7 +24,7 @@ export const QueueSelect = ({ onChange, value }: IQueueSelectProps) => {
       mode="multiple"
       onChange={onChange}
       value={value}
-      bordered={false}
+      variant="borderless"
       allowClear
       placeholder={message('filter.queue.placeholder')}
       loading={isFetchingQueueList}
