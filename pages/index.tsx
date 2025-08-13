@@ -1,10 +1,9 @@
 import { OrganizationRoute } from 'entities/organization/ui/OrganizationRoute';
 import { IndexPage } from 'pages/Index';
+import { ReactElement } from 'react';
 
-export default (): JSX.Element => (
-
-    <OrganizationRoute>
-      <IndexPage />
-    </OrganizationRoute>
-
+export default (): ReactElement => (
+  <OrganizationRoute>
+    <IndexPage />
+  </OrganizationRoute>
 );

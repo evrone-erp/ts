@@ -1,43 +1,32 @@
-import { NextRequest, NextResponse } from 'next/server';
-
-const apiPrefix = '/jira/';
-
-const headerWhitelist = new Set([
-  'Accept'.toLowerCase(),
-  'User-Agent'.toLowerCase(),
-  'Content-Type'.toLowerCase(),
-  'content-length'.toLowerCase(),
-  'Authorization'.toLowerCase(),
-]);
+import { NextRequest } from 'next/server';
+import { jiraAuthEndpoints } from 'entities/auth/model/jira/endpoints';
 
 /**
- * redirects api calls to the Jira tracker specified in X-Tracker-Url header
+ * refreshes token, using Jira's OAuth API
  */
-export function middleware(request: NextRequest) {
-  const redirectToTrackerUrl = request.headers.get('X-Tracker-Url');
+export async function middleware(request: NextRequest) {
+  try {
+    const { clientId, refreshToken } = await request.json();
 
-  if (redirectToTrackerUrl) {
-    const requestPath = request.nextUrl.pathname.slice(apiPrefix.length);
-    const apiPath = `/rest/api/${requestPath}${request.nextUrl.search}`;
-    const redirectToUrl = new URL(apiPath, redirectToTrackerUrl);
-
-    const redirectHeaders = new Headers();
-
-    request.headers.forEach((value, key) => {
-      if (headerWhitelist.has(key.toLowerCase())) {
-        redirectHeaders.set(key, value);
-      }
+    return await fetch(jiraAuthEndpoints.token, {
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+      method: 'POST',
+      body: JSON.stringify({
+        grant_type: 'refresh_token',
+        client_id: clientId,
+        client_secret: process.env.JIRA_CLIENT_SECRET,
+        refresh_token: refreshToken,
+      }),
     });
-
-    // we have to set user agent to curl in order to evade Jira's CSRF protection
-    redirectHeaders.set('User-Agent', 'curl/7.81.0');
-
-    return NextResponse.rewrite(redirectToUrl, {
-      headers: redirectHeaders,
-    });
+  } catch (e) {
+    console.error(e);
+    return Response.error();
   }
 }
 
 export const config = {
-  matcher: '/jira/:path*',
+  matcher: `/jira-be/refresh`,
 };

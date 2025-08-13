@@ -9,9 +9,7 @@ export const getTrackerHeaders = (
     headers.set(tracker.isCloud ? 'X-Cloud-Org-ID' : 'X-Org-ID', encodeURIComponent(tracker.orgId));
     headers.set('Authorization', `OAuth ${tracker.authToken}`);
   } else if (isJiraTrackerCfg(tracker)) {
-    headers.set('X-Tracker-Url', tracker.url);
-    headers.set('Authorization', `Basic ${btoa(`${tracker.username}:${tracker.token}`)}`);
-    headers.set('X-Atlassian-Token', 'no-check');
+    headers.set('Authorization', `Bearer  ${tracker.authToken}`);
   }
 
   if (additionalHeaders) {
