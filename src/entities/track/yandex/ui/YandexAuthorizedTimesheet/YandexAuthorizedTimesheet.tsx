@@ -1,10 +1,10 @@
-import { useUnauthorizedTracker } from 'entities/auth/ui/UnauthorizedTracker';
+import { useUnauthorizedTracker } from 'entities/auth/ui/common/UnauthorizedTracker/useUnauthorizedTracker';
 import { useFilterValues } from 'features/filters/lib/useFilterValues';
 import { YandexTimesheet } from 'entities/track/yandex/ui/YandexTimesheet/YandexTimesheet';
 import { Loading } from 'shared/ui/Loading';
 import { TCurrentLocale } from 'entities/locale/model/types';
 import { TYandexTrackerConfig } from 'entities/tracker/model/types';
-import { UserLoadFail } from 'entities/auth/ui/UserLoadFail/UserLoadFail';
+import { UserLoadFail } from 'entities/auth/ui/common/UserLoadFail/UserLoadFail';
 import { useYandexUser } from 'entities/user/yandex/hooks/use-yandex-user';
 import { useSetTrackerUsername } from 'entities/tracker/lib/useSetTrackerUsername';
 import { useLogoutTracker } from 'entities/tracker/lib/useLogoutTracker';

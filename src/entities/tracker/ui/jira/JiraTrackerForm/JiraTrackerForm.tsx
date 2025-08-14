@@ -80,21 +80,6 @@ export const JiraTrackerForm = ({
         <Form.Item name="username" label={message('tracker.username')} rules={[{ required: true, type: 'email' }]}>
           <Input />
         </Form.Item>
-        <Form.Item
-          name="token"
-          label={message('tracker.jira.token')}
-          rules={[{ required: true }]}
-          extra={
-            <p>
-              {message('tracker.jira.token.hint')}{' '}
-              <a href="https://id.atlassian.com/manage-profile/security" target="_blank" rel="noreferrer noopener">
-                {message('tracker.jira.token.hint.link')}
-              </a>
-            </p>
-          }
-        >
-          <Input type="password" />
-        </Form.Item>
 
         <Form.Item hidden name="type" initialValue={Tracker.Jira}>
           <Input />

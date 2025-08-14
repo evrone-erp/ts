@@ -9,15 +9,18 @@ type TTrackerConfigCommon = {
   name: string;
   username: string;
   authToken?: string;
-  lastLogin?: string;
 };
 
 export type TJiraTrackerConfig = TTrackerConfigCommon & {
-  token: string;
   type: Tracker.Jira;
+  tokenExpiryTimestamp?: number;
+  refreshToken?: string;
+  refreshTokenExpiryTimestamp?: number;
+  cloudId?: string;
 };
 
 export type TYandexTrackerConfig = TTrackerConfigCommon & {
+  lastLogin?: string;
   orgId: string;
   isCloud: boolean;
   type: Tracker.Yandex;
@@ -31,12 +34,14 @@ export const isJiraTrackerCfg = (x: TTrackerConfig | undefined): x is TJiraTrack
 export const isYandexTrackerCfg = (x: TTrackerConfig | undefined): x is TYandexTrackerConfig =>
   !!x && x.type === Tracker.Yandex;
 
-export const isTrackerType = (x: unknown): x is Tracker => x === Tracker.Jira || x === Tracker.Yandex;
-
 export type TTrackerStore = {
   trackers: Record<string, TTrackerConfig>;
   ids: string[];
   mainTrackerId: string | null;
+  // jira OAuth requires a generated "state" string, associated with the user account.
+  // this is a map username -> state
+  // https://developer.atlassian.com/cloud/jira/platform/oauth-2-3lo-apps/#1--direct-the-user-to-the-authorization-url-to-get-an-authorization-code
+  userName2State: Record<string, string>;
 };
 
 export type TSetMainTrackerPayload = {
@@ -53,8 +58,29 @@ export type TSetUsernamePayload = {
   username: string;
 };
 
-export type TSetAuthTokenPayload = {
+export type TSetYandexAuthTokenPayload = {
   token: string;
   id: string | undefined;
   lastLogin: string;
+};
+
+export type TSetJiraTokenAndCloudIdByUrlsPayload = {
+  token: string;
+  refreshToken: string;
+  tokenExpiryTimestamp: number;
+  refreshTokenExpiryTimestamp: number;
+  urls: string[];
+  url2CloudId: Record<string, string>;
+};
+
+export type TSetUsernameState = {
+  username: string;
+  jiraState: string;
+};
+
+export type TSetJiraTrackerTokens = {
+  trackerId: string;
+  token: string;
+  refreshToken: string;
+  tokenExpiryTimestamp: number;
 };

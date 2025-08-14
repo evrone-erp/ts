@@ -1,3 +1,3 @@
-import { TokenPage } from 'pages/Token';
+import { YandexTokenPage } from 'pages/YandexToken/YandexTokenPage';
 
-export default () => <TokenPage />;
+export default () => <YandexTokenPage />;

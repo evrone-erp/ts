@@ -1,13 +1,13 @@
-import { Auth } from 'entities/auth/ui/Auth';
+import { YandexAuth } from 'entities/auth/ui/yandex/YandexAuth/YandexAuth';
 import { configApi } from 'entities/config/model/api';
 import React, { PropsWithChildren } from 'react';
-import { TTrackerConfig } from 'entities/tracker/model/types';
+import { TYandexTrackerConfig } from 'entities/tracker/model/types';
 
 type TProps = {
-  tracker: TTrackerConfig;
+  tracker: TYandexTrackerConfig;
 };
 
-export const AuthRoute = ({ children, tracker }: PropsWithChildren<TProps>) => {
+export const YandexAuthRoute = ({ children, tracker }: PropsWithChildren<TProps>) => {
   const { configAuth } = configApi.useGetConfigQuery(undefined, {
     selectFromResult: (state) => ({ configAuth: state.data?.auth }),
   });
@@ -19,7 +19,7 @@ export const AuthRoute = ({ children, tracker }: PropsWithChildren<TProps>) => {
   }
 
   if (configAuth) {
-    return <Auth config={configAuth} tracker={tracker} />;
+    return <YandexAuth config={configAuth} tracker={tracker} />;
   }
 
   return null;

@@ -21,6 +21,9 @@ import { QueueSelect } from 'entities/queue/common/ui/QueueSelect/QueueSelect';
 import { IssueSummarySearch } from 'entities/issue/common/ui/IssueSummarySearch/IssueSummarySearch';
 import { JIRA_ISSUE_SORTING_KEY } from 'entities/issue/jira/model/constants';
 import { sortWithPinedIssues } from 'entities/issue/common/lib/sortWithPinedIssues';
+import { Button } from 'antd';
+import { Message } from 'entities/locale/ui/Message';
+import { useLogoutTracker } from 'entities/tracker/lib/useLogoutTracker';
 import { TTrackFormCreateFields } from 'entities/track/common/ui/TrackFormCreate/types';
 
 type TProps = {
@@ -30,6 +33,8 @@ type TProps = {
 };
 
 export const JiraTimesheet: FC<TProps> = ({ tracker, language, uId }) => {
+  const logout = useLogoutTracker(tracker);
+
   // due to how issues and worklogs are loaded from jira, we have to include issue keys for all created tracks here in order
   // to always load issue for the track.
   // otherwise in case user creates track for an issue that hasn't been loaded yet, it wouldn't be loaded
@@ -118,6 +123,11 @@ export const JiraTimesheet: FC<TProps> = ({ tracker, language, uId }) => {
     <div>
       <TrackCalendarHeader
         isEdit={isEdit}
+        upperRowControls={
+          <Button onClick={logout} type="link">
+            <Message id="home.logout" />
+          </Button>
+        }
         filters={
           <>
             <JiraUserSelectConnected tracker={tracker} userId={userIdFromFilter} />

@@ -17,6 +17,7 @@ import { batchPromises } from 'shared/lib/batch-promises';
 import { jiraTrackEndpoints } from 'entities/track/jira/model/endpoints';
 import { PatchCollection } from '@reduxjs/toolkit/src/query/core/buildThunks';
 import { jiraTrackUpdateFormToTrackParts } from 'entities/track/jira/model/jiraTrackUpdateFormToTrackParts';
+import { getTrackerUrl } from 'entities/tracker/lib/getTrackerUrl';
 
 export const jiraTrackApi = api.injectEndpoints({
   overrideExisting: true,
@@ -59,7 +60,7 @@ export const jiraTrackApi = api.injectEndpoints({
           fetchAllPages(
             (page) =>
               fetchWithBQ({
-                url: jiraTrackEndpoints.issueTracks(issueKey),
+                url: getTrackerUrl(jiraTrackEndpoints.issueTracks(issueKey), tracker),
                 method: 'GET',
                 params: {
                   startAt: (page - 1) * 5000,
@@ -73,7 +74,7 @@ export const jiraTrackApi = api.injectEndpoints({
             getTotalPagesJira,
           );
 
-        const allWorklogs = await batchPromises(issueKeyList, 1, async (issueKey) => {
+        const allWorklogs = await batchPromises(issueKeyList, 5, async (issueKey) => {
           const worklogs = await loadIssueWorklogs(issueKey);
           if (worklogs.error) {
             throw new Error('Error during track loading');
@@ -86,7 +87,7 @@ export const jiraTrackApi = api.injectEndpoints({
     }),
     createJiraTrack: build.mutation<TJiraTrack, TJiraCreateTrackParams>({
       query: ({ issueKey, tracker, timeSpentSeconds, start, comment }) => ({
-        url: jiraTrackEndpoints.issueTracks(issueKey),
+        url: getTrackerUrl(jiraTrackEndpoints.issueTracks(issueKey), tracker),
         method: 'POST',
         body: JSON.stringify({
           started: start,
@@ -127,7 +128,7 @@ export const jiraTrackApi = api.injectEndpoints({
     }),
     deleteJiraTrack: build.mutation<{}, TDeleteTrackParams>({
       query: ({ issueIdOrKey, trackId, tracker }) => ({
-        url: jiraTrackEndpoints.track(issueIdOrKey, trackId),
+        url: getTrackerUrl(jiraTrackEndpoints.track(issueIdOrKey, trackId), tracker),
         method: 'DELETE',
         headers: getTrackerHeaders(tracker),
       }),
@@ -166,7 +167,7 @@ export const jiraTrackApi = api.injectEndpoints({
     }),
     updateJiraTrack: build.mutation<{}, TJiraEditTrackParams>({
       query: ({ param: { issueIdOrKey, trackId }, form: { start, timeSpentSeconds, comment }, tracker }) => ({
-        url: jiraTrackEndpoints.track(issueIdOrKey, trackId),
+        url: getTrackerUrl(jiraTrackEndpoints.track(issueIdOrKey, trackId), tracker),
         method: 'PUT',
         body: JSON.stringify({
           started: start,

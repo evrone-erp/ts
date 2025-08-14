@@ -81,6 +81,8 @@
   "unauthorizedTracker.changeAccount": "Change account",
   "unauthorizedTracker.changeOrgId": "Specify another ID",
   "unauthorizedTracker.changeConfig": "Edit tracker configuration",
+  "unauthorizedTracker.tokenError": "Error during authentication",
+  "unauthorizedTracker.authenticateAgain": "Try authenticate again",
   "form.invalid.format": "Invalid format",
   "form.invalid.empty": "Field can't be empty",
   "filter.status.placeholder": "Task status",
