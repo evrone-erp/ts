@@ -114,6 +114,5 @@
   "tracker.yandex.orgId.hint.link": "здесь",
   "tracker.jira.token": "API Токен",
   "tracker.jira.token.hint": "API токен можно сгенерировать",
-  "tracker.jira.token.hint.link": "здесь",
-  "tracker.jira.comment.edit.notSupported": "Редактирование комментариев Jira не поддерживается"
+  "tracker.jira.token.hint.link": "здесь"
 }

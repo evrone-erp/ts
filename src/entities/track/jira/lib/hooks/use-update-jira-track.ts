@@ -10,13 +10,35 @@ export function useUpdateJiraTrack(tracker: TTrackerConfig) {
   const [startUpdateMutation, { isLoading: isTrackUpdateLoading }] = jiraTrackApi.useUpdateJiraTrackMutation();
 
   const updateTrack = useCallback(
-    ({ start, duration }: Partial<TTrackInputEditForm>, issueIdOrKey?: string, trackId?: number | string) => {
+    (
+      { start, duration, comment: commentString }: Partial<TTrackInputEditForm>,
+      issueIdOrKey?: string,
+      trackId?: number | string,
+    ) => {
       if (!trackId || !issueIdOrKey) return;
+      debugger;
+      const splittedComment = commentString?.split('\n');
+      const comment = splittedComment?.length
+        ? {
+            version: 1,
+            type: 'doc',
+            content: splittedComment.map((text) => ({
+              type: 'paragraph',
+              content: [
+                {
+                  type: 'text',
+                  text,
+                },
+              ],
+            })),
+          }
+        : undefined;
       startUpdateMutation({
         tracker,
         form: filterObjectFields({
           start: start ? dateToJiraStartedDate(start) : undefined,
           timeSpentSeconds: isoDurationToSeconds(duration),
+          comment,
         }),
         param: {
           issueIdOrKey,

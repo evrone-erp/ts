@@ -1,6 +1,6 @@
 import { Button, Card, Modal } from 'antd';
 import { PropsWithChildren } from 'react';
-import { DeleteOutlined, SettingOutlined } from '@ant-design/icons';
+import { DeleteOutlined, ExportOutlined, SettingOutlined } from '@ant-design/icons';
 import Link from 'next/link';
 import styles from 'entities/tracker/ui/common/TrackerCard/TrackerCard.module.scss';
 import { useMessage } from 'entities/locale/lib/hooks';
@@ -46,6 +46,7 @@ export const TrackerCard = ({
       title={
         <Link className={styles.title} href={appPaths.tracker(id)} title={name}>
           {name}
+          <ExportOutlined />
         </Link>
       }
       extra={

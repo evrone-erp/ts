@@ -19,6 +19,38 @@ export type TJiraTracksResponse = {
   worklogs: TJiraTrack[];
 };
 
+interface IAnyADFBlockNode {
+  [key: string]: unknown;
+  type: string;
+  content: (IAnyADFBlockNode | IAnyADFInlineNode)[];
+}
+
+interface IAnyADFInlineNode {
+  [key: string]: unknown;
+  type: string;
+  text: string;
+}
+
+export interface IADFParagraphNode extends IAnyADFBlockNode {
+  type: 'paragraph';
+}
+
+interface IADFTextNode extends IAnyADFInlineNode {
+  type: 'text';
+  text: string;
+}
+
+export const isADFTextNode = (x: IAnyADFInlineNode | IAnyADFBlockNode): x is IADFTextNode =>
+  'text' in x && x.type === 'text';
+export const isADFParagraphNode = (x: IAnyADFInlineNode | IAnyADFBlockNode): x is IADFParagraphNode =>
+  'content' in x && x.type === 'paragraph';
+
+interface IADFDocument {
+  version: 1;
+  type: 'doc';
+  content: IAnyADFBlockNode[];
+}
+
 export type TJiraTrack = {
   id: string;
   issueId: string;
@@ -28,6 +60,7 @@ export type TJiraTrack = {
     accountId: string;
     emailAddress: string;
   };
+  comment: IADFDocument;
 };
 
 export type TJiraCreateTrackParams = {
@@ -35,13 +68,13 @@ export type TJiraCreateTrackParams = {
   issueKey: string;
   timeSpentSeconds: number;
   start: string;
-  comment?: object;
+  comment?: IADFDocument;
 };
 
 export type TJiraEditTrackParams = {
   tracker: TTrackerConfig;
   form: {
-    comment?: string;
+    comment?: IADFDocument;
     start?: string;
     timeSpentSeconds?: number;
   };

@@ -1,22 +1,34 @@
-import { TrackerManagement } from 'entities/tracker/ui/common/TrackerManagement/TrackerManagement';
+import { CloseOutlined } from '@ant-design/icons';
 import { LocaleSelector } from 'entities/locale/ui/LocaleSelector';
 import { MainTrackerSelector } from 'entities/tracker/ui/common/MainTrackerSelector/MainTrackerSelector';
 import { Message } from 'entities/locale/ui/Message';
-import { Typography } from 'antd';
+import { Flex, Typography } from 'antd';
+import Link from 'next/link';
+import { appPaths } from 'shared/config/constants';
+import { JiraTrackerManagement } from 'entities/tracker/ui/common/JiraTrackerManagement/JiraTrackerManagement';
+import { YandexTrackerManagement } from 'entities/tracker/ui/common/YandexTrackerManagement/YandexTrackerManagement';
 import styles from './TrackersPage.module.scss';
 
-export const TrackersPage = () => (
+export const TrackersPage = ({ isYandexTrackerEnabled, isJiraEnabled }: TTrackersPageProps) => (
   <main className={styles.trackersPage}>
-    <div className={styles.localeSelector}>
+    <Flex gap="small" align="center" className={styles.titleWrapper}>
+      <Typography.Title level={1} className={styles.title}>
+        <Message id="trackers.configuration.title" />
+      </Typography.Title>
+      <Link className={styles.closeIcon} type="text" href={appPaths.home}>
+        <CloseOutlined />
+      </Link>
       <LocaleSelector />
-    </div>
-
-    <Typography.Title level={1} className={styles.title}>
-      <Message id="trackers.configuration.title" />
-    </Typography.Title>
+    </Flex>
     <div className={styles.sections}>
       <MainTrackerSelector />
-      <TrackerManagement />
+      {isYandexTrackerEnabled && <YandexTrackerManagement />}
+      {isJiraEnabled && <JiraTrackerManagement />}
     </div>
   </main>
 );
+
+export type TTrackersPageProps = {
+  isYandexTrackerEnabled: boolean;
+  isJiraEnabled: boolean;
+};

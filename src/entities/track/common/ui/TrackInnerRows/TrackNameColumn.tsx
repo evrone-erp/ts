@@ -1,4 +1,4 @@
-import { Form, Typography } from 'antd';
+import { Form } from 'antd';
 import { TextArea } from 'components';
 import { FocusEventHandler, memo, useEffect } from 'react';
 import { TTrackInputEditForm } from 'entities/track/common/model/types';
@@ -10,21 +10,12 @@ interface ITrackNameColumnProps {
   trackComment: string | undefined;
   issueId: string;
   isEdit?: boolean;
-  isEditTrackComment?: boolean;
-  trackCommentEditDisabledReason?: string;
+  isReadOnlyComment?: boolean;
   updateTrack(input: Partial<TTrackInputEditForm>, issueIdOrKey?: string, trackId?: number | string): void;
 }
 
 export const TrackNameColumn = memo(
-  ({
-    issueId,
-    isEdit,
-    isEditTrackComment,
-    trackId,
-    trackComment,
-    updateTrack,
-    trackCommentEditDisabledReason,
-  }: ITrackNameColumnProps) => {
+  ({ issueId, isEdit, isReadOnlyComment, trackId, trackComment, updateTrack }: ITrackNameColumnProps) => {
     const initialValues = {
       comment: trackComment ?? '',
     } as const;
@@ -56,25 +47,18 @@ export const TrackNameColumn = memo(
           {isEdit ? (
             <>
               <TrackDeleteButton trackId={trackId} issueIdOrKey={issueId} />
-
-              {isEditTrackComment ? (
-                <Form noValidate className={styles.form} form={form} initialValues={initialValues}>
-                  <Form.Item name="comment" noStyle>
-                    <TextArea
-                      onFocus={handleFocus}
-                      onBlur={handleBlur}
-                      className={styles.textarea}
-                      spellCheck={false}
-                      autoSize
-                      readOnly={!isEdit}
-                    />
-                  </Form.Item>
-                </Form>
-              ) : (
-                <Typography.Text disabled className={styles.commentEditDisabled}>
-                  {trackCommentEditDisabledReason}
-                </Typography.Text>
-              )}
+              <Form noValidate className={styles.form} form={form} initialValues={initialValues}>
+                <Form.Item name="comment" noStyle>
+                  <TextArea
+                    onFocus={handleFocus}
+                    onBlur={handleBlur}
+                    className={styles.textarea}
+                    spellCheck={false}
+                    autoSize
+                    readOnly={!isEdit || isReadOnlyComment}
+                  />
+                </Form.Item>
+              </Form>
             </>
           ) : (
             <div>{initialValues.comment}</div>

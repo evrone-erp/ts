@@ -11,46 +11,33 @@ interface ITrackInnerRowProps {
   issueId: string;
   range: string[];
   isEdit?: boolean;
-  isEditTrackComment?: boolean;
-  trackCommentEditDisabledReason?: string;
   updateTrack(input: Partial<TTrackInputEditForm>, issueIdOrKey?: string, trackId?: number | string): void;
 }
 
-export const TrackInnerRow = memo(
-  ({
-    track,
-    issueId,
-    range,
-    isEdit = false,
-    updateTrack,
-    isEditTrackComment = isEdit,
-    trackCommentEditDisabledReason,
-  }: ITrackInnerRowProps) => (
-    <TrackCalendarInnerRow>
-      <TrackNameColumn
-        trackId={track.id}
-        trackComment={track.comment}
+export const TrackInnerRow = memo(({ track, issueId, range, isEdit = false, updateTrack }: ITrackInnerRowProps) => (
+  <TrackCalendarInnerRow>
+    <TrackNameColumn
+      trackId={track.id}
+      trackComment={track.comment}
+      issueId={issueId}
+      isEdit={isEdit}
+      updateTrack={updateTrack}
+      isReadOnlyComment={track.isReadOnlyComment}
+    />
+
+    {range.map((date) => (
+      <TrackColumn
+        key={date.valueOf()}
+        date={date}
+        track={track}
         issueId={issueId}
         isEdit={isEdit}
-        isEditTrackComment={isEditTrackComment}
         updateTrack={updateTrack}
-        trackCommentEditDisabledReason={trackCommentEditDisabledReason}
       />
+    ))}
 
-      {range.map((date) => (
-        <TrackColumn
-          key={date.valueOf()}
-          date={date}
-          track={track}
-          issueId={issueId}
-          isEdit={isEdit}
-          updateTrack={updateTrack}
-        />
-      ))}
-
-      <TrackCalendarColSum track={track} className={styles.sumCol} />
-    </TrackCalendarInnerRow>
-  ),
-);
+    <TrackCalendarColSum track={track} className={styles.sumCol} />
+  </TrackCalendarInnerRow>
+));
 
 TrackInnerRow.displayName = 'TrackInnerRow';

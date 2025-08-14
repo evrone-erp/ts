@@ -167,7 +167,6 @@ export const JiraTimesheet: FC<TProps> = ({ tracker, language, uId }) => {
         renderTrackCalendarRowConnected={(props) => (
           <JiraTrackCalendarRowConnected
             {...props}
-            isEditTrackComment={false}
             tracks={tracks}
             updateTrack={updateTrack}
             getIssueUrl={getIssueUrl}
@@ -177,7 +176,6 @@ export const JiraTimesheet: FC<TProps> = ({ tracker, language, uId }) => {
         renderIssueTracksConnected={(props) => (
           <JiraIssueTracksConnected
             {...props}
-            isEditTrackComment={false}
             tracker={tracker}
             updateTrack={updateTrack}
             isTrackUpdateLoading={isTrackUpdateLoading}
