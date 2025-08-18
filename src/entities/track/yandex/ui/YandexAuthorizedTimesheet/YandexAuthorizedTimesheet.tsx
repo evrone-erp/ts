@@ -12,11 +12,9 @@ import { useLogoutTracker } from 'entities/tracker/lib/useLogoutTracker';
 type TProps = {
   language: TCurrentLocale | undefined;
   tracker: TYandexTrackerConfig;
-  // we need this prop only to preserve old UX for yandex tracker on index page
-  unauthorizedErrorShouldAppearAsOrgChange: boolean;
 };
 
-export const YandexAuthorizedTimesheet = ({ language, tracker, unauthorizedErrorShouldAppearAsOrgChange }: TProps) => {
+export const YandexAuthorizedTimesheet = ({ language, tracker }: TProps) => {
   const { userId } = useFilterValues();
 
   const { uId, isLoadingSelf, errorSelf, self } = useYandexUser(tracker, userId);
@@ -25,12 +23,7 @@ export const YandexAuthorizedTimesheet = ({ language, tracker, unauthorizedError
 
   useSetTrackerUsername(tracker, self?.email);
 
-  const unauthorizedErrorElement = useUnauthorizedTracker(
-    errorSelf,
-    tracker,
-    logout,
-    unauthorizedErrorShouldAppearAsOrgChange,
-  );
+  const unauthorizedErrorElement = useUnauthorizedTracker(errorSelf, tracker, logout);
 
   if (unauthorizedErrorElement) {
     return unauthorizedErrorElement;

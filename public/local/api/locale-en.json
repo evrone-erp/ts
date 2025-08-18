@@ -115,5 +115,8 @@
   "tracker.jira.token": "API Token",
   "tracker.jira.token.hint": "API Token can be generated",
   "tracker.jira.token.hint.link": "here",
-  "tracker.jira.comment.edit.notSupported": "Jira comments edit is not currently supported"
+  "tracker.jira.comment.link": "Edit comment at Jira",
+  "trackers.placeholder.title": "No trackers configured",
+  "trackers.placeholder.description": "Add a tracker to start tracking time",
+  "trackers.placeholder.createButton": "Click to add tracker"
 }

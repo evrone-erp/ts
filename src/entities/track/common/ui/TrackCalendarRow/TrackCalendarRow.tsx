@@ -20,8 +20,6 @@ export type TTrackCalendarRowProps = {
   tracks?: TTrack[] | undefined;
   date2IssueTracks: Record<string, TTrack[]>;
   isEdit?: boolean;
-  isEditTrackComment?: boolean;
-  trackCommentEditDisabledReason?: string;
   pinnedIssues: string[];
   pinIssue?(issueKey: string): void;
   unpinIssue?(issueKey: string): void;
@@ -37,7 +35,6 @@ export const TrackCalendarRow = memo(
     range,
     issue,
     isEdit = false,
-    isEditTrackComment = isEdit,
     pinnedIssues,
     pinIssue,
     unpinIssue,
@@ -45,7 +42,6 @@ export const TrackCalendarRow = memo(
     tracks,
     updateTrack,
     getIssueUrl,
-    trackCommentEditDisabledReason,
   }: TTrackCalendarRowProps) => {
     const message = useMessage();
     const [isExpanded, setIsExpanded] = useState(false);
@@ -67,6 +63,7 @@ export const TrackCalendarRow = memo(
     }
 
     const rowColSpan = range.length + fixedColumnsCount;
+    const issueUrl = getIssueUrl(issue.key);
 
     return (
       <>
@@ -85,12 +82,7 @@ export const TrackCalendarRow = memo(
 
               <div className={styles.issueDescription}>
                 <div className={styles.issueKeyRow}>
-                  <a
-                    className={styles.issueKey}
-                    href={getIssueUrl(issue.key)}
-                    target="_blank"
-                    rel="nofollow noopener noreferrer"
-                  >
+                  <a className={styles.issueKey} href={issueUrl} target="_blank" rel="nofollow noopener noreferrer">
                     {issue.key}
                   </a>
                   {issueIsPinned ? (
@@ -138,9 +130,8 @@ export const TrackCalendarRow = memo(
               tracks={tracks}
               range={range}
               isEdit={isEdit}
-              isEditTrackComment={isEditTrackComment}
-              trackCommentEditDisabledReason={trackCommentEditDisabledReason}
               updateTrack={updateTrack}
+              issueUrl={issueUrl}
             />
           </>
         )}

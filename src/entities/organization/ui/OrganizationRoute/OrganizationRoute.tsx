@@ -1,18 +1,18 @@
 import React, { PropsWithChildren, useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from 'shared/lib/hooks';
-import { EmptyYandexOrganization } from 'entities/organization/ui/EmptyYandexOrganization';
 import { CURRENT_ORG_ID_STORAGE_KEY } from 'entities/organization/model/constants';
-import { useMainTracker } from 'entities/tracker/lib/useMainTracker';
 import { findYandexTrackerByOrgId } from 'entities/tracker/lib/findYandexTrackerByOrgId';
 import { selectTrackers } from 'entities/tracker/model/selectors';
 import { trackers } from 'entities/tracker/model/reducers';
 import { getDefaultTracker } from 'entities/tracker/lib/getDefaultTracker';
+import { TTrackerConfig } from 'entities/tracker/model/types';
 
-export const OrganizationRoute = ({ children }: PropsWithChildren) => {
+export const OrganizationRoute = ({
+  children,
+  mainTracker,
+}: PropsWithChildren<{ mainTracker: TTrackerConfig | undefined }>) => {
   const trackersState = useAppSelector(selectTrackers);
   const dispatch = useAppDispatch();
-
-  const mainTracker = useMainTracker();
 
   useEffect(() => {
     if (mainTracker) {
@@ -38,13 +38,6 @@ export const OrganizationRoute = ({ children }: PropsWithChildren) => {
       dispatch(trackers.actions.setMainTracker({ id: defaultTracker.id }));
     }
   }, [trackersState, mainTracker, dispatch]);
-
-  // in case there is no main tracker, render the old EmptyOrganisation component. there user will provide Org ID and
-  // main tracker will be created.
-  // this is done to preserve the old UX
-  if (!mainTracker) {
-    return <EmptyYandexOrganization />;
-  }
 
   return <>{children}</>;
 };

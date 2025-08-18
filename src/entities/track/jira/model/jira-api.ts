@@ -4,6 +4,7 @@ import { formatDateAsTrackKey, getTrackDateCacheKey } from 'entities/track/commo
 import { DateWrapper } from 'features/date/lib/DateWrapper';
 import { TDeleteTrackParams, TTransformedTracks } from 'entities/track/common/model/types';
 import {
+  TJiraApiError,
   TJiraCreateTrackParams,
   TJiraEditTrackParams,
   TJiraGetTracksParams,
@@ -165,7 +166,7 @@ export const jiraTrackApi = api.injectEndpoints({
         }
       },
     }),
-    updateJiraTrack: build.mutation<{}, TJiraEditTrackParams>({
+    updateJiraTrack: build.mutation<TJiraApiError | void, TJiraEditTrackParams>({
       query: ({ param: { issueIdOrKey, trackId }, form: { start, timeSpentSeconds, comment }, tracker }) => ({
         url: getTrackerUrl(jiraTrackEndpoints.track(issueIdOrKey, trackId), tracker),
         method: 'PUT',

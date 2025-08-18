@@ -1,9 +1,12 @@
-import { Col, Row, Space } from 'antd';
+import { SettingOutlined } from '@ant-design/icons';
+import { Button, Col, Row, Space } from 'antd';
 import { LocaleSelector } from 'entities/locale/ui/LocaleSelector';
 import { TrackTimeButton } from 'entities/track/common/ui/TrackCalendarHeader/TrackTimeButton';
 import { TimeOffsetSelect } from 'features/date/ui/TimeOffsetSelect/TimeOffsetSelect';
+import { useRouter } from 'next/router';
 import { GlobalFetching } from 'shared/ui/GlobalFetching';
 import { ReactNode } from 'react';
+import { appPaths } from 'shared/config/constants';
 import { TimePeriodStepper } from './TimePeriodStepper';
 import { TodayText } from './TodayText';
 import { TrackCalendarHeaderControlBar } from './TrackCalendarHeaderControlBar';
@@ -17,6 +20,8 @@ interface ITrackCalendarHeaderProps {
 }
 
 export function TrackCalendarHeader({ isEdit, filters, upperRowControls }: ITrackCalendarHeaderProps) {
+  const { push } = useRouter();
+
   return (
     <div className={styles.header}>
       <TrackTimeButton className={styles.addTrackBtn} isEdit={isEdit} />
@@ -30,6 +35,7 @@ export function TrackCalendarHeader({ isEdit, filters, upperRowControls }: ITrac
             {upperRowControls}
             <LocaleSelector />
             <TimeOffsetSelect />
+            <Button type="text" icon={<SettingOutlined />} onClick={() => push(appPaths.trackers)} />
           </Space>
         </Col>
       </Row>

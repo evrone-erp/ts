@@ -3,7 +3,7 @@ import { selectTrackers } from 'entities/tracker/model/selectors';
 import { Select, Typography } from 'antd';
 import { useMemo } from 'react';
 import { TOption } from 'shared/lib/types';
-import { isYandexTrackerCfg } from 'entities/tracker/model/types';
+import { isYandexTrackerCfg, TTrackerConfig } from 'entities/tracker/model/types';
 import { Yandex360 } from 'components/Icons/Yandex360';
 import { YandexCloud } from 'components/Icons/YandexCloud';
 import { useDispatch } from 'react-redux';
@@ -12,13 +12,14 @@ import { Jira } from 'components/Icons/Jira';
 import { Message } from 'entities/locale/ui/Message';
 import styles from './MainTrackerSelector.module.scss';
 
-export const MainTrackerSelector = () => {
+export const MainTrackerSelector = ({ filteredTrackers }: { filteredTrackers: TTrackerConfig[] }) => {
   const dispatch = useDispatch();
-  const { trackers: trackersState, mainTrackerId } = useAppSelector(selectTrackers);
+  const { mainTrackerId } = useAppSelector(selectTrackers);
+  const value = filteredTrackers.findIndex(({ id }) => id === mainTrackerId) > -1 ? mainTrackerId : undefined;
 
   const options = useMemo(() => {
     const res: TOption[] = [];
-    for (const tracker of Object.values(trackersState)) {
+    for (const tracker of Object.values(filteredTrackers)) {
       res.push({
         label: (
           <div className={styles.label}>
@@ -31,7 +32,7 @@ export const MainTrackerSelector = () => {
     }
 
     return res;
-  }, [trackersState]);
+  }, [filteredTrackers]);
 
   const onChange = (_: unknown, option?: TOption | TOption[]) => {
     if (option && !Array.isArray(option)) {
@@ -48,7 +49,7 @@ export const MainTrackerSelector = () => {
       <Typography.Title level={2}>
         <Message id="trackers.configuration.main.title" />
       </Typography.Title>
-      <Select options={options} onChange={onChange} value={mainTrackerId} className={styles.selector} />
+      <Select options={options} onChange={onChange} value={value} className={styles.selector} />
     </section>
   );
 };

@@ -1,4 +1,5 @@
 import { isJiraTrackerCfg, isYandexTrackerCfg, TTrackerConfig } from 'entities/tracker/model/types';
+import { useRouter } from 'next/router';
 import { Head } from 'widgets/Head';
 import { useMessage } from 'entities/locale/lib/hooks';
 import { Layout } from 'widgets/Layout';
@@ -8,25 +9,23 @@ import { YandexAuthorizedTimesheet } from 'entities/track/yandex/ui/YandexAuthor
 import { YandexAuthRoute } from 'entities/auth/ui/yandex/YandexAuthRoute/YandexAuthRoute';
 import { JiraAuthorizedTimesheet } from 'entities/track/jira/ui/JiraAuthorizedTimesheet/JiraAuthorizedTimesheet';
 import { JiraAuthRoute } from 'entities/auth/ui/jira/JiraAuthRoute/JiraAuthRoute';
+import { appPaths } from 'shared/config/constants';
 
 type TProps = {
   tracker: TTrackerConfig | undefined;
-  unauthorizedErrorShouldAppearAsOrgChange?: boolean;
 };
 
-export const TrackerWorklog = ({ tracker, unauthorizedErrorShouldAppearAsOrgChange = false }: TProps) => {
+export const TrackerWorklog = ({ tracker }: TProps) => {
+  const { push } = useRouter();
+
   const message = useMessage();
   const language = useAppSelector(selectLocaleCurrent);
 
-  let renderedTracker = <span>No such tracker</span>;
+  let renderedTracker;
   if (isYandexTrackerCfg(tracker)) {
     renderedTracker = (
       <YandexAuthRoute tracker={tracker}>
-        <YandexAuthorizedTimesheet
-          language={language}
-          tracker={tracker}
-          unauthorizedErrorShouldAppearAsOrgChange={unauthorizedErrorShouldAppearAsOrgChange}
-        />
+        <YandexAuthorizedTimesheet language={language} tracker={tracker} />
       </YandexAuthRoute>
     );
   } else if (isJiraTrackerCfg(tracker)) {
@@ -35,6 +34,11 @@ export const TrackerWorklog = ({ tracker, unauthorizedErrorShouldAppearAsOrgChan
         <JiraAuthorizedTimesheet language={language} tracker={tracker} />
       </JiraAuthRoute>
     );
+  }
+
+  if (!renderedTracker) {
+    push(appPaths.trackers);
+    return null;
   }
 
   return (

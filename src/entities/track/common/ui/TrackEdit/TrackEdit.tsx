@@ -15,7 +15,6 @@ export interface ITrackEditProps {
   track: TTrack;
   issueKey: string;
   isTrackUpdateLoading: boolean;
-  isEditTrackComment: boolean;
   className?: string;
   updateTrack(input: Partial<TTrackInputEditForm>, issueIdOrKey?: string, trackId?: number | string): void;
   spinnerClassName?(isLoading: boolean): string;
@@ -28,7 +27,6 @@ export const TrackEdit = ({
   spinnerClassName,
   updateTrack,
   isTrackUpdateLoading,
-  isEditTrackComment,
 }: ITrackEditProps) => {
   const { duration, comment, start, id: trackId } = track;
   const message = useMessage();
@@ -83,11 +81,11 @@ export const TrackEdit = ({
             placeholder={message('track.duration.placeholder')}
           />
           <InputField
-            disabled={isTrackUpdateLoading || !isEditTrackComment}
+            disabled={isTrackUpdateLoading}
             name="comment"
             onBlur={handleSubmit}
             onPressEnter={handleSubmit}
-            placeholder={isEditTrackComment ? message('track.comment.placeholder') : undefined}
+            placeholder={message('track.comment.placeholder')}
           />
           <TrackDeleteButton issueIdOrKey={issueKey} trackId={trackId} />
           <Spin size="small" spinning className={spinnerClassName?.(isTrackUpdateLoading)} />

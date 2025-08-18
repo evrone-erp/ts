@@ -21,6 +21,7 @@ export type TTrack = {
   id: number | string;
   issueKey: string;
   comment: string;
+  isReadOnlyComment?: boolean;
   start: string;
   duration: TISODuration;
   authorId?: string;

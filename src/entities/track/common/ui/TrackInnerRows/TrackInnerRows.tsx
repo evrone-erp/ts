@@ -7,21 +7,12 @@ interface ITrackInnerProps {
   tracks: TTrack[] | undefined;
   issueId: string;
   isEdit?: boolean;
-  isEditTrackComment?: boolean;
-  trackCommentEditDisabledReason?: string;
+  issueUrl: string;
   updateTrack(input: Partial<TTrackInputEditForm>, issueIdOrKey?: string, trackId?: number | string): void;
 }
 
 export const TrackInnerRows = memo(
-  ({
-    range,
-    issueId,
-    tracks,
-    isEdit = false,
-    isEditTrackComment = isEdit,
-    updateTrack,
-    trackCommentEditDisabledReason,
-  }: ITrackInnerProps) => {
+  ({ range, issueId, tracks, isEdit = false, updateTrack, issueUrl }: ITrackInnerProps) => {
     if (!tracks || !tracks.length) {
       return null;
     }
@@ -35,9 +26,8 @@ export const TrackInnerRows = memo(
             track={track}
             issueId={issueId}
             isEdit={isEdit}
-            isEditTrackComment={isEditTrackComment}
-            trackCommentEditDisabledReason={trackCommentEditDisabledReason}
             updateTrack={updateTrack}
+            issueUrl={issueUrl}
           />
         ))}
       </>

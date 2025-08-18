@@ -115,5 +115,8 @@
   "tracker.jira.token": "API Токен",
   "tracker.jira.token.hint": "API токен можно сгенерировать",
   "tracker.jira.token.hint.link": "здесь",
-  "tracker.jira.comment.edit.notSupported": "Редактирование комментариев Jira не поддерживается"
+  "tracker.jira.comment.link": "Редактировать комментарий в Jira",
+  "trackers.placeholder.title": "Нет настроенных трекеров",
+  "trackers.placeholder.description": "Добавьте трекер, чтобы начать отслеживать время",
+  "trackers.placeholder.createButton": "Нажмите, чтобы добавить трекер"
 }
