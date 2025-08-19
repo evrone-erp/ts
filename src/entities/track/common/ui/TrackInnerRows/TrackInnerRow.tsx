@@ -11,30 +11,21 @@ interface ITrackInnerRowProps {
   issueId: string;
   range: string[];
   isEdit?: boolean;
-  isEditTrackComment?: boolean;
-  trackCommentEditDisabledReason?: string;
+  issueUrl: string;
   updateTrack(input: Partial<TTrackInputEditForm>, issueIdOrKey?: string, trackId?: number | string): void;
 }
 
 export const TrackInnerRow = memo(
-  ({
-    track,
-    issueId,
-    range,
-    isEdit = false,
-    updateTrack,
-    isEditTrackComment = isEdit,
-    trackCommentEditDisabledReason,
-  }: ITrackInnerRowProps) => (
+  ({ track, issueId, range, isEdit = false, updateTrack, issueUrl }: ITrackInnerRowProps) => (
     <TrackCalendarInnerRow>
       <TrackNameColumn
         trackId={track.id}
+        issueUrl={issueUrl}
         trackComment={track.comment}
         issueId={issueId}
         isEdit={isEdit}
-        isEditTrackComment={isEditTrackComment}
         updateTrack={updateTrack}
-        trackCommentEditDisabledReason={trackCommentEditDisabledReason}
+        isReadOnlyComment={track.isReadOnlyComment}
       />
 
       {range.map((date) => (

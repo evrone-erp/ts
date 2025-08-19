@@ -8,6 +8,7 @@ import { dateToJiraStartedDate } from 'entities/track/jira/lib/dateToJiraStarted
 import { isoDurationToSeconds } from 'entities/track/common/lib/iso-duration-to-seconds';
 import { humanReadableDurationToISO } from 'entities/track/common/lib/human-readable-duration-to-iso';
 import { TJiraCreateTrackParams } from 'entities/track/jira/model/types';
+import { formatJiraComment } from 'entities/track/jira/model/format-jira-comment';
 
 export function useCreateJiraTrack(tracker: TTrackerConfig) {
   const [createTrackMutation, { isLoading: isTrackCreateLoading }] = jiraTrackApi.useCreateJiraTrackMutation();
@@ -30,21 +31,7 @@ export function useCreateJiraTrack(tracker: TTrackerConfig) {
       if (comment) {
         // Jira's comments are stored in Atlassian Document Format https://developer.atlassian.com/cloud/jira/platform/apis/document/structure/
         // therefore we have to pass this structure for a text comment
-        mutationParams.comment = {
-          version: 1,
-          type: 'doc',
-          content: [
-            {
-              type: 'paragraph',
-              content: [
-                {
-                  type: 'text',
-                  text: comment,
-                },
-              ],
-            },
-          ],
-        };
+        mutationParams.comment = formatJiraComment(comment);
       }
 
       await createTrackMutation(mutationParams);

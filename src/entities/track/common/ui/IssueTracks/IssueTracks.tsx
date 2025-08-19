@@ -15,7 +15,6 @@ export interface IIssueTracksProps {
   date: string | undefined;
   issueTracksForDate: TTransformedTracks | undefined;
   isTrackUpdateLoading: boolean;
-  isEditTrackComment: boolean;
   className?: string;
   updateTrack(input: Partial<TTrackInputEditForm>, issueIdOrKey?: string, trackId?: number | string): void;
 }
@@ -26,7 +25,6 @@ export const IssueTracks = ({
   className,
   isTrackUpdateLoading,
   updateTrack,
-  isEditTrackComment,
   issueTracksForDate,
 }: IIssueTracksProps) => {
   const formattedDate = useMemo(
@@ -67,7 +65,6 @@ export const IssueTracks = ({
             spinnerClassName={(isLoading) => clsx(styles.trackSpinner, { [styles.trackSpinner_loading]: isLoading })}
             isTrackUpdateLoading={isTrackUpdateLoading}
             updateTrack={updateTrack}
-            isEditTrackComment={isEditTrackComment}
           />
         ))}
       </div>

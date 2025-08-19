@@ -9,7 +9,6 @@ type TProps = Pick<IIssueTracksProps, 'issueKey' | 'date' | 'className'> & {
   tracker: TJiraTrackerConfig;
   uId: string | undefined;
   isTrackUpdateLoading: boolean;
-  isEditTrackComment: boolean;
   updateTrack(input: Partial<TTrackInputEditForm>, issueIdOrKey?: string, trackId?: number | string): void;
 };
 

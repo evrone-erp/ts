@@ -39,3 +39,8 @@ export type TOption<TExtra = never> = {
   value: string;
   extra?: TExtra;
 };
+
+export type TAppConfig = {
+  isYandexTrackerEnabled: boolean;
+  isJiraEnabled: boolean;
+};

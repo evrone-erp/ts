@@ -45,7 +45,7 @@ export const trackers = createSlice({
         state.trackers[nextTracker.id] = nextTracker;
       }
 
-      if (state.mainTrackerId === prevTracker?.id) {
+      if (!state.mainTrackerId || state.mainTrackerId === prevTracker?.id) {
         state.mainTrackerId = nextTracker.id;
       }
     },

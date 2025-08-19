@@ -1,6 +1,6 @@
-import { Button, Card, Modal } from 'antd';
+import { App, Button, Card } from 'antd';
 import { PropsWithChildren } from 'react';
-import { DeleteOutlined, SettingOutlined } from '@ant-design/icons';
+import { DeleteOutlined, ExportOutlined, SettingOutlined } from '@ant-design/icons';
 import Link from 'next/link';
 import styles from 'entities/tracker/ui/common/TrackerCard/TrackerCard.module.scss';
 import { useMessage } from 'entities/locale/lib/hooks';
@@ -9,11 +9,10 @@ import { appPaths } from 'shared/config/constants';
 export interface ITrackerCardProps {
   name: string;
   id: string;
-  deleteDisabled?: boolean;
   deleteTitle?: string;
   editTitle?: string;
   onEdit(): void;
-  onDelete(): void;
+  onDelete?: () => void;
 }
 
 export const TrackerCard = ({
@@ -22,14 +21,14 @@ export const TrackerCard = ({
   children,
   id,
   onDelete,
-  deleteDisabled,
   deleteTitle,
   editTitle,
 }: PropsWithChildren<ITrackerCardProps>) => {
   const message = useMessage();
+  const { modal } = App.useApp();
 
   const confirmDelete = () => {
-    Modal.confirm({
+    modal.confirm({
       title: message('trackers.configuration.delete', { name }),
       icon: null,
       okText: message('share.yes.action'),
@@ -46,6 +45,7 @@ export const TrackerCard = ({
       title={
         <Link className={styles.title} href={appPaths.tracker(id)} title={name}>
           {name}
+          <ExportOutlined />
         </Link>
       }
       extra={
@@ -55,7 +55,7 @@ export const TrackerCard = ({
             danger
             onClick={confirmDelete}
             icon={<DeleteOutlined />}
-            disabled={deleteDisabled}
+            disabled={!onDelete}
             title={deleteTitle}
           />
           <Button type="text" onClick={onEdit} icon={<SettingOutlined />} title={editTitle} />
