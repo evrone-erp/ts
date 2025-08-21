@@ -67,6 +67,7 @@ export const TrackEdit = ({
         if (error && typeof error === 'object' && 'message' in error) {
           return { comment: error.message };
         }
+        throw error;
       }
     }
 
