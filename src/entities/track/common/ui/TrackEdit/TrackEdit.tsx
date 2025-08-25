@@ -16,7 +16,11 @@ export interface ITrackEditProps {
   issueKey: string;
   isTrackUpdateLoading: boolean;
   className?: string;
-  updateTrack(input: Partial<TTrackInputEditForm>, issueIdOrKey?: string, trackId?: number | string): void;
+  updateTrack(
+    input: Partial<TTrackInputEditForm>,
+    issueIdOrKey?: string,
+    trackId?: number | string,
+  ): Promise<string> | void;
   spinnerClassName?(isLoading: boolean): string;
 }
 
@@ -43,22 +47,31 @@ export const TrackEdit = ({
     duration: validateHumanReadableDuration(fields.duration) ? undefined : message('form.invalid.format'),
   });
 
-  const submit = (fields: TTrackInputEditForm, formApi: FormApi<TTrackInputEditForm, typeof initialValues>) => {
+  const submit = async (fields: TTrackInputEditForm, formApi: FormApi<TTrackInputEditForm, typeof initialValues>) => {
     const durationISO = humanReadableDurationToISO(fields.duration);
 
     const formHadChanges = formApi.getState().dirty;
 
     if (durationISO && formHadChanges) {
-      updateTrack(
-        {
-          start: fields.start,
-          comment: fields.comment?.trim(),
-          duration: durationISO,
-        },
-        issueKey,
-        trackId,
-      );
+      try {
+        await updateTrack(
+          {
+            start: fields.start,
+            comment: fields.comment?.trim(),
+            duration: durationISO,
+          },
+          issueKey,
+          trackId,
+        );
+      } catch (error) {
+        if (error && typeof error === 'object' && 'message' in error) {
+          return { comment: error.message };
+        }
+        throw error;
+      }
     }
+
+    return undefined;
   };
 
   return (
