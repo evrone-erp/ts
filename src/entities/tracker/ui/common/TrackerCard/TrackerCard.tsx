@@ -1,4 +1,4 @@
-import { App, Button, Card } from 'antd';
+import { Modal, Button, Card } from 'antd';
 import { PropsWithChildren } from 'react';
 import { DeleteOutlined, ExportOutlined, SettingOutlined } from '@ant-design/icons';
 import Link from 'next/link';
@@ -25,7 +25,7 @@ export const TrackerCard = ({
   editTitle,
 }: PropsWithChildren<ITrackerCardProps>) => {
   const message = useMessage();
-  const { modal } = App.useApp();
+  const [modal, contextHolder] = Modal.useModal();
 
   const confirmDelete = () => {
     modal.confirm({
@@ -63,6 +63,7 @@ export const TrackerCard = ({
       }
     >
       {children}
+      {contextHolder}
     </Card>
   );
 };

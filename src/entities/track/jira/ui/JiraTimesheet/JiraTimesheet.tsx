@@ -123,6 +123,7 @@ export const JiraTimesheet: FC<TProps> = ({ tracker, language, uId }) => {
     <div>
       <TrackCalendarHeader
         isEdit={isEdit}
+        trackerName={tracker.name}
         upperRowControls={
           <Button onClick={logout} type="link">
             <Message id="home.logout" />
