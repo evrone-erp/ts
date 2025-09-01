@@ -23,3 +23,5 @@ export function uniqBy<T extends Record<string, unknown>>(arr: T[], predicate: s
       .values(),
   ];
 }
+
+export const identity = <T>(x: T) => x;

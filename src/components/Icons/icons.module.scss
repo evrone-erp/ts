@@ -1,0 +1,21 @@
+@mixin icon() {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  background-size: contain;
+}
+
+.iconYandex360 {
+  background: url('/icons/yandex-360.svg');
+  @include icon();
+}
+
+.iconCloud {
+  background: url('/icons/yandex-cloud.svg');
+  @include icon();
+}
+
+.iconJira {
+  background: url('/icons/jira.svg');
+  @include icon();
+}

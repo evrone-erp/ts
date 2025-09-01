@@ -1,4 +1,5 @@
 import type { store } from 'app/store';
+import { ReactNode } from 'react';
 
 export type TGetId<T> = (item: T) => string;
 
@@ -31,4 +32,15 @@ export type TGetState<T extends string = string, V = unknown> = () => TAppState<
 export type TPagination = {
   page?: number;
   perPage?: number;
+};
+
+export type TOption<TExtra = never> = {
+  label: string | ReactNode;
+  value: string;
+  extra?: TExtra;
+};
+
+export type TAppConfig = {
+  isYandexTrackerEnabled: boolean;
+  isJiraEnabled: boolean;
 };

@@ -1,0 +1,80 @@
+import { validateHumanReadableDuration } from 'entities/track/common/lib/validate-human-readable-duration';
+
+it.each([
+  ['1 неделя', true],
+  ['1н', true],
+  ['6 w', true],
+  ['1 нед', true],
+  ['5недель', true],
+  ['2 недели', true],
+  ['1 неделя', true],
+  ['1 неде', false],
+
+  ['1д', true],
+  ['22 d', true],
+  ['1 день', true],
+  ['12 дней', true],
+  ['22 дня', true],
+  ['234д', true],
+  ['6523дней', true],
+  ['24дне', false],
+
+  ['1 ч', true],
+  ['22h', true],
+  ['1 час', true],
+  ['11 часов', true],
+  ['32 часа', true],
+  ['521 чаа', false],
+
+  ['1м', true],
+  ['52 m', true],
+  ['13 минут', true],
+  ['1 минута', true],
+  ['42 минуты', true],
+  ['63 мин', true],
+  ['2521 ми', false],
+
+  ['1с', true],
+  ['32 s', true],
+  ['15 секунд', true],
+  ['1 секунды', true],
+  ['52 секунды', true],
+  ['6223 сек', true],
+  ['5526 се', false],
+
+  ['1 день 2ч 33с', true],
+  ['1н 23 дней 2мин', true],
+  ['24н 2день 2час 33 s', true],
+  ['1w 2d 23 h 33m 922 s', true],
+  ['62дней 5ч 98сек', true],
+  ['24ч 93с', true],
+  ['89с', true],
+  ['0008час', true],
+  ['21 неделя 154 часа 23минут 21с', true],
+  ['    23    час       23 m    ', true],
+
+  ['42', true],
+  ['251512', true],
+  ['  124  ', true],
+
+  ['', false],
+  ['       ', false],
+  ['w', false],
+  ['м', false],
+  ['день', false],
+  ['23ч 12нед', false],
+  ['21в1а21а12а', false],
+  ['721мес', false],
+  ['12неде 12ч 23с', false],
+  ['е21', false],
+  ['-23ч', false],
+  ['       м23ч     ', false],
+  ['2фац', false],
+  ['ф2', false],
+  ['2н 213', false],
+  ['213 2213', false],
+])('for "%s" returns "%s"', (str, expected) => {
+  const result = validateHumanReadableDuration(str);
+
+  expect(result).toBe(expected);
+});

@@ -1,50 +1,22 @@
 import { fetchBaseQuery, retry } from '@reduxjs/toolkit/query';
+import { isQueryErrorStatusInSet } from 'shared/lib/isQueryErrorStatusInSet';
 
-const getOrgHeader = (currentOrgId: string) => {
-  const yandex360Regex = /^\d+$/;
-  if (!yandex360Regex.test(currentOrgId)) {
-    return 'X-Cloud-Org-ID';
-  }
-  return 'X-Org-ID';
-};
-
-class HeadersService {
-  headers = new Headers();
-
-  setAuthToken(token: string) {
-    this.headers.set('Authorization', `OAuth ${token}`);
-  }
-
-  setCurrentOrgId(currentOrgId: string) {
-    this.headers.set(getOrgHeader(currentOrgId), currentOrgId);
-  }
-
-  removeCurrentOrgId() {
-    this.headers.delete('X-Org-ID');
-    this.headers.delete('X-Cloud-Org-ID');
-  }
-
-  addHeaders(headers: HeadersInit) {
-    this.headers = HeadersService.mergeHeaders(this.headers, new Headers(headers));
-  }
-
-  static mergeHeaders(h1: Headers, h2: Headers) {
-    return new Headers([...Array.from(h1), ...Array.from(h2)]);
-  }
-}
-
-export const apiHeaders = new HeadersService();
-
+const RETRY_BLACKLIST = new Set([400, 401, 403, 404, 422]);
 export const createApiBaseQuery = ({ baseUrl }: { baseUrl: string } = { baseUrl: '' }) =>
   retry(
     fetchBaseQuery({
       baseUrl,
       prepareHeaders: (headers) => {
         headers.set('Content-Type', 'application/json');
-        return HeadersService.mergeHeaders(headers, apiHeaders.headers);
       },
     }),
     {
-      maxRetries: 3,
+      retryCondition(error, _, { attempt }) {
+        if (attempt > 3) {
+          return false;
+        }
+
+        return !isQueryErrorStatusInSet(error, RETRY_BLACKLIST);
+      },
     },
   );

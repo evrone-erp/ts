@@ -1,0 +1,17 @@
+.trackersHeader {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+  margin-bottom: 15px;
+
+  h2 {
+    margin: 0;
+  }
+}
+
+.trackersContainer {
+  gap: 15px;
+  margin-bottom: 30px;
+  flex-wrap: wrap;
+}
+

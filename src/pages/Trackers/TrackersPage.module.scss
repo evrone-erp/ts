@@ -1,0 +1,22 @@
+.trackersPage {
+  padding: 15px;
+}
+
+.titleWrapper {
+  margin-bottom: 30px;
+}
+
+h1.title {
+  margin: 0;
+  width: 100%;
+}
+
+.closeIcon {
+  font-size: 20px;
+}
+
+.sections {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
