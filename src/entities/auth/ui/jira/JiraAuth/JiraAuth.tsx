@@ -20,12 +20,14 @@ export const JiraAuth = ({ config, tracker }: TProps) => {
     const result = new URL(window.location.origin);
 
     result.pathname = appPaths.jiraToken;
-    result.search = queryString.stringify({
-      redirect_path: router.pathname,
-      ...router.query,
-      client_id: config?.params.client_id,
-      internal_redirect_uri: new URL(appPaths.jiraToken, window.location.origin),
-    });
+    result.search = encodeURIComponent(
+      queryString.stringify({
+        redirect_path: router.pathname,
+        ...router.query,
+        client_id: config?.params.client_id,
+        internal_redirect_uri: new URL(appPaths.jiraToken, window.location.origin),
+      }),
+    );
 
     return result.href;
   }, [config, router.pathname, router.query]);

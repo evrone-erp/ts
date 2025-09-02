@@ -7,6 +7,7 @@ import { useRouter } from 'next/router';
 import { GlobalFetching } from 'shared/ui/GlobalFetching';
 import { ReactNode } from 'react';
 import { appPaths } from 'shared/config/constants';
+import { Text } from 'components';
 import { TimePeriodStepper } from './TimePeriodStepper';
 import { TodayText } from './TodayText';
 import { TrackCalendarHeaderControlBar } from './TrackCalendarHeaderControlBar';
@@ -17,17 +18,23 @@ interface ITrackCalendarHeaderProps {
   isEdit?: boolean;
   upperRowControls?: ReactNode;
   filters?: ReactNode;
+  trackerName: string;
 }
 
-export function TrackCalendarHeader({ isEdit, filters, upperRowControls }: ITrackCalendarHeaderProps) {
+export function TrackCalendarHeader({ isEdit, trackerName, filters, upperRowControls }: ITrackCalendarHeaderProps) {
   const { push } = useRouter();
 
   return (
     <div className={styles.header}>
-      <TrackTimeButton className={styles.addTrackBtn} isEdit={isEdit} />
       <Row justify="space-between">
         <Col>
-          <TodayText />
+          <Space size="large" wrap align="center">
+            <Text fw={500} fs={30} lh={34}>
+              {trackerName}
+            </Text>
+            <TodayText />
+            <TrackTimeButton className={styles.addTrackBtn} isEdit={isEdit} />
+          </Space>
         </Col>
 
         <Col>
