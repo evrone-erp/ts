@@ -20,6 +20,9 @@ export const UserSelect = memo(({ allowClear, userOptions, isLoading, setShouldL
     updateUserId(nextUserId);
   };
 
+  const handleFilterOption = (input: string, option?: DefaultOptionType) =>
+    !option?.label || option.label.toString().toLowerCase().includes(input.toLowerCase());
+
   return (
     <Select
       onOpenChange={setShouldLoad}
@@ -30,6 +33,8 @@ export const UserSelect = memo(({ allowClear, userOptions, isLoading, setShouldL
       loading={isLoading}
       onClear={handleUserSelectClear}
       onChange={handleUserSelect}
+      showSearch
+      filterOption={handleFilterOption}
     />
   );
 });

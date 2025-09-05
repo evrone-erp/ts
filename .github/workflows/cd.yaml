@@ -8,8 +8,6 @@ on:
       - 'release/**'
     tags:
       - v**
-    paths-ignore:
-      - '**/README.md'
 
 env:
   IMAGE_NAME: ${{ github.event.repository.name }}
