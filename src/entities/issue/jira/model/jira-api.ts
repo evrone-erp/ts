@@ -1,5 +1,6 @@
-import type { TFetchAllPagesBaseQueryResult } from 'shared/api';
-import { api, fetchAllPages, getTotalPagesJira } from 'shared/api';
+import type { FetchBaseQueryError, FetchBaseQueryMeta } from '@reduxjs/toolkit/query';
+import type { QueryReturnValue } from '@reduxjs/toolkit/query';
+import { api } from 'shared/api';
 import { getTrackerHeaders } from 'entities/tracker/lib/getTrackerHeaders';
 import { createJiraIssueRequest } from 'entities/issue/jira/model/createJiraIssueRequest';
 import type {
@@ -21,6 +22,10 @@ import {
 import { jiraIssueEndpoints } from 'entities/issue/jira/model/endpoints';
 import { getTrackerUrl } from 'entities/tracker/lib/getTrackerUrl';
 
+const PAGE_SIZE = 100;
+
+type TJiraIssuesQueryResult = QueryReturnValue<TJiraIssuesResponse, FetchBaseQueryError, FetchBaseQueryMeta>;
+
 export const jiraIssueApi = api.injectEndpoints({
   overrideExisting: true,
   endpoints: (build) => ({
@@ -33,27 +38,37 @@ export const jiraIssueApi = api.injectEndpoints({
     }),
     getJiraIssues: build.query<TIssue[], TGetIssuesParams>({
       async queryFn(arg, _, __, fetchWithBQ) {
-        const allIssues = await fetchAllPages(
-          (page) =>
-            fetchWithBQ({
-              url: getTrackerUrl(jiraIssueEndpoints.issues, arg.tracker),
-              method: 'POST',
-              body: {
-                jql: createJiraIssueRequest(arg),
-                startAt: (page - 1) * 100,
-                maxResults: 100,
-                validateQuery: 'warn',
-              },
-              headers: getTrackerHeaders(arg.tracker),
-            }) as TFetchAllPagesBaseQueryResult<TJiraIssuesResponse>,
-          ({ issues }) => issues,
-          getTotalPagesJira,
-        );
-
-        if (allIssues.error) {
-          return { error: allIssues.error };
+        const jql = createJiraIssueRequest(arg);
+        if (!jql) {
+          return { error: { status: 400, data: 'JQL query was not constructed', error: 'Bad Request' } };
         }
-        return { data: transformJiraIssuesToCommonIssues(allIssues.data) };
+        const allIssues: TJiraIssue[] = [];
+        let nextPageToken: string | undefined;
+
+        do {
+          const result = (await fetchWithBQ({
+            url: getTrackerUrl(jiraIssueEndpoints.issues, arg.tracker),
+            method: 'POST',
+            body: {
+              jql,
+              maxResults: PAGE_SIZE,
+              fields: ['summary', 'status'],
+              ...(nextPageToken && { nextPageToken }),
+            },
+            headers: getTrackerHeaders(arg.tracker),
+          })) as TJiraIssuesQueryResult;
+
+          if (result.error) {
+            return { error: result.error };
+          }
+          if (!result.data) {
+            break;
+          }
+          allIssues.push(...result.data.issues);
+          nextPageToken = result.data.isLast ? undefined : result.data.nextPageToken;
+        } while (nextPageToken);
+
+        return { data: transformJiraIssuesToCommonIssues(allIssues) };
       },
     }),
     getJiraStatuses: build.query<TIssueStatusDescription[], TGetIssuesStatusesQuery>({
