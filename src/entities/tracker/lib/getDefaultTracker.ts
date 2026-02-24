@@ -1,4 +1,5 @@
-import { Tracker, TYandexTrackerConfig } from 'entities/tracker/model/types';
+import type { TYandexTrackerConfig } from 'entities/tracker/model/types';
+import { Tracker } from 'entities/tracker/model/types';
 import { getTrackerIdFromName } from 'entities/tracker/lib/getTrackerIdFromName';
 
 /**

@@ -1,6 +1,7 @@
-import { IIssueTracksProps, IssueTracks } from 'entities/track/common/ui/IssueTracks/IssueTracks';
-import { TJiraTrackerConfig } from 'entities/tracker/model/types';
-import { TTrackInputEditForm } from 'entities/track/common/model/types';
+import type { IIssueTracksProps } from 'entities/track/common/ui/IssueTracks/IssueTracks';
+import { IssueTracks } from 'entities/track/common/ui/IssueTracks/IssueTracks';
+import type { TJiraTrackerConfig } from 'entities/tracker/model/types';
+import type { TTrackInputEditForm } from 'entities/track/common/model/types';
 import { useMemo } from 'react';
 import { DateWrapper } from 'features/date/lib/DateWrapper';
 import { jiraTrackApi } from 'entities/track/jira/model/jira-api';

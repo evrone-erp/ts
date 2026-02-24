@@ -1,4 +1,5 @@
-import { isJiraTrackerCfg, TTrackerConfig } from 'entities/tracker/model/types';
+import type { TTrackerConfig } from 'entities/tracker/model/types';
+import { isJiraTrackerCfg } from 'entities/tracker/model/types';
 import { JIRA_OAUTH_API_ROOT } from 'shared/api/constants';
 
 export const getTrackerUrl = (endpoint: string, tracker: TTrackerConfig) => {

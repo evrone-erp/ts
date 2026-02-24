@@ -1,7 +1,6 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import {
-  isJiraTrackerCfg,
-  isYandexTrackerCfg,
+import type { PayloadAction } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
+import type {
   TSetJiraTokenAndCloudIdByUrlsPayload,
   TSetJiraTrackerTokens,
   TSetMainTrackerPayload,
@@ -12,6 +11,7 @@ import {
   TTrackerStore,
   TUpsertTrackerPayload,
 } from 'entities/tracker/model/types';
+import { isJiraTrackerCfg, isYandexTrackerCfg } from 'entities/tracker/model/types';
 
 const initialState: TTrackerStore = {
   trackers: {},

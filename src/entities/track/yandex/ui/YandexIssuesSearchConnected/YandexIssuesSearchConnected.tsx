@@ -1,8 +1,8 @@
 import { IssuesSearch } from 'entities/issue/common/ui/IssuesSearch/IssuesSearch';
-import { TYandexTrackerConfig } from 'entities/tracker/model/types';
+import type { TYandexTrackerConfig } from 'entities/tracker/model/types';
 import { useYandexIssuesSearchOptions } from 'entities/issue/yandex/lib/use-yandex-issues-search-options';
-import { AutoCompleteProps } from 'antd';
-import { FieldInputProps } from 'react-final-form';
+import type { AutoCompleteProps } from 'antd';
+import type { FieldInputProps } from 'react-final-form';
 
 type TProps = AutoCompleteProps<string> &
   FieldInputProps<string> & {

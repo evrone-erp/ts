@@ -1,5 +1,5 @@
 import type { store } from 'app/store';
-import { ReactNode } from 'react';
+import type { ReactNode } from 'react';
 
 export type TGetId<T> = (item: T) => string;
 

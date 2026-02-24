@@ -1,5 +1,6 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { TTrackInputCreate, TTrackInputDelete, TTrackStore } from 'entities/track/common/model/types';
+import type { PayloadAction } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
+import type { TTrackInputCreate, TTrackInputDelete, TTrackStore } from 'entities/track/common/model/types';
 
 const initialState: TTrackStore = {};
 

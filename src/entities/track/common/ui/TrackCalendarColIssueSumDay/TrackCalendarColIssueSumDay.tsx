@@ -2,7 +2,7 @@ import { memo, useMemo } from 'react';
 import { TrackCalendarSum } from 'entities/track/common/ui/TrackCalendarSum';
 import { useAddNewTrackAction } from 'entities/track/common/lib/hooks/use-add-new-track-action';
 import { dashIsEmpty } from 'entities/track/common/lib/helpers';
-import { TTrack } from 'entities/track/common/model/types';
+import type { TTrack } from 'entities/track/common/model/types';
 import { DateWrapper } from 'features/date/lib/DateWrapper';
 import { STANDARD_WORK_DAY_START_LOCAL_HOUR } from 'features/date/lib/constants';
 import { comparePropsWithTracks } from 'entities/track/common/lib/compare-props-with-tracks';

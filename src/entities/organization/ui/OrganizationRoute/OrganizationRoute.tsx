@@ -1,11 +1,12 @@
-import React, { PropsWithChildren, useEffect } from 'react';
+import type { PropsWithChildren } from 'react';
+import React, { useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from 'shared/lib/hooks';
 import { CURRENT_ORG_ID_STORAGE_KEY } from 'entities/organization/model/constants';
 import { findYandexTrackerByOrgId } from 'entities/tracker/lib/findYandexTrackerByOrgId';
 import { selectTrackers } from 'entities/tracker/model/selectors';
 import { trackers } from 'entities/tracker/model/reducers';
 import { getDefaultTracker } from 'entities/tracker/lib/getDefaultTracker';
-import { TTrackerConfig } from 'entities/tracker/model/types';
+import type { TTrackerConfig } from 'entities/tracker/model/types';
 
 export const OrganizationRoute = ({
   children,

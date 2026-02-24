@@ -5,7 +5,7 @@ import { TrackTimeButton } from 'entities/track/common/ui/TrackCalendarHeader/Tr
 import { TimeOffsetSelect } from 'features/date/ui/TimeOffsetSelect/TimeOffsetSelect';
 import { useRouter } from 'next/router';
 import { GlobalFetching } from 'shared/ui/GlobalFetching';
-import { ReactNode } from 'react';
+import type { ReactNode } from 'react';
 import { appPaths } from 'shared/config/constants';
 import { Text } from 'components';
 import { TimePeriodStepper } from './TimePeriodStepper';

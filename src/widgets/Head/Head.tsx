@@ -1,5 +1,6 @@
 import NextHead from 'next/head';
-import React, { FC } from 'react';
+import type { FC } from 'react';
+import React from 'react';
 
 type TProps = {
   children?: React.ReactNode;

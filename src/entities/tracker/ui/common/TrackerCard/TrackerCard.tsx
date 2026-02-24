@@ -1,5 +1,5 @@
 import { Modal, Button, Card } from 'antd';
-import { PropsWithChildren } from 'react';
+import type { PropsWithChildren } from 'react';
 import { DeleteOutlined, ExportOutlined, SettingOutlined } from '@ant-design/icons';
 import Link from 'next/link';
 import styles from 'entities/tracker/ui/common/TrackerCard/TrackerCard.module.scss';

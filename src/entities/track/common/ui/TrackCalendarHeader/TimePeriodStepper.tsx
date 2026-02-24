@@ -1,7 +1,9 @@
-import { Button, CheckboxOptionType, Radio, RadioChangeEvent, Space } from 'antd';
+import type { CheckboxOptionType, RadioChangeEvent } from 'antd';
+import { Button, Radio, Space } from 'antd';
 import { useMessage } from 'entities/locale/lib/hooks';
 import { DateWrapper } from 'features/date/lib/DateWrapper';
-import { ReactNode, useMemo } from 'react';
+import type { ReactNode } from 'react';
+import { useMemo } from 'react';
 import { Text } from 'components';
 import { ArrowLeft } from 'components/Icons/ArrowLeft';
 import { ArrowRight } from 'components/Icons/ArrowRight';

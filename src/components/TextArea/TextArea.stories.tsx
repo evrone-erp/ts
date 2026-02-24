@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/nextjs';
 
 import { TextArea } from './index';
 
@@ -15,9 +15,8 @@ export default meta;
 type TStory = StoryObj<typeof meta>;
 
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
-export const Primary: TStory = {
+export const ReadOnly: TStory = {
   args: {
-    primary: true,
-    label: 'TextArea',
+    readOnly: true,
   },
 };

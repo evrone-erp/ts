@@ -1,6 +1,6 @@
 import { memo } from 'react';
 import { Message } from 'entities/locale/ui/Message';
-import { TTrack } from 'entities/track/common/model/types';
+import type { TTrack } from 'entities/track/common/model/types';
 import styles from './TrackCalendarFoot.module.scss';
 import { TrackCalendarFootColSumDay } from './TrackCalendarFootColSumDay';
 import { TrackCalendarFootColSum } from './TrackCalendarFootColSum';

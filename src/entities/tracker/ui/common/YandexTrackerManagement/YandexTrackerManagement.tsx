@@ -1,5 +1,5 @@
 import { Button, Space, Typography } from 'antd';
-import { TTrackerConfig, TYandexTrackerConfig } from 'entities/tracker/model/types';
+import type { TTrackerConfig, TYandexTrackerConfig } from 'entities/tracker/model/types';
 import { useAppDispatch } from 'shared/lib/hooks';
 import { trackers } from 'entities/tracker/model/reducers';
 import { useMemo, useState } from 'react';

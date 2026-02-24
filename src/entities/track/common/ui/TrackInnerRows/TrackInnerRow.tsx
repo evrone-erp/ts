@@ -1,7 +1,7 @@
 import { TrackCalendarColSum } from 'entities/track/common/ui/TrackCalendarColSum';
 import { TrackCalendarInnerRow } from 'entities/track/common/ui/TrackCalendarInnerRow';
 import { memo } from 'react';
-import { TTrack, TTrackInputEditForm } from 'entities/track/common/model/types';
+import type { TTrack, TTrackInputEditForm } from 'entities/track/common/model/types';
 import { TrackColumn } from './TrackColumn';
 import styles from './TrackInnerRow.module.scss';
 import { TrackNameColumn } from './TrackNameColumn';

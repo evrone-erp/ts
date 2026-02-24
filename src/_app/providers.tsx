@@ -1,6 +1,6 @@
 import { store } from 'app/store';
 import { Provider as ReduxProvider } from 'react-redux';
-import { PropsWithChildren } from 'react';
+import type { PropsWithChildren } from 'react';
 import { LocaleProvider } from 'entities/locale/ui/LocaleProvider';
 import { useCurrentLocale } from 'entities/locale/lib/hooks';
 import { isRuLocale } from 'entities/locale/lib/helpers';

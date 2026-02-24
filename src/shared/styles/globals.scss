@@ -1,5 +1,5 @@
-@import '~antd/dist/reset.css';
-@import './theme.scss';
+@use './theme.scss';
+@import 'antd/dist/reset.css';
 
 /* Font is variable: see https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Fonts/Variable_Fonts_Guide */
 @font-face {

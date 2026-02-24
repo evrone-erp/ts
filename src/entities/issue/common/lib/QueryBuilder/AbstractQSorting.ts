@@ -1,5 +1,5 @@
-import { TSortOrder } from 'shared/lib/types';
-import { IQueryParam } from 'entities/issue/common/lib/QueryBuilder/IQueryParam';
+import type { TSortOrder } from 'shared/lib/types';
+import type { IQueryParam } from 'entities/issue/common/lib/QueryBuilder/IQueryParam';
 
 export abstract class AbstractQSorting implements IQueryParam {
   constructor(

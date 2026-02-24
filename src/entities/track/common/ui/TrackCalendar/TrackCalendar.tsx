@@ -1,17 +1,18 @@
 import { TrackCalendarHead } from 'entities/track/common/ui/TrackCalendarHead';
-import React, { FC, ReactNode } from 'react';
+import type { FC, ReactNode } from 'react';
+import React from 'react';
 import { Loading } from 'shared/ui/Loading';
-import { ITrackCalendarFootProps } from 'entities/track/common/ui/TrackCalendarFoot/TrackCalendarFoot';
+import type { ITrackCalendarFootProps } from 'entities/track/common/ui/TrackCalendarFoot/TrackCalendarFoot';
 import { TrackModalCreate } from 'entities/track/common/ui/TrackModalCreate';
 import { TrackModalDelete } from 'entities/track/common/ui/TrackModalDelete';
-import { TIssue } from 'entities/issue/common/model/types';
-import { TTrackCalendarRowProps } from 'entities/track/common/ui/TrackCalendarRow/TrackCalendarRow';
-import { TTrackerConfig } from 'entities/tracker/model/types';
-import { TTrackFormCreateFields } from 'entities/track/common/ui/TrackFormCreate/types';
-import { TTrackInputDelete } from 'entities/track/common/model/types';
-import { IIssueTracksProps } from 'entities/track/common/ui/IssueTracks/IssueTracks';
-import { AutoCompleteProps } from 'antd';
-import { FieldInputProps } from 'react-final-form';
+import type { TIssue } from 'entities/issue/common/model/types';
+import type { TTrackCalendarRowProps } from 'entities/track/common/ui/TrackCalendarRow/TrackCalendarRow';
+import type { TTrackerConfig } from 'entities/tracker/model/types';
+import type { TTrackFormCreateFields } from 'entities/track/common/ui/TrackFormCreate/types';
+import type { TTrackInputDelete } from 'entities/track/common/model/types';
+import type { IIssueTracksProps } from 'entities/track/common/ui/IssueTracks/IssueTracks';
+import type { AutoCompleteProps } from 'antd';
+import type { FieldInputProps } from 'react-final-form';
 import { useScrollToCurrent } from './use-scroll-to-current';
 import { useRange } from './use-range';
 

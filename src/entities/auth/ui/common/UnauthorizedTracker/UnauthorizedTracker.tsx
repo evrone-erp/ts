@@ -1,4 +1,4 @@
-import { FC, ReactNode } from 'react';
+import type { FC, ReactNode } from 'react';
 import { Button } from 'antd';
 import { Message } from 'entities/locale/ui/Message';
 

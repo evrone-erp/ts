@@ -1,5 +1,5 @@
 import { api } from 'shared/api/api';
-import { TLocale } from 'entities/locale/model/types';
+import type { TLocale } from 'entities/locale/model/types';
 
 type TLocaleResponse = {
   [key: string]: string;

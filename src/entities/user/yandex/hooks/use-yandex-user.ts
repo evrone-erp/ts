@@ -1,5 +1,5 @@
 import { yandexUserApi } from 'entities/user/yandex/model/yandex-api';
-import { TTrackerConfig } from 'entities/tracker/model/types';
+import type { TTrackerConfig } from 'entities/tracker/model/types';
 
 export function useYandexUser(tracker: TTrackerConfig, id?: string) {
   const { data: self, isLoading: isLoadingSelf, error: errorSelf } = yandexUserApi.useGetMyselfYandexQuery({ tracker });

@@ -1,4 +1,4 @@
-import { TJiraTrackerConfig } from 'entities/tracker/model/types';
+import type { TJiraTrackerConfig } from 'entities/tracker/model/types';
 import { UserSelect } from 'entities/track/common/ui/TrackCalendarHeader/UserSelect';
 import type { DefaultOptionType } from 'rc-select/lib/Select';
 import { useMemo, useState } from 'react';

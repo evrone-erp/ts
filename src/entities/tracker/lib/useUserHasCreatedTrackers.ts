@@ -2,7 +2,7 @@ import { useAppSelector } from 'shared/lib/hooks';
 import { selectTrackers } from 'entities/tracker/model/selectors';
 import { getDefaultTracker } from 'entities/tracker/lib/getDefaultTracker';
 import { useMemo } from 'react';
-import { TTrackerConfig } from 'entities/tracker/model/types';
+import type { TTrackerConfig } from 'entities/tracker/model/types';
 
 /**
  * returns true if user has created additional trackers after the default one was created

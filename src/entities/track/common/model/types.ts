@@ -1,4 +1,4 @@
-import { TTrackerConfig } from 'entities/tracker/model/types';
+import type { TTrackerConfig } from 'entities/tracker/model/types';
 
 type TWeek = `${number}W` | '';
 type TDay = `${number}D` | '';

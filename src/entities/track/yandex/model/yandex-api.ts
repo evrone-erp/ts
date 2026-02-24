@@ -1,11 +1,11 @@
-import { api, fetchAllPages, TFetchAllPagesBaseQueryResult } from 'shared/api';
+import type { TFetchAllPagesBaseQueryResult } from 'shared/api';
+import { api, fetchAllPages } from 'shared/api';
 import { trackListToMaps } from 'entities/track/common/model/track-list-to-maps';
 import { formatDateAsTrackKey, getTrackDateCacheKey } from 'entities/track/common/lib/helpers';
-import type { PatchCollection } from '@reduxjs/toolkit/src/query/core/buildThunks';
 import { DateWrapper } from 'features/date/lib/DateWrapper';
 import { identity } from 'shared/lib/utils';
-import { TDeleteTrackParams, TTransformedTracks } from 'entities/track/common/model/types';
-import {
+import type { TDeleteTrackParams, TTransformedTracks } from 'entities/track/common/model/types';
+import type {
   TYandexCreateTrackParams,
   TYandexEditTrackParams,
   TYandexGetTracksParams,
@@ -119,7 +119,7 @@ export const yandexTrackApi = api.injectEndpoints({
           { type: 'Track', id: trackId },
         ]);
 
-        const patchResults: PatchCollection[] = [];
+        const patchResults = [];
 
         for (const entry of invalidatedEntries) {
           const patch = dispatch(
@@ -164,7 +164,7 @@ export const yandexTrackApi = api.injectEndpoints({
         }
         const invalidatedEntries = yandexTrackApi.util.selectInvalidatedBy(getState(), invalidatedTags);
 
-        const patchResults: PatchCollection[] = [];
+        const patchResults = [];
 
         for (const entry of invalidatedEntries) {
           const patch = dispatch(

@@ -1,5 +1,6 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { TLocale, TLocaleStore } from 'entities/locale/model/types';
+import type { PayloadAction } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
+import type { TLocale, TLocaleStore } from 'entities/locale/model/types';
 
 const initialState: TLocaleStore = {
   current: null,

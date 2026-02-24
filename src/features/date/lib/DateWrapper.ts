@@ -1,4 +1,5 @@
-import dayjs, { Dayjs, OpUnitType } from 'dayjs';
+import type { Dayjs, OpUnitType } from 'dayjs';
+import dayjs from 'dayjs';
 import utc from 'dayjs/plugin/utc';
 import isBetween from 'dayjs/plugin/isBetween';
 import 'dayjs/locale/ru';

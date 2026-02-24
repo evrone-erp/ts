@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router';
 import { useCallback } from 'react';
 import { useFilterValues } from 'features/filters/lib/useFilterValues';
-import { TSortOrder } from 'shared/lib/types';
+import type { TSortOrder } from 'shared/lib/types';
 
 export const useFilters = () => {
   const router = useRouter();

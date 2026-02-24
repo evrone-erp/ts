@@ -1,5 +1,5 @@
 import { api } from 'shared/api/api';
-import { TConfigStore } from './types';
+import type { TConfigStore } from './types';
 
 export const configApi = api.injectEndpoints({
   overrideExisting: true,

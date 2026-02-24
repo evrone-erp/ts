@@ -1,7 +1,7 @@
-import { TTrack } from 'entities/track/common/model/types';
+import type { TTrack } from 'entities/track/common/model/types';
 import { DurationFormat } from 'features/date/ui/DurationFormat';
-import React, { FC } from 'react';
-import './style.scss';
+import type { FC } from 'react';
+import styles from './TrackCalendarSum.module.scss';
 import { useISODurationsToTotalDurationData } from 'entities/track/common/lib/hooks/use-iso-dirations-to-total-duration-data';
 
 type TProps = {
@@ -16,7 +16,7 @@ export const TrackCalendarSum: FC<TProps> = ({ tracksOrTrack }) => {
   }
 
   return (
-    <div className="TrackCalendarSum">
+    <div className={styles.TrackCalendarSum}>
       <DurationFormat duration={durationTotal} />
     </div>
   );

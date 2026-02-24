@@ -1,6 +1,6 @@
-import { TEntityShort, TEntityShortKey } from 'shared/lib/types';
-import { TISODuration, TTrackInputEditParam } from 'entities/track/common/model/types';
-import { TTrackerConfig } from 'entities/tracker/model/types';
+import type { TEntityShort, TEntityShortKey } from 'shared/lib/types';
+import type { TISODuration, TTrackInputEditParam } from 'entities/track/common/model/types';
+import type { TTrackerConfig } from 'entities/tracker/model/types';
 
 export type TYandexTrack = {
   self: string;

@@ -1,4 +1,4 @@
-import { TTrackerConfig } from 'entities/tracker/model/types';
+import type { TTrackerConfig } from 'entities/tracker/model/types';
 import { useAppDispatch } from 'shared/lib/hooks';
 import { useCallback } from 'react';
 import { trackers } from 'entities/tracker/model/reducers';

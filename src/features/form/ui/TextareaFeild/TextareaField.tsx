@@ -1,5 +1,5 @@
 import { Input } from 'antd';
-import { TextAreaProps } from 'antd/lib/input';
+import type { TextAreaProps } from 'antd/lib/input';
 import { clsx } from 'clsx';
 import { FieldItem } from 'features/form/ui/FieldItem';
 import React from 'react';

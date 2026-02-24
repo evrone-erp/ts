@@ -1,7 +1,8 @@
 import { memo } from 'react';
-import { TrackCalendarRow, TTrackCalendarRowProps } from 'entities/track/common/ui/TrackCalendarRow/TrackCalendarRow';
+import type { TTrackCalendarRowProps } from 'entities/track/common/ui/TrackCalendarRow/TrackCalendarRow';
+import { TrackCalendarRow } from 'entities/track/common/ui/TrackCalendarRow/TrackCalendarRow';
 import { useCurrentJiraTracksByIssue } from 'entities/track/jira/lib/hooks/use-current-jira-tracks-by-issue';
-import { TTransformedTracks } from 'entities/track/common/model/types';
+import type { TTransformedTracks } from 'entities/track/common/model/types';
 
 type TProps = Omit<TTrackCalendarRowProps, 'tracks' | 'date2IssueTracks'> & {
   tracks: TTransformedTracks | undefined;

@@ -1,9 +1,10 @@
-import { api, fetchAllPages, getTotalPagesJira, TFetchAllPagesBaseQueryResult } from 'shared/api';
+import type { TFetchAllPagesBaseQueryResult } from 'shared/api';
+import { api, fetchAllPages, getTotalPagesJira } from 'shared/api';
 
 import { formatDateAsTrackKey, getTrackDateCacheKey } from 'entities/track/common/lib/helpers';
 import { DateWrapper } from 'features/date/lib/DateWrapper';
-import { TDeleteTrackParams, TTransformedTracks } from 'entities/track/common/model/types';
-import {
+import type { TDeleteTrackParams, TTransformedTracks } from 'entities/track/common/model/types';
+import type {
   TJiraApiError,
   TJiraCreateTrackParams,
   TJiraEditTrackParams,
@@ -16,7 +17,6 @@ import { trackListToMaps } from 'entities/track/common/model/track-list-to-maps'
 import { jiraTransformTrack, jiraTransformTracks } from 'entities/track/jira/model/jira-transform-tracks';
 import { batchPromises } from 'shared/lib/batch-promises';
 import { jiraTrackEndpoints } from 'entities/track/jira/model/endpoints';
-import { PatchCollection } from '@reduxjs/toolkit/src/query/core/buildThunks';
 import { jiraTrackUpdateFormToTrackParts } from 'entities/track/jira/model/jiraTrackUpdateFormToTrackParts';
 import { getTrackerUrl } from 'entities/tracker/lib/getTrackerUrl';
 
@@ -138,7 +138,7 @@ export const jiraTrackApi = api.injectEndpoints({
           { type: 'JiraTrack', id: trackId },
         ]);
 
-        const patchResults: PatchCollection[] = [];
+        const patchResults = [];
 
         for (const entry of invalidatedEntries) {
           const patch = dispatch(
@@ -187,7 +187,7 @@ export const jiraTrackApi = api.injectEndpoints({
         }
         const invalidatedEntries = jiraTrackApi.util.selectInvalidatedBy(getState(), invalidatedTags);
 
-        const patchResults: PatchCollection[] = [];
+        const patchResults = [];
 
         for (const entry of invalidatedEntries) {
           const patch = dispatch(

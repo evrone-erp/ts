@@ -1,4 +1,5 @@
-import { RawTimeZone, rawTimeZones } from '@vvo/tzdb';
+import type { RawTimeZone } from '@vvo/tzdb';
+import { rawTimeZones } from '@vvo/tzdb';
 
 export const DATE_FORMAT_MONTH = 'DD.MM';
 export const DATE_FORMAT_DATE = 'YYYY-MM-DD';

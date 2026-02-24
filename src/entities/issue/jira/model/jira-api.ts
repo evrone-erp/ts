@@ -1,8 +1,13 @@
-import { api, fetchAllPages, getTotalPagesJira, TFetchAllPagesBaseQueryResult } from 'shared/api';
+import type { TFetchAllPagesBaseQueryResult } from 'shared/api';
+import { api, fetchAllPages, getTotalPagesJira } from 'shared/api';
 import { getTrackerHeaders } from 'entities/tracker/lib/getTrackerHeaders';
 import { createJiraIssueRequest } from 'entities/issue/jira/model/createJiraIssueRequest';
-import { TJiraIssue, TJiraIssuesResponse, TJiraIssueStatusDescriptionsResponse } from 'entities/issue/jira/model/types';
-import {
+import type {
+  TJiraIssue,
+  TJiraIssuesResponse,
+  TJiraIssueStatusDescriptionsResponse,
+} from 'entities/issue/jira/model/types';
+import type {
   TGetIssueParams,
   TGetIssuesParams,
   TGetIssuesStatusesQuery,

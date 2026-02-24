@@ -1,15 +1,17 @@
 import { track } from 'entities/track/common/model/reducers';
 import { TrackFormCreate } from 'entities/track/common/ui/TrackFormCreate';
-import React, { ReactNode, useCallback } from 'react';
-import { AutoCompleteProps, Modal } from 'antd';
+import type { ReactNode } from 'react';
+import React, { useCallback } from 'react';
+import type { AutoCompleteProps } from 'antd';
+import { Modal } from 'antd';
 import { useAppDispatch, useAppSelector } from 'shared/lib/hooks';
 import { useMessage } from 'entities/locale/lib/hooks';
 
 import { selectTrackInputCreate } from 'entities/track/common/model/selectors';
-import { TTrackerConfig } from 'entities/tracker/model/types';
-import { TTrackFormCreateFields } from 'entities/track/common/ui/TrackFormCreate/types';
-import { IIssueTracksProps } from 'entities/track/common/ui/IssueTracks/IssueTracks';
-import { FieldInputProps } from 'react-final-form';
+import type { TTrackerConfig } from 'entities/tracker/model/types';
+import type { TTrackFormCreateFields } from 'entities/track/common/ui/TrackFormCreate/types';
+import type { IIssueTracksProps } from 'entities/track/common/ui/IssueTracks/IssueTracks';
+import type { FieldInputProps } from 'react-final-form';
 import styles from './TrackModalCreate.module.scss';
 
 type TProps = {

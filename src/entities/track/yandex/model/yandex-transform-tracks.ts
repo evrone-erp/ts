@@ -1,5 +1,5 @@
-import { TYandexTrack } from 'entities/track/yandex/model/types';
-import { TTrack } from 'entities/track/common/model/types';
+import type { TYandexTrack } from 'entities/track/yandex/model/types';
+import type { TTrack } from 'entities/track/common/model/types';
 
 export const yandexTransformTrack = ({ id, issue, comment, start, duration }: TYandexTrack): TTrack => ({
   id,

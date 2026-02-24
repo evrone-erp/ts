@@ -1,6 +1,5 @@
-// eslint-disable-next-line import/no-extraneous-dependencies
-import { FormatXMLElementFn, PrimitiveType } from 'intl-messageformat';
-import React from 'react';
+import type { FormatXMLElementFn, PrimitiveType } from 'intl-messageformat';
+import type React from 'react';
 
 export type TLocaleStore = {
   current: TCurrentLocale;

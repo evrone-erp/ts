@@ -1,11 +1,12 @@
-import { fetchAllPages, TFetchAllPagesBaseQueryResult } from 'shared/api';
+import type { TFetchAllPagesBaseQueryResult } from 'shared/api';
+import { fetchAllPages } from 'shared/api';
 import { api } from 'shared/api/api';
 import { identity } from 'shared/lib/utils';
 import { getTrackerHeaders } from 'entities/tracker/lib/getTrackerHeaders';
 import { yandexUserEndpoints } from 'entities/user/yandex/model/endpoints';
 import { YA_ROBOTS_IDS } from 'entities/user/yandex/model/constants';
-import { TYandexUser } from 'entities/user/yandex/model/types';
-import { TGetMyselfParams, TGetUserParams, TGetUsersParams } from 'entities/user/common/model/types';
+import type { TYandexUser } from 'entities/user/yandex/model/types';
+import type { TGetMyselfParams, TGetUserParams, TGetUsersParams } from 'entities/user/common/model/types';
 
 export const yandexUserApi = api.injectEndpoints({
   overrideExisting: true,

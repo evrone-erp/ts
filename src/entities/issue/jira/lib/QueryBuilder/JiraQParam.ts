@@ -1,5 +1,5 @@
 import { AbstractQParam } from 'entities/issue/common/lib/QueryBuilder';
-import { TQParamOperator } from 'entities/issue/common/lib/QueryBuilder/AbstractQParam';
+import type { TQParamOperator } from 'entities/issue/common/lib/QueryBuilder/AbstractQParam';
 
 export class JiraQParam extends AbstractQParam {
   constructor(

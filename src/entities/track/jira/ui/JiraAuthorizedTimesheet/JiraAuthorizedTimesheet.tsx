@@ -1,8 +1,8 @@
 import { useUnauthorizedTracker } from 'entities/auth/ui/common/UnauthorizedTracker/useUnauthorizedTracker';
 import { useFilterValues } from 'features/filters/lib/useFilterValues';
 import { Loading } from 'shared/ui/Loading';
-import { TCurrentLocale } from 'entities/locale/model/types';
-import { TJiraTrackerConfig } from 'entities/tracker/model/types';
+import type { TCurrentLocale } from 'entities/locale/model/types';
+import type { TJiraTrackerConfig } from 'entities/tracker/model/types';
 import { UserLoadFail } from 'entities/auth/ui/common/UserLoadFail/UserLoadFail';
 import { useJiraUser } from 'entities/user/jira/hooks/use-jira-user';
 import { JiraTimesheet } from 'entities/track/jira/ui/JiraTimesheet/JiraTimesheet';

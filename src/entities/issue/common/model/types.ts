@@ -1,6 +1,6 @@
-import { TTrackerConfig } from 'entities/tracker/model/types';
-import { TLocale } from 'entities/locale/model/types';
-import { TSortOrder } from 'shared/lib/types';
+import type { TTrackerConfig } from 'entities/tracker/model/types';
+import type { TLocale } from 'entities/locale/model/types';
+import type { TSortOrder } from 'shared/lib/types';
 
 export type TIssueStatus = {
   id: string;

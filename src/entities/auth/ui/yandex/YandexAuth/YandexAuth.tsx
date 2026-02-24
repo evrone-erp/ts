@@ -1,9 +1,10 @@
-import { TConfigAuth, TConfigYandexAuthParams } from 'entities/config/model/types';
+import type { TConfigAuth, TConfigYandexAuthParams } from 'entities/config/model/types';
 import queryString from 'query-string';
-import { FC, useEffect, useMemo } from 'react';
+import type { FC } from 'react';
+import { useEffect, useMemo } from 'react';
 import { appPaths } from 'shared/config/constants';
 import { useRouter } from 'next/router';
-import { TYandexTrackerConfig } from 'entities/tracker/model/types';
+import type { TYandexTrackerConfig } from 'entities/tracker/model/types';
 
 type TProps = {
   config: TConfigAuth<TConfigYandexAuthParams>;

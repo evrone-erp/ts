@@ -1,6 +1,7 @@
-import React, { PropsWithChildren } from 'react';
+import type { PropsWithChildren } from 'react';
+import React from 'react';
 import { configApi } from 'entities/config/model/api';
-import { TJiraTrackerConfig } from 'entities/tracker/model/types';
+import type { TJiraTrackerConfig } from 'entities/tracker/model/types';
 import { JiraAuth } from 'entities/auth/ui/jira/JiraAuth/JiraAuth';
 import { Loading } from 'shared/ui/Loading';
 import { useRefreshJiraToken } from 'entities/auth/lib/jira/useRefreshJiraToken';

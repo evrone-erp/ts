@@ -1,10 +1,10 @@
 import { useMemo } from 'react';
 import { createSelector } from '@reduxjs/toolkit';
 import { yandexIssueApi } from 'entities/issue/yandex/model/yandex-api';
-import { TYandexIssue } from 'entities/issue/yandex/model/types';
+import type { TYandexIssue } from 'entities/issue/yandex/model/types';
 import { uniqArray } from 'shared/lib/utils';
-import { TYandexTrackerConfig } from 'entities/tracker/model/types';
-import { TGetUserIssuesParams } from 'entities/issue/common/model/types';
+import type { TYandexTrackerConfig } from 'entities/tracker/model/types';
+import type { TGetUserIssuesParams } from 'entities/issue/common/model/types';
 import { sortWithPinedIssues } from 'entities/issue/common/lib/sortWithPinedIssues';
 
 type TIssuesParams = Omit<TGetUserIssuesParams, 'includeIssues' | 'user'> & {
