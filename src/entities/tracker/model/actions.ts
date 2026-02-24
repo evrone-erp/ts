@@ -1,5 +1,5 @@
 import { DateWrapper } from 'features/date/lib/DateWrapper';
-import { TAppDispatch } from 'shared/lib/types';
+import type { TAppDispatch } from 'shared/lib/types';
 import { trackers } from 'entities/tracker/model/reducers';
 
 const getLastLogin = () => DateWrapper.getDateFormat(DateWrapper.getDate({ utcOffsetInMinutes: undefined }));

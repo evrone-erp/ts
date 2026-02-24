@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router';
-import { TSortOrder } from 'shared/lib/types';
+import type { TSortOrder } from 'shared/lib/types';
 
 export const useSorting = () => {
   const router = useRouter();

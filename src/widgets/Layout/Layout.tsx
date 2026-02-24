@@ -1,5 +1,6 @@
-import React, { FC } from 'react';
-import './Layout.scss';
+import type { FC } from 'react';
+import React from 'react';
+import styles from './Layout.module.scss';
 
 type TProps = {
   head?: React.ReactNode;
@@ -7,8 +8,8 @@ type TProps = {
 };
 
 export const Layout: FC<TProps> = ({ children, head }) => (
-  <div className="Layout">
+  <div className={styles.Layout}>
     {head}
-    <main className="Layout__Main">{children}</main>
+    <main className={styles.Layout__Main}>{children}</main>
   </div>
 );

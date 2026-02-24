@@ -1,4 +1,4 @@
-import { TTrackerConfig } from 'entities/tracker/model/types';
+import type { TTrackerConfig } from 'entities/tracker/model/types';
 
 export type TQueue = {
   id: number | string;

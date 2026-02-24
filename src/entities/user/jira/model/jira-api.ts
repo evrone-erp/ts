@@ -1,8 +1,9 @@
 import { api } from 'shared/api/api';
 import { getTrackerHeaders } from 'entities/tracker/lib/getTrackerHeaders';
 import { jiraUserEndpoints } from 'entities/user/jira/model/endpoints';
-import { JiraAccountType, TJiraUser } from 'entities/user/jira/model/types';
-import { TGetMyselfParams, TGetUserParams, TGetUsersParams } from 'entities/user/common/model/types';
+import type { TJiraUser } from 'entities/user/jira/model/types';
+import { JiraAccountType } from 'entities/user/jira/model/types';
+import type { TGetMyselfParams, TGetUserParams, TGetUsersParams } from 'entities/user/common/model/types';
 import { getTrackerUrl } from 'entities/tracker/lib/getTrackerUrl';
 
 export const jiraUserApi = api.injectEndpoints({

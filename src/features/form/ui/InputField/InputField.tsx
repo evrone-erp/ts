@@ -1,4 +1,5 @@
-import { InputProps, Input } from 'antd';
+import type { InputProps } from 'antd';
+import { Input } from 'antd';
 import { FieldItem } from 'features/form/ui/FieldItem';
 import React, { useCallback } from 'react';
 import { useField } from 'react-final-form';

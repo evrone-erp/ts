@@ -1,4 +1,5 @@
-import { Tracker, TTrackerConfig } from 'entities/tracker/model/types';
+import type { TTrackerConfig } from 'entities/tracker/model/types';
+import { Tracker } from 'entities/tracker/model/types';
 
 export const mockTracker: TTrackerConfig = {
   type: Tracker.Yandex,

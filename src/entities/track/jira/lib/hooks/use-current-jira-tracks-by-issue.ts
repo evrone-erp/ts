@@ -1,4 +1,4 @@
-import { TTrack, TTransformedTracks } from 'entities/track/common/model/types';
+import type { TTrack, TTransformedTracks } from 'entities/track/common/model/types';
 
 const emptyObject: Record<string, TTrack[]> = {};
 const emptyArray: TTrack[] = [];

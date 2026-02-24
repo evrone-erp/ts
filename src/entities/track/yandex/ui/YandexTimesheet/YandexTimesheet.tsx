@@ -1,14 +1,15 @@
-import React, { FC, useCallback } from 'react';
+import type { FC } from 'react';
+import React, { useCallback } from 'react';
 import { useIssuesList } from 'entities/issue/yandex/lib/use-issues-list';
 import { usePinnedIssues } from 'entities/issue/common/lib/use-pinned-issues';
 
 import { yandexTrackApi } from 'entities/track/yandex/model/yandex-api';
-import { TCurrentLocale } from 'entities/locale/model/types';
+import type { TCurrentLocale } from 'entities/locale/model/types';
 import { TrackCalendar } from 'entities/track/common/ui/TrackCalendar/TrackCalendar';
 import { YandexTrackCalendarRowConnected } from 'entities/track/yandex/ui/YandexTrackCalendarRowConnected';
 import { YandexTrackCalendarFootConnected } from 'entities/track/yandex/ui/YandexTrackCalendarFootConnected/YandexTrackCalendarFootConnected';
 import { TrackCalendarHeader } from 'entities/track/common/ui/TrackCalendarHeader/TrackCalendarHeader';
-import { TYandexTrackerConfig } from 'entities/tracker/model/types';
+import type { TYandexTrackerConfig } from 'entities/tracker/model/types';
 import { useUpdateYandexTrack } from 'entities/track/yandex/lib/hooks/use-update-yandex-track';
 import { useCreateYandexTrack } from 'entities/track/yandex/lib/hooks/use-create-yandex-track';
 import { useDeleteYandexTrack } from 'entities/track/yandex/lib/hooks/use-delete-yandex-track';

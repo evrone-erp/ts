@@ -1,8 +1,8 @@
 import { useMemo } from 'react';
 import { useDebouncedState } from 'shared/lib/useDebouncedState';
 import { useInitialValue } from 'shared/lib/useInitialValue';
-import { TTrackerConfig } from 'entities/tracker/model/types';
-import { TOption } from 'shared/lib/types';
+import type { TTrackerConfig } from 'entities/tracker/model/types';
+import type { TOption } from 'shared/lib/types';
 import { getOptionFromIssue } from 'entities/issue/common/lib/get-option-from-issue';
 import { jiraIssueApi } from 'entities/issue/jira/model/jira-api';
 

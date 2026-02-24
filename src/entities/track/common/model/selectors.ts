@@ -1,6 +1,6 @@
 import { track } from 'entities/track/common/model/reducers';
-import { TTrackStore } from 'entities/track/common/model/types';
-import { TAppState } from 'shared/lib/types';
+import type { TTrackStore } from 'entities/track/common/model/types';
+import type { TAppState } from 'shared/lib/types';
 
 const selectTrack = (state: TAppState): TTrackStore => state[track.name] as TTrackStore;
 

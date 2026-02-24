@@ -1,7 +1,8 @@
 import { YandexAuth } from 'entities/auth/ui/yandex/YandexAuth/YandexAuth';
 import { configApi } from 'entities/config/model/api';
-import React, { PropsWithChildren } from 'react';
-import { TYandexTrackerConfig } from 'entities/tracker/model/types';
+import type { PropsWithChildren } from 'react';
+import React from 'react';
+import type { TYandexTrackerConfig } from 'entities/tracker/model/types';
 
 type TProps = {
   tracker: TYandexTrackerConfig;

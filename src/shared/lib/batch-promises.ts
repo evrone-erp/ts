@@ -16,7 +16,6 @@ export const batchPromises = async <T, R>(
       batchList.push(list[i + j]);
     }
 
-    // eslint-disable-next-line no-await-in-loop
     const batchResult = await Promise.all(batchList.map((v) => getPromise(v)));
 
     results.push(...batchResult);

@@ -3,7 +3,7 @@ import { useMemo } from 'react';
 import { Select } from 'antd';
 import { useMessage } from 'entities/locale/lib/hooks';
 import styles from 'entities/queue/common/ui/QueueSelect/QueueSelect.module.scss';
-import { TQueue } from 'entities/queue/common/model/types';
+import type { TQueue } from 'entities/queue/common/model/types';
 
 interface IQueueSelectProps {
   queueList: TQueue[] | undefined;

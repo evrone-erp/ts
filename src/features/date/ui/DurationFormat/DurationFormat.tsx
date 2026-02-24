@@ -1,5 +1,6 @@
-import React, { FC } from 'react';
-import { TBusinessDurationData } from 'entities/track/common/model/types';
+import type { FC } from 'react';
+import React from 'react';
+import type { TBusinessDurationData } from 'entities/track/common/model/types';
 import { useFormatDuration } from 'entities/track/common/lib/hooks/use-format-duration';
 
 type TProps = {

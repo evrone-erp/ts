@@ -1,7 +1,7 @@
 import { IssuesSearch } from 'entities/issue/common/ui/IssuesSearch/IssuesSearch';
-import { TJiraTrackerConfig } from 'entities/tracker/model/types';
-import { AutoCompleteProps } from 'antd';
-import { FieldInputProps } from 'react-final-form';
+import type { TJiraTrackerConfig } from 'entities/tracker/model/types';
+import type { AutoCompleteProps } from 'antd';
+import type { FieldInputProps } from 'react-final-form';
 import { useJiraIssuesSearchOptions } from 'entities/issue/jira/lib/use-jira-issues-search-options';
 
 type TProps = AutoCompleteProps<string> &

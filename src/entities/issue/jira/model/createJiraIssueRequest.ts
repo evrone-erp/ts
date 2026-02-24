@@ -2,7 +2,7 @@ import { DateWrapper } from 'features/date/lib/DateWrapper';
 import { DATE_FORMAT_DATE, DATE_TIME_FORMAT_JIRA_API } from 'features/date/lib/constants';
 import { QLogic, QueryBuilder } from 'entities/issue/common/lib/QueryBuilder';
 import { JiraQParam } from 'entities/issue/jira/lib/QueryBuilder/JiraQParam';
-import { TGetIssuesParams, TGetUserIssuesParams, TSearchIssuesParams } from 'entities/issue/common/model/types';
+import type { TGetIssuesParams, TGetUserIssuesParams, TSearchIssuesParams } from 'entities/issue/common/model/types';
 import { JiraQSorting } from 'entities/issue/jira/lib/QueryBuilder/JiraQSorting';
 
 const isGetUserIssuesParams = (x: TGetIssuesParams): x is TGetUserIssuesParams =>

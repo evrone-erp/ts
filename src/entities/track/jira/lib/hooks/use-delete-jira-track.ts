@@ -1,8 +1,8 @@
 import { useCallback } from 'react';
 import { useAppDispatch } from 'shared/lib/hooks';
 import { track } from 'entities/track/common/model/reducers';
-import { TTrackInputDelete } from 'entities/track/common/model/types';
-import { TTrackerConfig } from 'entities/tracker/model/types';
+import type { TTrackInputDelete } from 'entities/track/common/model/types';
+import type { TTrackerConfig } from 'entities/tracker/model/types';
 import { jiraTrackApi } from 'entities/track/jira/model/jira-api';
 
 export function useDeleteJiraTrack(tracker: TTrackerConfig) {

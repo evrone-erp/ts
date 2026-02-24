@@ -3,8 +3,8 @@ import { useMemo } from 'react';
 import { yandexIssueApi } from 'entities/issue/yandex/model/yandex-api';
 import { useDebouncedState } from 'shared/lib/useDebouncedState';
 import { useInitialValue } from 'shared/lib/useInitialValue';
-import { TTrackerConfig } from 'entities/tracker/model/types';
-import { TOption } from 'shared/lib/types';
+import type { TTrackerConfig } from 'entities/tracker/model/types';
+import type { TOption } from 'shared/lib/types';
 import { getOptionFromIssue } from 'entities/issue/common/lib/get-option-from-issue';
 
 const emptyArray: TOption[] = [];

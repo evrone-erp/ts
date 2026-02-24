@@ -1,5 +1,5 @@
-import { TJiraIssue } from 'entities/issue/jira/model/types';
-import { TIssue } from 'entities/issue/common/model/types';
+import type { TJiraIssue } from 'entities/issue/jira/model/types';
+import type { TIssue } from 'entities/issue/common/model/types';
 
 export const transformJiraIssueToCommonIssue = (issue: TJiraIssue): TIssue => ({
   ...issue,

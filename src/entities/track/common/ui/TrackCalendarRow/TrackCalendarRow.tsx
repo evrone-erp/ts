@@ -9,9 +9,9 @@ import { TrackCalendarColIssueSumDay } from 'entities/track/common/ui/TrackCalen
 import { TrackCalendarInnerRow } from 'entities/track/common/ui/TrackCalendarInnerRow';
 import { TrackCalendarColSumIssue } from 'entities/track/common/ui/TrackCalendarColSumIssue';
 import { compareTrackCalendarRowProps } from 'entities/track/common/ui/TrackCalendarRow/compareTrackCalendarRowProps';
-import { TTrack, TTrackInputEditForm } from 'entities/track/common/model/types';
+import type { TTrack, TTrackInputEditForm } from 'entities/track/common/model/types';
 import { useMessage } from 'entities/locale/lib/hooks';
-import { TIssue } from 'entities/issue/common/model/types';
+import type { TIssue } from 'entities/issue/common/model/types';
 import styles from './TrackCalendarRow.module.scss';
 
 export type TTrackCalendarRowProps = {

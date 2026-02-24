@@ -3,7 +3,7 @@ import { useMemo } from 'react';
 import { Select } from 'antd';
 import { useMessage } from 'entities/locale/lib/hooks';
 import styles from 'entities/issue/common/ui/IssueStatusSelect/IssueStatusSelect.module.scss';
-import { TIssueStatusDescription } from 'entities/issue/common/model/types';
+import type { TIssueStatusDescription } from 'entities/issue/common/model/types';
 
 export interface IIssueStatusSelectProps {
   value: string[];

@@ -1,4 +1,4 @@
-import { TISODuration } from 'entities/track/common/model/types';
+import type { TISODuration } from 'entities/track/common/model/types';
 import { isoDurationToBusinessMs } from 'entities/track/common/lib/iso-duration-to-business-ms';
 import {
   EXPECTED_BUSINESS_DAY_MS,

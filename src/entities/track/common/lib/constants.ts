@@ -1,4 +1,4 @@
-import { TISODuration } from 'entities/track/common/model/types';
+import type { TISODuration } from 'entities/track/common/model/types';
 
 export const DURATION_EMPTY: TISODuration = 'P0D';
 

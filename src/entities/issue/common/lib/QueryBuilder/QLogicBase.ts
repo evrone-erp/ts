@@ -1,4 +1,4 @@
-import { IQueryParam } from 'entities/issue/common/lib/QueryBuilder/IQueryParam';
+import type { IQueryParam } from 'entities/issue/common/lib/QueryBuilder/IQueryParam';
 
 export class QLogicBase implements IQueryParam {
   private children: IQueryParam[];

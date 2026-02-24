@@ -1,6 +1,6 @@
-import { TTrackInputEditForm } from 'entities/track/common/model/types';
+import type { TTrackInputEditForm } from 'entities/track/common/model/types';
 import { useCallback } from 'react';
-import { TTrackerConfig } from 'entities/tracker/model/types';
+import type { TTrackerConfig } from 'entities/tracker/model/types';
 import { jiraTrackApi } from 'entities/track/jira/model/jira-api';
 import { dateToJiraStartedDate } from 'entities/track/jira/lib/dateToJiraStartedDate';
 import { isoDurationToSeconds } from 'entities/track/common/lib/iso-duration-to-seconds';

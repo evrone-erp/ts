@@ -1,7 +1,8 @@
 import { useAppDispatch, useAppSelector } from 'shared/lib/hooks';
 import { actionLocaleInit } from 'entities/locale/model/actions';
 import { selectLocaleCurrent } from 'entities/locale/model/selectors';
-import React, { useEffect, FC, ReactNode } from 'react';
+import type { FC, ReactNode } from 'react';
+import React, { useEffect } from 'react';
 import { IntlProvider } from 'react-intl';
 import { localeApi } from 'entities/locale/model/api';
 import { defaultLocale } from 'entities/locale/model/constants';

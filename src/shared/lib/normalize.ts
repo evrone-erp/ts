@@ -1,4 +1,4 @@
-import { TGetEntry, TGetId, TGetList } from 'shared/lib/types';
+import type { TGetEntry, TGetId, TGetList } from 'shared/lib/types';
 
 /**
  * Получить идентификатор.

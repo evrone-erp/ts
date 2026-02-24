@@ -1,4 +1,4 @@
-import { TISODuration } from 'entities/track/common/model/types';
+import type { TISODuration } from 'entities/track/common/model/types';
 import {
   ISO_DURATION_REGEX,
   MILLISECONDS_A_BUSINESS_DAY,

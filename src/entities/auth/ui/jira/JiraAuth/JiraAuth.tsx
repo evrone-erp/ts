@@ -2,8 +2,8 @@ import { useGenerateJiraUserState } from 'entities/tracker/lib/useGenerateJiraUs
 import { useEffect, useMemo } from 'react';
 import queryString from 'query-string';
 import { useRouter } from 'next/router';
-import { TConfigAuth, TConfigJiraAuthParams } from 'entities/config/model/types';
-import { TJiraTrackerConfig } from 'entities/tracker/model/types';
+import type { TConfigAuth, TConfigJiraAuthParams } from 'entities/config/model/types';
+import type { TJiraTrackerConfig } from 'entities/tracker/model/types';
 import { appPaths } from 'shared/config/constants';
 
 type TProps = {

@@ -1,5 +1,5 @@
 import { DateWrapper } from 'features/date/lib/DateWrapper';
-import { TTrack, TTrackInputEditForm } from 'entities/track/common/model/types';
+import type { TTrack, TTrackInputEditForm } from 'entities/track/common/model/types';
 import { memo } from 'react';
 import { useFilterValues } from 'features/filters/lib/useFilterValues';
 import { TrackDurationEdit } from './TrackDurationEdit';

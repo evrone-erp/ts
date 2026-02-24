@@ -1,4 +1,4 @@
-import { TIssueStatusDescription } from 'entities/issue/common/model/types';
+import type { TIssueStatusDescription } from 'entities/issue/common/model/types';
 
 export type TJiraIssue = {
   id: string;

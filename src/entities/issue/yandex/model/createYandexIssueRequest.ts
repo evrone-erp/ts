@@ -3,7 +3,7 @@ import { DATE_FORMAT_DATE_API } from 'features/date/lib/constants';
 import { QueryBuilder, QLogic } from 'entities/issue/common/lib/QueryBuilder';
 import { YandexQSorting } from 'entities/issue/yandex/lib/QueryBuilder/YandexQSorting';
 import { YandexQParam } from 'entities/issue/yandex/lib/QueryBuilder/YandexQParam';
-import { TGetIssuesParams, TGetUserIssuesParams, TSearchIssuesParams } from 'entities/issue/common/model/types';
+import type { TGetIssuesParams, TGetUserIssuesParams, TSearchIssuesParams } from 'entities/issue/common/model/types';
 
 const isGetUserIssuesParams = (x: TGetIssuesParams): x is TGetUserIssuesParams =>
   Object.hasOwn(x, 'from') && Object.hasOwn(x, 'to');

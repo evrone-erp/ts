@@ -1,4 +1,4 @@
-import { TTrack } from 'entities/track/common/model/types';
+import type { TTrack } from 'entities/track/common/model/types';
 
 export const mockTrack: TTrack = {
   comment: 'foo bar',

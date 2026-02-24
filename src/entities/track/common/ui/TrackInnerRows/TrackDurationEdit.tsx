@@ -1,10 +1,11 @@
 import { Form, Input } from 'antd';
 import { durationValidationRules } from 'entities/track/common/lib/helpers';
 import type { ValidateErrorEntity } from 'rc-field-form/lib/interface';
-import { FocusEventHandler, memo, useEffect, useState } from 'react';
+import type { FocusEventHandler } from 'react';
+import { memo, useEffect, useState } from 'react';
 import { TrackCalendarSum } from 'entities/track/common/ui/TrackCalendarSum';
 import { DURATION_EMPTY } from 'entities/track/common/lib/constants';
-import { TTrack, TTrackInputEditForm } from 'entities/track/common/model/types';
+import type { TTrack, TTrackInputEditForm } from 'entities/track/common/model/types';
 import { useISOToHumanReadableDuration } from 'entities/track/common/lib/hooks/use-iso-to-human-readable-duration';
 import { humanReadableDurationToISO } from 'entities/track/common/lib/human-readable-duration-to-iso';
 import styles from './TrackDurationEdit.module.scss';

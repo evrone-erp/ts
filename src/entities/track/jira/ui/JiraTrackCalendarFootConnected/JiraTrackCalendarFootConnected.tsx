@@ -1,8 +1,6 @@
-import {
-  ITrackCalendarFootProps,
-  TrackCalendarFoot,
-} from 'entities/track/common/ui/TrackCalendarFoot/TrackCalendarFoot';
-import { TTransformedTracks } from 'entities/track/common/model/types';
+import type { ITrackCalendarFootProps } from 'entities/track/common/ui/TrackCalendarFoot/TrackCalendarFoot';
+import { TrackCalendarFoot } from 'entities/track/common/ui/TrackCalendarFoot/TrackCalendarFoot';
+import type { TTransformedTracks } from 'entities/track/common/model/types';
 import { useCurrentJiraTracks } from 'entities/track/jira/lib/hooks/use-current-jira-tracks';
 
 type TProps = Omit<ITrackCalendarFootProps, 'trackList' | 'date2Tracks'> & {

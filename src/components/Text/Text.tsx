@@ -1,6 +1,6 @@
 import { Typography } from 'antd';
-import { TextProps as AntTextProps } from 'antd/lib/typography/Text';
-import { PropsWithChildren } from 'react';
+import type { TextProps as AntTextProps } from 'antd/lib/typography/Text';
+import type { PropsWithChildren } from 'react';
 
 interface ITextProps extends AntTextProps {
   fw?: number;

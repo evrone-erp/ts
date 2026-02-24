@@ -1,6 +1,6 @@
 import { useAppSelector } from 'shared/lib/hooks';
-import { FetchBaseQueryError, FetchBaseQueryMeta } from '@reduxjs/toolkit/query';
-import type { QueryReturnValue } from '@reduxjs/toolkit/src/query/baseQueryTypes';
+import type { FetchBaseQueryError, FetchBaseQueryMeta } from '@reduxjs/toolkit/query';
+import type { QueryReturnValue } from '@reduxjs/toolkit/query';
 import { api } from './api';
 
 export function getTotalPagesYandex<T>(result: QueryReturnValue<T, FetchBaseQueryError, FetchBaseQueryMeta>): number {

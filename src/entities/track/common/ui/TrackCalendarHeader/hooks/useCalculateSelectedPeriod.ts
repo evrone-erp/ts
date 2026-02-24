@@ -1,5 +1,5 @@
 import { useMemo } from 'react';
-import { TDate } from 'features/date/lib/DateWrapper';
+import type { TDate } from 'features/date/lib/DateWrapper';
 
 export const useCalculateSelectedPeriod = (from: TDate, to: TDate) =>
   useMemo(() => {

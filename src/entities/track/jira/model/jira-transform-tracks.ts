@@ -1,5 +1,6 @@
-import { TTrack } from 'entities/track/common/model/types';
-import { IADFParagraphTextNode, isADFParagraphTextNode, TJiraTrack } from 'entities/track/jira/model/types';
+import type { TTrack } from 'entities/track/common/model/types';
+import type { IADFParagraphTextNode, TJiraTrack } from 'entities/track/jira/model/types';
+import { isADFParagraphTextNode } from 'entities/track/jira/model/types';
 import { businessDurationDataToIso } from 'entities/track/common/lib/business-duration-data-to-iso';
 import { msToBusinessDurationData } from 'entities/track/common/lib/ms-to-business-duration-data';
 

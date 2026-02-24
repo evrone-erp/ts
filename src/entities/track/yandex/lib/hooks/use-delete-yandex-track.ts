@@ -2,8 +2,8 @@ import { useCallback } from 'react';
 import { useAppDispatch } from 'shared/lib/hooks';
 import { yandexTrackApi } from 'entities/track/yandex/model/yandex-api';
 import { track } from 'entities/track/common/model/reducers';
-import { TTrackInputDelete } from 'entities/track/common/model/types';
-import { TTrackerConfig } from 'entities/tracker/model/types';
+import type { TTrackInputDelete } from 'entities/track/common/model/types';
+import type { TTrackerConfig } from 'entities/tracker/model/types';
 
 export function useDeleteYandexTrack(tracker: TTrackerConfig) {
   const dispatch = useAppDispatch();

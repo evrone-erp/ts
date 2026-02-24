@@ -1,10 +1,8 @@
 import { defaultLocale } from 'entities/locale/model/constants';
-import { TCurrentLocale } from 'entities/locale/model/types';
-import { TJiraTrackerConfig } from 'entities/tracker/model/types';
-import {
-  IIssueStatusSelectProps,
-  IssueStatusSelect,
-} from 'entities/issue/common/ui/IssueStatusSelect/IssueStatusSelect';
+import type { TCurrentLocale } from 'entities/locale/model/types';
+import type { TJiraTrackerConfig } from 'entities/tracker/model/types';
+import type { IIssueStatusSelectProps } from 'entities/issue/common/ui/IssueStatusSelect/IssueStatusSelect';
+import { IssueStatusSelect } from 'entities/issue/common/ui/IssueStatusSelect/IssueStatusSelect';
 import { jiraIssueApi } from 'entities/issue/jira/model/jira-api';
 
 type TProps = Omit<IIssueStatusSelectProps, 'statusList' | 'isFetchingStatusList'> & {

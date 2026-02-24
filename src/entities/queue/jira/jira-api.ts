@@ -1,8 +1,9 @@
-import { api, fetchAllPages, getTotalPagesJira, TFetchAllPagesBaseQueryResult } from 'shared/api';
-import { TGetQueuesParams, TQueue } from 'entities/queue/common/model/types';
+import type { TFetchAllPagesBaseQueryResult } from 'shared/api';
+import { api, fetchAllPages, getTotalPagesJira } from 'shared/api';
+import type { TGetQueuesParams, TQueue } from 'entities/queue/common/model/types';
 import { getTrackerHeaders } from 'entities/tracker/lib/getTrackerHeaders';
 import { jiraProjectsEndpoints } from 'entities/queue/jira/endpoints';
-import { TJiraProjectsResponse } from 'entities/queue/jira/types';
+import type { TJiraProjectsResponse } from 'entities/queue/jira/types';
 import { getTrackerUrl } from 'entities/tracker/lib/getTrackerUrl';
 
 export const jiraProjectApi = api.injectEndpoints({
