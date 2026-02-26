@@ -1,4 +1,4 @@
-import { TYandexTrackerConfig } from 'entities/tracker/model/types';
+import type { TYandexTrackerConfig } from 'entities/tracker/model/types';
 import { UserSelect } from 'entities/track/common/ui/TrackCalendarHeader/UserSelect';
 import { yandexUserApi } from 'entities/user/yandex/model/yandex-api';
 import { useYandexUser } from 'entities/user/yandex/hooks/use-yandex-user';

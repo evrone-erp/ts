@@ -1,4 +1,4 @@
-import { TTrack, TTransformedTracks, TTransformedTracksByDateRange } from 'entities/track/common/model/types';
+import type { TTrack, TTransformedTracks, TTransformedTracksByDateRange } from 'entities/track/common/model/types';
 import { getTrackDateCacheKey } from 'entities/track/common/lib/helpers';
 import { DateWrapper } from 'features/date/lib/DateWrapper';
 

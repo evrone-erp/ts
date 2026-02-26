@@ -4,7 +4,7 @@ import {
   HUMAN_DURATION_STR_REGEX,
   NUMBERS_REGEX,
 } from 'entities/track/common/lib/constants';
-import { TISODuration } from 'entities/track/common/model/types';
+import type { TISODuration } from 'entities/track/common/model/types';
 
 /**
  * transforms human readable duration string

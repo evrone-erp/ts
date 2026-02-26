@@ -1,8 +1,8 @@
 import { useFilterValues } from 'features/filters/lib/useFilterValues';
 import { yandexTrackApi } from 'entities/track/yandex/model/yandex-api';
 import { useYandexUser } from 'entities/user/yandex/hooks/use-yandex-user';
-import { TTrack } from 'entities/track/common/model/types';
-import { TYandexTrackerConfig } from 'entities/tracker/model/types';
+import type { TTrack } from 'entities/track/common/model/types';
+import type { TYandexTrackerConfig } from 'entities/tracker/model/types';
 
 const emptyObject: Record<string, TTrack[]> = {};
 const emptyArray: TTrack[] = [];

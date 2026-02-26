@@ -1,8 +1,10 @@
 import { clsx } from 'clsx';
 import { DatePicker } from 'components';
-import dayjs, { Dayjs } from 'dayjs';
+import type { Dayjs } from 'dayjs';
+import dayjs from 'dayjs';
 import { FieldItem } from 'features/form/ui/FieldItem';
-import React, { ComponentProps, useCallback } from 'react';
+import type { ComponentProps } from 'react';
+import React, { useCallback } from 'react';
 import { useField } from 'react-final-form';
 
 type TProps = Omit<ComponentProps<typeof DatePicker>, 'status' | 'onChange'> & {

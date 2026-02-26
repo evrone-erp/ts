@@ -1,8 +1,8 @@
 import { Spin } from 'antd';
 import React from 'react';
 import { Form } from 'react-final-form';
-import { FormApi } from 'final-form';
-import { TTrack, TTrackInputEditForm } from 'entities/track/common/model/types';
+import type { FormApi } from 'final-form';
+import type { TTrack, TTrackInputEditForm } from 'entities/track/common/model/types';
 import { InputField } from 'features/form/ui/InputField';
 import { useMessage } from 'entities/locale/lib/hooks';
 import { useISOToHumanReadableDuration } from 'entities/track/common/lib/hooks/use-iso-to-human-readable-duration';

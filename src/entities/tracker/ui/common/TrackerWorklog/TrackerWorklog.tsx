@@ -1,4 +1,5 @@
-import { isJiraTrackerCfg, isYandexTrackerCfg, TTrackerConfig } from 'entities/tracker/model/types';
+import type { TTrackerConfig } from 'entities/tracker/model/types';
+import { isJiraTrackerCfg, isYandexTrackerCfg } from 'entities/tracker/model/types';
 import { useRouter } from 'next/router';
 import { Head } from 'widgets/Head';
 import { useMessage } from 'entities/locale/lib/hooks';

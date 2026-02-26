@@ -3,9 +3,9 @@ import { actionLocaleSetCurrent } from 'entities/locale/model/actions';
 import { selectLocaleCurrent } from 'entities/locale/model/selectors';
 import React, { useCallback } from 'react';
 import { Select } from 'antd';
-import { DefaultOptionType } from 'antd/lib/select';
+import type { DefaultOptionType } from 'antd/lib/select';
 import { localeApi } from 'entities/locale/model/api';
-import { TLocale } from 'entities/locale/model/types';
+import type { TLocale } from 'entities/locale/model/types';
 
 const renderLocaleOption = (locale: TLocale): DefaultOptionType => ({ label: locale, value: locale });
 

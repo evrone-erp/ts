@@ -1,4 +1,4 @@
-import { TISODuration } from 'entities/track/common/model/types';
+import type { TISODuration } from 'entities/track/common/model/types';
 import { useFormatDuration } from 'entities/track/common/lib/hooks/use-format-duration';
 import { useISODurationsToTotalDurationData } from 'entities/track/common/lib/hooks/use-iso-dirations-to-total-duration-data';
 

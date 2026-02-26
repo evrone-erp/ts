@@ -1,5 +1,5 @@
 import { Button, Space, Typography } from 'antd';
-import { TJiraTrackerConfig, TTrackerConfig } from 'entities/tracker/model/types';
+import type { TJiraTrackerConfig, TTrackerConfig } from 'entities/tracker/model/types';
 import { useRouter } from 'next/router';
 import { useAppDispatch } from 'shared/lib/hooks';
 import { trackers } from 'entities/tracker/model/reducers';

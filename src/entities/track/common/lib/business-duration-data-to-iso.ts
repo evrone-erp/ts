@@ -1,4 +1,4 @@
-import { TBusinessDurationData, TISODuration } from 'entities/track/common/model/types';
+import type { TBusinessDurationData, TISODuration } from 'entities/track/common/model/types';
 
 const dataToSymbolMap = new Map<keyof TBusinessDurationData, 'H' | 'M' | 'S'>([
   ['hours', 'H'],

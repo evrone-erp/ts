@@ -1,5 +1,5 @@
-import { TJiraEditTrackParams } from 'entities/track/jira/model/types';
-import { TTrack } from 'entities/track/common/model/types';
+import type { TJiraEditTrackParams } from 'entities/track/jira/model/types';
+import type { TTrack } from 'entities/track/common/model/types';
 import { filterObjectFields } from 'shared/lib/filterObjectFields';
 import { msToBusinessDurationData } from 'entities/track/common/lib/ms-to-business-duration-data';
 import { businessDurationDataToIso } from 'entities/track/common/lib/business-duration-data-to-iso';

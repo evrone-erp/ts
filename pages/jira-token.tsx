@@ -1,5 +1,5 @@
-import { JiraTokenPage } from 'pages/JiraToken/JiraTokenPage';
-import { GetServerSideProps } from 'next';
+export { JiraTokenPage as default } from 'pages/JiraToken/JiraTokenPage';
+import type { GetServerSideProps } from 'next';
 import { jiraAuthEndpoints } from 'entities/auth/model/jira/endpoints';
 
 type TServerSideProps = {
@@ -56,5 +56,3 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
     };
   }
 };
-
-export default (props: TServerSideProps) => <JiraTokenPage {...props} />;

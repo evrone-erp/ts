@@ -1,13 +1,13 @@
 import { useCallback } from 'react';
 import { useAppDispatch } from 'shared/lib/hooks';
 import { track } from 'entities/track/common/model/reducers';
-import { TTrackFormCreateFields } from 'entities/track/common/ui/TrackFormCreate/types';
-import { TTrackerConfig } from 'entities/tracker/model/types';
+import type { TTrackFormCreateFields } from 'entities/track/common/ui/TrackFormCreate/types';
+import type { TTrackerConfig } from 'entities/tracker/model/types';
 import { jiraTrackApi } from 'entities/track/jira/model/jira-api';
 import { dateToJiraStartedDate } from 'entities/track/jira/lib/dateToJiraStartedDate';
 import { isoDurationToSeconds } from 'entities/track/common/lib/iso-duration-to-seconds';
 import { humanReadableDurationToISO } from 'entities/track/common/lib/human-readable-duration-to-iso';
-import { TJiraCreateTrackParams } from 'entities/track/jira/model/types';
+import type { TJiraCreateTrackParams } from 'entities/track/jira/model/types';
 import { formatJiraComment } from 'entities/track/jira/model/format-jira-comment';
 
 export function useCreateJiraTrack(tracker: TTrackerConfig) {

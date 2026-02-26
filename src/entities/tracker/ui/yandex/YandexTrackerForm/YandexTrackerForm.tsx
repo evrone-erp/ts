@@ -1,5 +1,6 @@
 import { Button, Form, Input, Modal, Select } from 'antd';
-import { Tracker, TYandexTrackerConfig } from 'entities/tracker/model/types';
+import type { TYandexTrackerConfig } from 'entities/tracker/model/types';
+import { Tracker } from 'entities/tracker/model/types';
 import { getTrackerIdFromName } from 'entities/tracker/lib/getTrackerIdFromName';
 import { useEffect } from 'react';
 import { getTrackerNameValidator } from 'entities/tracker/lib/getTrackerNameValidator';

@@ -8,7 +8,7 @@ import { clsx } from 'clsx';
 import { useISODurationsToTotalDurationData } from 'entities/track/common/lib/hooks/use-iso-dirations-to-total-duration-data';
 import { DurationFormat } from 'features/date/ui/DurationFormat';
 import { DateWrapper } from 'features/date/lib/DateWrapper';
-import { TTrackInputEditForm, TTransformedTracks } from 'entities/track/common/model/types';
+import type { TTrackInputEditForm, TTransformedTracks } from 'entities/track/common/model/types';
 
 export interface IIssueTracksProps {
   issueKey: string | undefined;

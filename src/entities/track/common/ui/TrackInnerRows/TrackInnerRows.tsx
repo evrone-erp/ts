@@ -1,5 +1,5 @@
 import { memo } from 'react';
-import { TTrack, TTrackInputEditForm } from 'entities/track/common/model/types';
+import type { TTrack, TTrackInputEditForm } from 'entities/track/common/model/types';
 import { TrackInnerRow } from './TrackInnerRow';
 
 interface ITrackInnerProps {

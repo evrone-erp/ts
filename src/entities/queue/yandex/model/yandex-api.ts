@@ -1,5 +1,5 @@
 import { api } from 'shared/api';
-import { TGetQueuesParams, TQueue } from 'entities/queue/common/model/types';
+import type { TGetQueuesParams, TQueue } from 'entities/queue/common/model/types';
 import { getTrackerHeaders } from 'entities/tracker/lib/getTrackerHeaders';
 import { yandexQueueEndpoints } from 'entities/queue/yandex/model/endpoints';
 

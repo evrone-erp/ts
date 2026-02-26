@@ -1,5 +1,5 @@
 import { api } from 'shared/api/api';
-import {
+import type {
   TJiraAccessibleResource,
   TJiraRefreshedTokenRequest,
   TJiraRefreshedTokenResponse,

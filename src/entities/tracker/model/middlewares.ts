@@ -1,8 +1,9 @@
 import { trackers } from 'entities/tracker/model/reducers';
 import { selectTrackers } from 'entities/tracker/model/selectors';
 import { TRACKERS_STORAGE_KEY } from 'entities/tracker/model/constants';
-import { Middleware } from '@reduxjs/toolkit';
-import { isYandexTrackerCfg, TTrackerStore } from 'entities/tracker/model/types';
+import type { Middleware } from '@reduxjs/toolkit';
+import type { TTrackerStore } from 'entities/tracker/model/types';
+import { isYandexTrackerCfg } from 'entities/tracker/model/types';
 
 /**
  * removes auth tokens before saving to local storage

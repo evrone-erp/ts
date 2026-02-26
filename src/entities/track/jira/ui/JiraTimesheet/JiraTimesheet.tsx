@@ -1,8 +1,9 @@
-import React, { FC, useCallback, useMemo, useState } from 'react';
+import type { FC } from 'react';
+import React, { useCallback, useMemo, useState } from 'react';
 import { usePinnedIssues } from 'entities/issue/common/lib/use-pinned-issues';
 import { TrackCalendar } from 'entities/track/common/ui/TrackCalendar/TrackCalendar';
 import { jiraIssueApi } from 'entities/issue/jira/model/jira-api';
-import { TJiraTrackerConfig } from 'entities/tracker/model/types';
+import type { TJiraTrackerConfig } from 'entities/tracker/model/types';
 import { JiraTrackCalendarRowConnected } from 'entities/track/jira/ui/JiraTrackCalendarRowConnected/JiraTrackCalendarRowConnected';
 import { jiraTrackApi } from 'entities/track/jira/model/jira-api';
 import { JiraTrackCalendarFootConnected } from 'entities/track/jira/ui/JiraTrackCalendarFootConnected/JiraTrackCalendarFootConnected';
@@ -13,7 +14,7 @@ import { useUpdateJiraTrack } from 'entities/track/jira/lib/hooks/use-update-jir
 import { JiraIssueTracksConnected } from 'entities/track/jira/ui/JiraIssueTracksConnected/JiraIssueTracksConnected';
 import { JiraIssuesSearchConnected } from 'entities/track/jira/ui/JiraIssuesSearchConnected/JiraIssuesSearchConnected';
 import { jiraProjectApi } from 'entities/queue/jira/jira-api';
-import { TCurrentLocale } from 'entities/locale/model/types';
+import type { TCurrentLocale } from 'entities/locale/model/types';
 import { useFilters } from 'features/filters/lib/useFilters';
 import { JiraUserSelectConnected } from 'entities/track/jira/ui/JiraUserSelectConnected/JiraUserSelectConnected';
 import { JiraIssueStatusSelectConnected } from 'entities/issue/jira/ui/JiraIssueStatusSelectConnected/JiraIssueStatusSelectConnected';
@@ -24,7 +25,7 @@ import { sortWithPinedIssues } from 'entities/issue/common/lib/sortWithPinedIssu
 import { Button } from 'antd';
 import { Message } from 'entities/locale/ui/Message';
 import { useLogoutTracker } from 'entities/tracker/lib/useLogoutTracker';
-import { TTrackFormCreateFields } from 'entities/track/common/ui/TrackFormCreate/types';
+import type { TTrackFormCreateFields } from 'entities/track/common/ui/TrackFormCreate/types';
 
 type TProps = {
   language: TCurrentLocale | undefined;

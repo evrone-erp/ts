@@ -1,5 +1,5 @@
 import { getOptions } from 'entities/locale/lib/helpers';
-import { TMessageProps } from 'entities/locale/model/types';
+import type { TMessageProps } from 'entities/locale/model/types';
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
 

@@ -2,8 +2,8 @@ import { currentLocaleKey, defaultLocale } from 'entities/locale/model/constants
 import { locale } from 'entities/locale/model/reducers';
 import { selectLocaleCurrent } from 'entities/locale/model/selectors';
 import { DateWrapper } from 'features/date/lib/DateWrapper';
-import { TAppDispatch, TGetState } from 'shared/lib/types';
-import { TLocale } from 'entities/locale/model/types';
+import type { TAppDispatch, TGetState } from 'shared/lib/types';
+import type { TLocale } from 'entities/locale/model/types';
 
 export const actionLocaleSetCurrent = (currentLocale: TLocale) => (dispatch: TAppDispatch) => {
   localStorage.setItem(currentLocaleKey, currentLocale);

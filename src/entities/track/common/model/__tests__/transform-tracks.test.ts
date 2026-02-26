@@ -1,7 +1,7 @@
 import { trackListToMaps } from 'entities/track/common/model/track-list-to-maps';
 import { mockTracks } from '__mocks__/track';
 import dayjs from 'dayjs';
-import { TTrack, TTransformedTracks } from 'entities/track/common/model/types';
+import type { TTrack, TTransformedTracks } from 'entities/track/common/model/types';
 
 const setUtcHoursOffset = (hours: number) => {
   // eslint-disable-next-line

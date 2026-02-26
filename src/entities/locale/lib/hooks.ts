@@ -1,5 +1,5 @@
 import { getMessage } from 'entities/locale/lib/helpers';
-import { TMessage } from 'entities/locale/model/types';
+import type { TMessage } from 'entities/locale/model/types';
 import { useMemo } from 'react';
 import { useIntl } from 'react-intl';
 import { useAppSelector } from 'shared/lib/hooks';

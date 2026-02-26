@@ -1,7 +1,8 @@
 import { memo } from 'react';
 import { useCurrentYandexTracksByIssue } from 'entities/track/yandex/lib/hooks/use-current-yandex-tracks-by-issue';
-import { TrackCalendarRow, TTrackCalendarRowProps } from 'entities/track/common/ui/TrackCalendarRow/TrackCalendarRow';
-import { TYandexTrackerConfig } from 'entities/tracker/model/types';
+import type { TTrackCalendarRowProps } from 'entities/track/common/ui/TrackCalendarRow/TrackCalendarRow';
+import { TrackCalendarRow } from 'entities/track/common/ui/TrackCalendarRow/TrackCalendarRow';
+import type { TYandexTrackerConfig } from 'entities/tracker/model/types';
 
 type TProps = Omit<TTrackCalendarRowProps, 'tracks' | 'date2IssueTracks'> & {
   tracker: TYandexTrackerConfig;

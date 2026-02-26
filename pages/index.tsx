@@ -1,8 +1,8 @@
 import { OrganizationRoute } from 'entities/organization/ui/OrganizationRoute';
 import { IndexPage } from 'pages/Index';
-import { ReactElement } from 'react';
+import type { ReactElement } from 'react';
 import { useMainTracker } from 'entities/tracker/lib/useMainTracker';
-import { TAppConfig } from 'shared/lib/types';
+import type { TAppConfig } from 'shared/lib/types';
 
 export const getServerSideProps = () => ({
   props: {
@@ -11,7 +11,7 @@ export const getServerSideProps = () => ({
   },
 });
 
-export default (props: TAppConfig): ReactElement => {
+const Index = (props: TAppConfig): ReactElement => {
   const mainTracker = useMainTracker(props);
 
   return (
@@ -20,3 +20,5 @@ export default (props: TAppConfig): ReactElement => {
     </OrganizationRoute>
   );
 };
+
+export default Index;

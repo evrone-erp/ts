@@ -5,9 +5,9 @@ import { UnauthorizedTracker } from 'entities/auth/ui/common/UnauthorizedTracker
 import { getQueryErrorStatus } from 'shared/lib/getQueryErrorStatus';
 import { Button } from 'antd';
 import { Message } from 'entities/locale/ui/Message';
-import { FetchBaseQueryError } from '@reduxjs/toolkit/query';
-import { SerializedError } from '@reduxjs/toolkit';
-import { TTrackerConfig } from 'entities/tracker/model/types';
+import type { FetchBaseQueryError } from '@reduxjs/toolkit/query';
+import type { SerializedError } from '@reduxjs/toolkit';
+import type { TTrackerConfig } from 'entities/tracker/model/types';
 
 const unautharizedErrors = new Set([401, 403]);
 

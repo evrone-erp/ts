@@ -1,6 +1,7 @@
-import { ReactNode } from 'react';
+import type { ReactNode } from 'react';
 import { validateHumanReadableDuration } from 'entities/track/common/lib/validate-human-readable-duration';
-import { DateWrapper, TDate } from 'features/date/lib/DateWrapper';
+import type { TDate } from 'features/date/lib/DateWrapper';
+import { DateWrapper } from 'features/date/lib/DateWrapper';
 
 export const durationValidationRules = [
   {

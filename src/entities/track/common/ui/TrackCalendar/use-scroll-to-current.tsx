@@ -1,4 +1,5 @@
-import { RefCallback, useRef } from 'react';
+import type { RefCallback } from 'react';
+import { useRef } from 'react';
 
 export function useScrollToCurrent() {
   const initialScrolledRef = useRef(false);

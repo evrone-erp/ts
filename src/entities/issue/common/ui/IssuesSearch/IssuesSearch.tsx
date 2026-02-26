@@ -1,7 +1,8 @@
 import React, { useCallback } from 'react';
-import { AutoCompleteProps, Select, Spin } from 'antd';
-import { FieldInputProps } from 'react-final-form';
-import { TOption } from 'shared/lib/types';
+import type { AutoCompleteProps } from 'antd';
+import { Select, Spin } from 'antd';
+import type { FieldInputProps } from 'react-final-form';
+import type { TOption } from 'shared/lib/types';
 
 export type TIssuesSearchProps = AutoCompleteProps<string> &
   FieldInputProps<string> & {

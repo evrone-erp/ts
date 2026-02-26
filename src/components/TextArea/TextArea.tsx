@@ -1,5 +1,5 @@
 import { Input as AntInput } from 'antd';
-import { TextAreaProps } from 'antd/lib/input/TextArea';
+import type { TextAreaProps } from 'antd/lib/input/TextArea';
 import { forwardRef } from 'react';
 import styles from './TextArea.module.scss';
 

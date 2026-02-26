@@ -2,7 +2,7 @@ import { DurationFormat } from 'features/date/ui/DurationFormat';
 import { memo, useMemo } from 'react';
 import { useISODurationsToTotalDurationData } from 'entities/track/common/lib/hooks/use-iso-dirations-to-total-duration-data';
 import { HOUR_A_BUSINESS_DAY } from 'entities/track/common/lib/constants';
-import { TTrack } from 'entities/track/common/model/types';
+import type { TTrack } from 'entities/track/common/model/types';
 import { comparePropsWithTracks } from 'entities/track/common/lib/compare-props-with-tracks';
 import { DateWrapper } from 'features/date/lib/DateWrapper';
 import { clsx } from 'clsx';

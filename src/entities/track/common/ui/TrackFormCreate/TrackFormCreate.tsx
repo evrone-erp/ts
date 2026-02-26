@@ -1,18 +1,21 @@
-import { AutoCompleteProps, Button } from 'antd';
+import type { AutoCompleteProps } from 'antd';
+import { Button } from 'antd';
 import { useMessage } from 'entities/locale/lib/hooks';
 import { Message } from 'entities/locale/ui/Message';
-import { TTrackInputCreate } from 'entities/track/common/model/types';
-import React, { FC, ReactNode } from 'react';
-import { Field, FieldInputProps, Form } from 'react-final-form';
+import type { TTrackInputCreate } from 'entities/track/common/model/types';
+import type { FC, ReactNode } from 'react';
+import React from 'react';
+import type { FieldInputProps } from 'react-final-form';
+import { Field, Form } from 'react-final-form';
 
 import { DateInputField } from 'features/form/ui/DateInputField';
 import { InputField } from 'features/form/ui/InputField';
 import { TextareaField } from 'features/form/ui/TextareaFeild';
 import { FieldItem } from 'features/form/ui/FieldItem';
 import { validateHumanReadableDuration } from 'entities/track/common/lib/validate-human-readable-duration';
-import { TTrackerConfig } from 'entities/tracker/model/types';
-import { TTrackFormCreateFields } from 'entities/track/common/ui/TrackFormCreate/types';
-import { IIssueTracksProps } from 'entities/track/common/ui/IssueTracks/IssueTracks';
+import type { TTrackerConfig } from 'entities/tracker/model/types';
+import type { TTrackFormCreateFields } from 'entities/track/common/ui/TrackFormCreate/types';
+import type { IIssueTracksProps } from 'entities/track/common/ui/IssueTracks/IssueTracks';
 import styles from './TrackFormCreate.module.scss';
 
 type TProps = {

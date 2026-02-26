@@ -1,4 +1,4 @@
-import { TBusinessDurationData } from 'entities/track/common/model/types';
+import type { TBusinessDurationData } from 'entities/track/common/model/types';
 import { MILLISECONDS_A_HOUR, MILLISECONDS_A_MINUTE, MILLISECONDS_A_SECOND } from './constants';
 
 export const msToBusinessDurationData = (ms: number): TBusinessDurationData => {

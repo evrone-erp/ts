@@ -1,4 +1,4 @@
-import { TEntityShort, TEntityShortKey } from 'shared/lib/types';
+import type { TEntityShort, TEntityShortKey } from 'shared/lib/types';
 
 type TYandexIssueStatusKey =
   | 'closed'

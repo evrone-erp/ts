@@ -1,4 +1,4 @@
-import { TBusinessDurationData } from 'entities/track/common/model/types';
+import type { TBusinessDurationData } from 'entities/track/common/model/types';
 import { useMessage } from 'entities/locale/lib/hooks';
 import { useMemo } from 'react';
 

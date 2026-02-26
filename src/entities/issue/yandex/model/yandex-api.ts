@@ -1,10 +1,11 @@
-import { api, fetchAllPages, TFetchAllPagesBaseQueryResult } from 'shared/api';
+import type { TFetchAllPagesBaseQueryResult } from 'shared/api';
+import { api, fetchAllPages } from 'shared/api';
 import { createYandexIssueRequest } from 'entities/issue/yandex/model/createYandexIssueRequest';
-import { TYandexIssue } from 'entities/issue/yandex/model/types';
+import type { TYandexIssue } from 'entities/issue/yandex/model/types';
 import { identity } from 'shared/lib/utils';
 import { getTrackerHeaders } from 'entities/tracker/lib/getTrackerHeaders';
 import { yandexIssueEndpoints } from 'entities/issue/yandex/model/endpoints';
-import {
+import type {
   TGetIssueParams,
   TGetIssuesParams,
   TGetIssuesStatusesQuery,

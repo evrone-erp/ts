@@ -1,5 +1,5 @@
-import { TJiraTrackerConfig, TTrackerConfig } from 'entities/tracker/model/types';
-import { TTrackInputEditParam } from 'entities/track/common/model/types';
+import type { TJiraTrackerConfig, TTrackerConfig } from 'entities/tracker/model/types';
+import type { TTrackInputEditParam } from 'entities/track/common/model/types';
 
 export type TJiraGetTracksParams = {
   from: string;

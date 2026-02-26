@@ -1,8 +1,6 @@
 import { renderHook } from '@testing-library/react';
-import {
-  TAllowedArgs,
-  useISODurationsToTotalDurationData,
-} from 'entities/track/common/lib/hooks/use-iso-dirations-to-total-duration-data';
+import type { TAllowedArgs } from 'entities/track/common/lib/hooks/use-iso-dirations-to-total-duration-data';
+import { useISODurationsToTotalDurationData } from 'entities/track/common/lib/hooks/use-iso-dirations-to-total-duration-data';
 
 it.each([
   ['P1WT2H', { hours: 42, minutes: 0, seconds: 0 }],

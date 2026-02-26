@@ -1,7 +1,7 @@
 import { useAppSelector } from 'shared/lib/hooks';
 import { selectTrackers } from 'entities/tracker/model/selectors';
 import { getTracker } from 'entities/tracker/lib/getTracker';
-import { TAppConfig } from 'shared/lib/types';
+import type { TAppConfig } from 'shared/lib/types';
 
 export const useMainTracker = (props: TAppConfig) => {
   const trackersState = useAppSelector(selectTrackers);

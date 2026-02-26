@@ -4,7 +4,7 @@ import React, { useCallback } from 'react';
 import { useAppDispatch, useAppSelector } from 'shared/lib/hooks';
 import { selectTrackInputDelete } from 'entities/track/common/model/selectors';
 import { Button, Modal } from 'antd';
-import { TTrackInputDelete } from 'entities/track/common/model/types';
+import type { TTrackInputDelete } from 'entities/track/common/model/types';
 
 type TProps = {
   isTrackDeleteLoading: boolean;

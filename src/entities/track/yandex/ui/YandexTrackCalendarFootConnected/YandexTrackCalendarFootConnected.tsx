@@ -1,9 +1,7 @@
 import { useCurrentYandexTracks } from 'entities/track/yandex/lib/hooks/use-current-yandex-tracks';
-import {
-  ITrackCalendarFootProps,
-  TrackCalendarFoot,
-} from 'entities/track/common/ui/TrackCalendarFoot/TrackCalendarFoot';
-import { TYandexTrackerConfig } from 'entities/tracker/model/types';
+import type { ITrackCalendarFootProps } from 'entities/track/common/ui/TrackCalendarFoot/TrackCalendarFoot';
+import { TrackCalendarFoot } from 'entities/track/common/ui/TrackCalendarFoot/TrackCalendarFoot';
+import type { TYandexTrackerConfig } from 'entities/tracker/model/types';
 
 type TProps = Omit<ITrackCalendarFootProps, 'trackList' | 'date2Tracks'> & {
   tracker: TYandexTrackerConfig;

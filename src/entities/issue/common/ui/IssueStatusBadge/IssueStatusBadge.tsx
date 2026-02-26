@@ -1,5 +1,5 @@
 import styles from 'entities/issue/common/ui/IssueStatusBadge/IssueStatusBadge.module.scss';
-import { TIssueStatus } from 'entities/issue/common/model/types';
+import type { TIssueStatus } from 'entities/issue/common/model/types';
 
 interface IIssueStatusBadgeProps {
   status: TIssueStatus;

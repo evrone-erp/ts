@@ -1,5 +1,5 @@
 import { useMemo } from 'react';
-import { TBusinessDurationData, TISODuration } from 'entities/track/common/model/types';
+import type { TBusinessDurationData, TISODuration } from 'entities/track/common/model/types';
 import { isoDurationToBusinessMs } from 'entities/track/common/lib/iso-duration-to-business-ms';
 import { msToBusinessDurationData } from 'entities/track/common/lib/ms-to-business-duration-data';
 

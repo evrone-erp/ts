@@ -1,7 +1,8 @@
 import { useCallback } from 'react';
 import { useAppDispatch } from 'shared/lib/hooks';
 import { track } from 'entities/track/common/model/reducers';
-import { DateWrapper, TDate } from 'features/date/lib/DateWrapper';
+import type { TDate } from 'features/date/lib/DateWrapper';
+import { DateWrapper } from 'features/date/lib/DateWrapper';
 
 export const useAddNewTrackAction = (issueKey?: string) => {
   const dispatch = useAppDispatch();

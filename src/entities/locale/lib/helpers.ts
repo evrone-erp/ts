@@ -1,5 +1,5 @@
-import { TLocale, TMessage } from 'entities/locale/model/types';
-import { IntlShape } from 'react-intl';
+import type { TLocale, TMessage } from 'entities/locale/model/types';
+import type { IntlShape } from 'react-intl';
 
 type TGetOptions = (id: string) => {
   defaultMessage: string;

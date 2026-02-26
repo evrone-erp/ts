@@ -1,4 +1,4 @@
-import { TTrackerConfig } from 'entities/tracker/model/types';
+import type { TTrackerConfig } from 'entities/tracker/model/types';
 import { jiraUserApi } from 'entities/user/jira/model/jira-api';
 
 export function useJiraUser(tracker: TTrackerConfig, id?: string) {

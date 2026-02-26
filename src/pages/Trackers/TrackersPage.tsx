@@ -8,18 +8,13 @@ import { useCallback, useMemo } from 'react';
 import { appPaths } from 'shared/config/constants';
 import { JiraTrackerManagement } from 'entities/tracker/ui/common/JiraTrackerManagement/JiraTrackerManagement';
 import { YandexTrackerManagement } from 'entities/tracker/ui/common/YandexTrackerManagement/YandexTrackerManagement';
-import {
-  isJiraTrackerCfg,
-  isYandexTrackerCfg,
-  TJiraTrackerConfig,
-  TTrackerConfig,
-  TYandexTrackerConfig,
-} from 'entities/tracker/model/types';
+import type { TJiraTrackerConfig, TTrackerConfig, TYandexTrackerConfig } from 'entities/tracker/model/types';
+import { isJiraTrackerCfg, isYandexTrackerCfg } from 'entities/tracker/model/types';
 import { useAppDispatch, useAppSelector } from 'shared/lib/hooks';
 import { selectTrackers } from 'entities/tracker/model/selectors';
 import { useMessage } from 'entities/locale/lib/hooks';
 import { trackers } from 'entities/tracker/model/reducers';
-import { TAppConfig } from 'shared/lib/types';
+import type { TAppConfig } from 'shared/lib/types';
 import styles from './TrackersPage.module.scss';
 
 export const TrackersPage = ({ isYandexTrackerEnabled, isJiraEnabled }: TAppConfig) => {

@@ -1,5 +1,5 @@
 import { shallowEqual } from 'react-redux';
-import { TTrack } from 'entities/track/common/model/types';
+import type { TTrack } from 'entities/track/common/model/types';
 
 type TProps = {
   date2IssueTracks: Record<string, TTrack[]>;

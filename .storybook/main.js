@@ -4,12 +4,7 @@ module.exports = {
     "../src/**/*.stories.@(js|jsx|ts|tsx)"
   ],
 
-  "addons": [
-    "@storybook/addon-links",
-    "@storybook/addon-essentials",
-    "@storybook/addon-interactions",
-    "@storybook/addon-docs"
-  ],
+  "addons": ["@storybook/addon-links", "@storybook/addon-docs"],
 
   "framework": {
     name: "@storybook/nextjs",
@@ -17,10 +12,6 @@ module.exports = {
   },
 
   staticDirs: ['../public'],
-
-  docs: {
-    autodocs: true
-  },
 
   async webpackFinal(config, { configType }) {
     config.resolve.alias = {
@@ -38,5 +29,5 @@ module.exports = {
     };
 
     return config;
-  },
+  }
 }

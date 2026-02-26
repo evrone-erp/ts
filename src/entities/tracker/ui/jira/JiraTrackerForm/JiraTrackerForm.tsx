@@ -1,5 +1,6 @@
 import { Button, Form, Input, Modal } from 'antd';
-import { TJiraTrackerConfig, Tracker } from 'entities/tracker/model/types';
+import type { TJiraTrackerConfig } from 'entities/tracker/model/types';
+import { Tracker } from 'entities/tracker/model/types';
 import { getTrackerIdFromName } from 'entities/tracker/lib/getTrackerIdFromName';
 import { useEffect } from 'react';
 import { getTrackerNameValidator } from 'entities/tracker/lib/getTrackerNameValidator';

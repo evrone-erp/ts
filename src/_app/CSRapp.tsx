@@ -1,4 +1,5 @@
-import { PropsWithChildren, useEffect, useState } from 'react';
+import type { PropsWithChildren } from 'react';
+import { useEffect, useState } from 'react';
 import { RootProvider } from 'app/providers';
 
 export const CSRApp = ({ children }: PropsWithChildren) => {

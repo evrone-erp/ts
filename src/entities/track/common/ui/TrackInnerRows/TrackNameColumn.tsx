@@ -1,7 +1,8 @@
 import { Form } from 'antd';
 import { TextArea } from 'components';
-import { FocusEventHandler, memo, useEffect } from 'react';
-import { TTrackInputEditForm } from 'entities/track/common/model/types';
+import type { FocusEventHandler } from 'react';
+import { memo, useEffect } from 'react';
+import type { TTrackInputEditForm } from 'entities/track/common/model/types';
 import { useMessage } from 'entities/locale/lib/hooks';
 import { TrackDeleteButton } from './TrackDeleteButton';
 import styles from './TrackNameColumn.module.scss';

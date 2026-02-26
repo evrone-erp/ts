@@ -1,6 +1,7 @@
-import { IIssueTracksProps, IssueTracks } from 'entities/track/common/ui/IssueTracks/IssueTracks';
-import { TYandexTrackerConfig } from 'entities/tracker/model/types';
-import { TTrackInputEditForm } from 'entities/track/common/model/types';
+import type { IIssueTracksProps } from 'entities/track/common/ui/IssueTracks/IssueTracks';
+import { IssueTracks } from 'entities/track/common/ui/IssueTracks/IssueTracks';
+import type { TYandexTrackerConfig } from 'entities/tracker/model/types';
+import type { TTrackInputEditForm } from 'entities/track/common/model/types';
 import { useMemo } from 'react';
 import { DateWrapper } from 'features/date/lib/DateWrapper';
 import { yandexTrackApi } from 'entities/track/yandex/model/yandex-api';
