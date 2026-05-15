@@ -22,7 +22,8 @@ import { YandexIssueStatusSelectConnected } from 'entities/issue/yandex/ui/Yande
 import { QueueSelect } from 'entities/queue/common/ui/QueueSelect/QueueSelect';
 import { IssueSummarySearch } from 'entities/issue/common/ui/IssueSummarySearch/IssueSummarySearch';
 import { Message } from 'entities/locale/ui/Message';
-import { Button } from 'antd';
+import { useMessage } from 'entities/locale/lib/hooks';
+import { Button, Checkbox, Typography } from 'antd';
 import { YANDEX_ISSUE_SORTING_KEY } from 'entities/issue/yandex/model/constants';
 import { useLogoutTracker } from 'entities/tracker/lib/useLogoutTracker';
 
@@ -33,6 +34,7 @@ type TProps = {
 };
 
 export const YandexTimesheet: FC<TProps> = ({ language, tracker, uId }) => {
+  const message = useMessage();
   const logout = useLogoutTracker(tracker);
 
   const {
@@ -45,9 +47,11 @@ export const YandexTimesheet: FC<TProps> = ({ language, tracker, uId }) => {
     queue,
     utcOffsetInMinutes,
     userId: userIdFromFilter,
+    onlyWithTimeSpent,
     updateIssueStatus,
     updateSummary,
     updateQueue,
+    updateOnlyWithTimeSpent,
   } = useFilters();
 
   const { pinnedIssues, pinIssue, unpinIssue } = usePinnedIssues(tracker.orgId);
@@ -70,6 +74,7 @@ export const YandexTimesheet: FC<TProps> = ({ language, tracker, uId }) => {
     sortOrder: sorting.sortOrder,
     utcOffsetInMinutes,
     tracker,
+    onlyWithTimeSpent,
   });
 
   const { currentData: queueList, isFetching: isFetchingQueueList } = yandexQueueApi.useGetQueuesQuery({ tracker });
@@ -112,6 +117,11 @@ export const YandexTimesheet: FC<TProps> = ({ language, tracker, uId }) => {
             <IssueSummarySearch defaultValue={summary} onSearch={updateSummary} />
           </>
         }
+        extraControls={[
+          <Checkbox checked={onlyWithTimeSpent} onChange={(e) => updateOnlyWithTimeSpent(e.target.checked)}>
+            <Typography.Text type="secondary">{message('track.calendar.onlyWithTimeSpent')}</Typography.Text>
+          </Checkbox>,
+        ]}
       />
       <TrackCalendar
         tracker={tracker}

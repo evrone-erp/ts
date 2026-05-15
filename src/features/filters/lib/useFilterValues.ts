@@ -6,6 +6,7 @@ import { useSorting } from 'features/filters/lib/useSorting';
 import { useSummaryFilter } from 'features/filters/lib/useSummaryFilter';
 import { useQueueFilter } from 'features/filters/lib/useQueueFilter';
 import { useTimeOffsetFilter } from 'features/filters/lib/useTimeOffsetFilter';
+import { useOnlyWithTimeSpentFilter } from './useOnlyWithTimeSpentFilter';
 
 export const useFilterValues = () => {
   const utcOffsetInMinutes = useTimeOffsetFilter();
@@ -16,6 +17,7 @@ export const useFilterValues = () => {
   const summary = useSummaryFilter();
   const queue = useQueueFilter();
   const sorting = useSorting();
+  const onlyWithTimeSpent = useOnlyWithTimeSpentFilter();
 
   return {
     from,
@@ -29,5 +31,6 @@ export const useFilterValues = () => {
     queue,
     sorting,
     utcOffsetInMinutes,
+    onlyWithTimeSpent,
   };
 };

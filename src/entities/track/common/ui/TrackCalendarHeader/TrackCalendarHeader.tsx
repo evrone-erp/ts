@@ -19,9 +19,16 @@ interface ITrackCalendarHeaderProps {
   upperRowControls?: ReactNode;
   filters?: ReactNode;
   trackerName: string;
+  extraControls?: ReactNode[];
 }
 
-export function TrackCalendarHeader({ isEdit, trackerName, filters, upperRowControls }: ITrackCalendarHeaderProps) {
+export function TrackCalendarHeader({
+  isEdit,
+  trackerName,
+  filters,
+  upperRowControls,
+  extraControls,
+}: ITrackCalendarHeaderProps) {
   const { push } = useRouter();
 
   return (
@@ -53,7 +60,7 @@ export function TrackCalendarHeader({ isEdit, trackerName, filters, upperRowCont
         </Col>
       </Row>
 
-      <TrackCalendarHeaderControlBar>{filters}</TrackCalendarHeaderControlBar>
+      <TrackCalendarHeaderControlBar extraControls={extraControls}>{filters}</TrackCalendarHeaderControlBar>
     </div>
   );
 }
