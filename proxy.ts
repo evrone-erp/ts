@@ -4,7 +4,7 @@ import { jiraAuthEndpoints } from 'entities/auth/model/jira/endpoints';
 /**
  * refreshes token, using Jira's OAuth API
  */
-export async function middleware(request: NextRequest) {
+export async function proxy(request: NextRequest) {
   try {
     const { clientId, refreshToken } = await request.json();
 
