@@ -21,6 +21,7 @@ const getUserIssuesQuery = ({
   sortBy,
   sortOrder,
   utcOffsetInMinutes,
+  onlyWithTimeSpent,
 }: TGetUserIssuesParams) => {
   const formattedFrom = DateWrapper.getDateFormat(
     DateWrapper.getDate({ date: from, utcOffsetInMinutes }),
@@ -49,7 +50,7 @@ const getUserIssuesQuery = ({
   const keysParam = new YandexQParam('Key', includeIssues);
 
   const queryBuilder = new QueryBuilder(
-    new QLogic.OR(keysParam, userIssuesForPeriodParam),
+    onlyWithTimeSpent ? keysParam : new QLogic.OR(keysParam, userIssuesForPeriodParam),
     new YandexQParam('Status', statusList),
     new YandexQParam('Summary', summary),
     new YandexQParam('Queue', queue),

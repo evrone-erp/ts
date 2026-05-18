@@ -44,6 +44,7 @@
   "track.calendar.unit.period": "Период",
   "track.calendar.today": "Сегодня",
   "track.calendar.showWeekends": "Показать выходные",
+  "track.calendar.onlyWithTimeSpent": "Только задачи с треками",
   "track.delete.confirm": "Вы уверены, что хотите удалить трек?",
   "track.delete.title": "Удалить трек",
   "track.duration.placeholder": "Укажите длительность",

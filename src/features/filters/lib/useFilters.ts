@@ -9,7 +9,13 @@ export const useFilters = () => {
   const filterValues = useFilterValues();
 
   const simpleUpdateFilter = useCallback(
-    (name: string, nextValue: string | string[]) => {
+    (name: string, nextValue: string | string[] | boolean) => {
+      if (!nextValue) {
+        const { [name]: _, ...restQuery } = router.query;
+        router.replace({ query: restQuery });
+        return;
+      }
+
       router.replace({
         query: {
           ...router.query,
@@ -82,6 +88,13 @@ export const useFilters = () => {
     [simpleUpdateFilter],
   );
 
+  const updateOnlyWithTimeSpent = useCallback(
+    (nextOnlyWithTimeSpent: boolean) => {
+      simpleUpdateFilter('only_with_time_spent', nextOnlyWithTimeSpent);
+    },
+    [simpleUpdateFilter],
+  );
+
   const updateSorting = useCallback(
     (sortBy: string, order: TSortOrder) => {
       router.replace({
@@ -119,5 +132,6 @@ export const useFilters = () => {
     updateQueue,
     updateSorting,
     updateTimeOffset,
+    updateOnlyWithTimeSpent,
   };
 };

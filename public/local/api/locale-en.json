@@ -44,6 +44,7 @@
   "track.calendar.unit.period": "Period of",
   "track.calendar.today": "Today",
   "track.calendar.showWeekends": "Show weekends",
+  "track.calendar.onlyWithTimeSpent": "Only issues with worklogs",
   "track.delete.confirm": "Are you sure you want to delete track?",
   "track.delete.title": "Delete track",
   "track.duration.placeholder": "Put your duration here",

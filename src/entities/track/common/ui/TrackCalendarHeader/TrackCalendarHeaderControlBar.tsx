@@ -4,50 +4,53 @@ import { RangePicker } from 'components/RangePicker';
 import { useMessage } from 'entities/locale/lib/hooks';
 import { DateWrapper } from 'features/date/lib/DateWrapper';
 import type { RangePickerProps } from 'antd/es/date-picker';
-import type { PropsWithChildren } from 'react';
+import type { PropsWithChildren, ReactNode } from 'react';
 import { memo, useMemo } from 'react';
 import { useFilters } from 'features/filters/lib/useFilters';
 import { DATE_FORMAT_DATE } from 'features/date/lib/constants';
 import styles from './TrackCalendarHeaderControlBar.module.scss';
 
-export const TrackCalendarHeaderControlBar = memo(({ children }: PropsWithChildren) => {
-  const message = useMessage();
+export const TrackCalendarHeaderControlBar = memo(
+  ({ children, extraControls }: PropsWithChildren<{ extraControls?: ReactNode[] }>) => {
+    const message = useMessage();
 
-  const { from, to, showWeekends, updateRangeFilter, updateWeekendVisibility, utcOffsetInMinutes } = useFilters();
-  const fromDate = useMemo(() => DateWrapper.getDate({ date: from, utcOffsetInMinutes }), [from, utcOffsetInMinutes]);
-  const toDate = useMemo(() => DateWrapper.getDate({ date: to, utcOffsetInMinutes }), [to, utcOffsetInMinutes]);
+    const { from, to, showWeekends, updateRangeFilter, updateWeekendVisibility, utcOffsetInMinutes } = useFilters();
+    const fromDate = useMemo(() => DateWrapper.getDate({ date: from, utcOffsetInMinutes }), [from, utcOffsetInMinutes]);
+    const toDate = useMemo(() => DateWrapper.getDate({ date: to, utcOffsetInMinutes }), [to, utcOffsetInMinutes]);
 
-  const handleDateChange = (dates: RangePickerProps['value']) =>
-    updateRangeFilter({
-      from: dates?.[0] ? DateWrapper.getDateFormat(dates[0].startOf('day')) : undefined,
-      to: dates?.[1] ? DateWrapper.getDateFormat(dates[1].endOf('day')) : undefined,
-    });
+    const handleDateChange = (dates: RangePickerProps['value']) =>
+      updateRangeFilter({
+        from: dates?.[0] ? DateWrapper.getDateFormat(dates[0].startOf('day')) : undefined,
+        to: dates?.[1] ? DateWrapper.getDateFormat(dates[1].endOf('day')) : undefined,
+      });
 
-  const handleWeekendsVisibilityChange = () => {
-    updateWeekendVisibility(String(Number(!showWeekends)));
-  };
+    const handleWeekendsVisibilityChange = () => {
+      updateWeekendVisibility(String(Number(!showWeekends)));
+    };
 
-  return (
-    <Space direction="vertical" size={5} style={{ width: '100%' }}>
-      <div className={styles.bar}>
-        <RangePicker
-          variant="borderless"
-          allowClear={false}
-          value={[fromDate, toDate]}
-          onChange={handleDateChange}
-          format={DATE_FORMAT_DATE}
-        />
+    return (
+      <Space direction="vertical" size={5} style={{ width: '100%' }}>
+        <div className={styles.bar}>
+          <RangePicker
+            variant="borderless"
+            allowClear={false}
+            value={[fromDate, toDate]}
+            onChange={handleDateChange}
+            format={DATE_FORMAT_DATE}
+          />
 
-        <div className={styles.divider} />
+          <div className={styles.divider} />
 
-        {children}
-      </div>
+          {children}
+        </div>
 
-      <Text fs={13}>
-        <Checkbox checked={showWeekends} onChange={handleWeekendsVisibilityChange}>
-          <Typography.Text type="secondary">{message('track.calendar.showWeekends')}</Typography.Text>
-        </Checkbox>
-      </Text>
-    </Space>
-  );
-});
+        <Text fs={13}>
+          <Checkbox checked={showWeekends} onChange={handleWeekendsVisibilityChange}>
+            <Typography.Text type="secondary">{message('track.calendar.showWeekends')}</Typography.Text>
+          </Checkbox>
+          {extraControls}
+        </Text>
+      </Space>
+    );
+  },
+);
