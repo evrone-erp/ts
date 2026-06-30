@@ -38,7 +38,7 @@
     "react-use": "^17.4.2"
   },
   "devDependencies": {
-    "@babel/core": "^7.19.6",
+    "@babel/core": "^7.29.6",
     "@evrone-erp/eslint-config": "^2.0.2",
     "@evrone-erp/prettier-config": "^1.0.43",
     "@storybook/addon-docs": "^10.2.8",
